@@ -1,0 +1,133 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Francisco Manuel Olmedo Cortés",
+    "label": "Physicist & AI Developer",
+    "image": "",
+    "email": "franciscomanuelolmedocortes@gmail.com",
+    "phone": "",
+    "url": "https://www.blakia.es",
+    "summary": "Physicist specialized in AI-driven solutions, automation, and software development with extensive experience in academic research, machine learning, and business process optimization.",
+    "location": {
+      "countryCode": "ES",
+      "address": "Córdoba, Andalucía, España"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "francisco-manuel-olmedo-cortés-551023283",
+        "url": "https://www.linkedin.com/in/francisco-manuel-olmedo-cortés-551023283/"
+      },
+      {
+        "network": "GitHub",
+        "username": "FullFran",
+        "url": "https://github.com/FullFran"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "BlakIA",
+      "position": "Cofounder",
+      "startDate": "2024-07-01",
+      "endDate": "",
+      "highlights": [
+        "Developing tailored AI-powered automation solutions for businesses.",
+        "Automating complex business processes including financial auditing, logistics optimization, and customer engagement.",
+        "Creating scalable and customizable AI infrastructures for real-time interactions and data-driven decision making."
+      ],
+      "url": "https://www.linkedin.com/company/blakiatech/",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "position": "Freelance AI & ML Developer",
+      "startDate": "2024-07-01",
+      "endDate": "",
+      "highlights": [
+        "Built end-to-end automation pipelines using AI for SMEs and startups.",
+        "Developed internal tools for sales, customer service, and operations using GPTs, n8n and custom APIs."
+      ],
+      "url": ""
+    },
+    {
+      "name": "Universidad de Córdoba",
+      "position": "Investigador con Cargo a Proyecto",
+      "startDate": "2024-09-01",
+      "endDate": "2025-01-31",
+      "highlights": [
+        "Developed simulation software for disordered optical materials using ray tracing and genetic algorithms."
+      ],
+      "url": "https://www.uco.es",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "name": "IDENER.AI",
+      "position": "Researcher",
+      "startDate": "2024-04-01",
+      "endDate": "2024-07-31",
+      "highlights": [
+        "Performed data analysis using neural networks for time series forecasting."
+      ],
+      "url": "https://www.idener.ai",
+      "location": "Sevilla, Andalucía, España"
+    },
+    {
+      "name": "Universidad de Córdoba",
+      "position": "Alumno Interno",
+      "startDate": "2022-10-01",
+      "endDate": "2023-06-30",
+      "highlights": [
+        "Taught introductory Python programming and data science courses."
+      ],
+      "url": "https://www.uco.es",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "name": "CIEMAT",
+      "position": "Prácticas",
+      "startDate": "2022-07-01",
+      "endDate": "2022-09-30",
+      "highlights": [
+        "Developed a simulation tool for thermoluminescent materials using Python."
+      ],
+      "url": "https://www.ciemat.es",
+      "location": "Madrid, España"
+    }
+  ],
+  "education": [
+    {
+      "institution": "IUNIT centro universitario",
+      "area": "Especialista en Inteligencia Artificial",
+      "studyType": "Especialización",
+      "startDate": "2024-10-01",
+      "endDate": "2025-10-01"
+    },
+    {
+      "institution": "Universidad de Córdoba",
+      "area": "Máster universitario en Tecnología Física: Investigación y Aplicaciones",
+      "studyType": "Máster",
+      "startDate": "2023-09-01",
+      "endDate": "2025-01-31"
+    },
+    {
+      "institution": "Universidad de Córdoba",
+      "area": "Grado en Física",
+      "studyType": "Grado",
+      "startDate": "2018-09-01",
+      "endDate": "2023-06-30"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Correlation between figure of merit function and deviation in the assessment of kinetic parameters in realistic TLD-100 behavior using fully-connected neural networks",
+      "publisher": "Radiation Physics and Chemistry",
+      "releaseDate": "2023-09-01",
+      "url": "https://doi.org/10.1016/j.radphyschem.2023.110883"
+    }
+  ],
+  "skills": [],
+  "languages": [
+    { "language": "Spanish", "fluency": "Native" },
+    { "language": "English", "fluency": "Professional working proficiency" }
+  ]
+}
