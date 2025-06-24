@@ -1,0 +1,17 @@
+---
+import Section from "../Section.astro";
+import { work } from "@cv";
+import Timeline from "../Timeline.astro";
+const workItems = work.map((job) => ({
+  title: job.position,
+  subtitle: job.name,
+  dateRange: `${job.startDate} – ${job.endDate || "Present"}`,
+  highlights: job.highlights,
+  url: job.url,
+  location: job.location,
+}));
+---
+
+<Section title="Experience">
+    <Timeline items={workItems} />
+</Section>

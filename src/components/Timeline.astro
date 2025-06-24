@@ -1,0 +1,57 @@
+---
+interface TimelineItem {
+  title: string;
+  subtitle?: string;
+  dateRange: string;
+  highlights?: string[];
+  url?: string;
+  location?: string;
+}
+
+const { items } = Astro.props as { items: TimelineItem[] };
+---
+
+{items?.length ? (
+  <ol class="relative border-s border-gray-200 dark:border-gray-700 pl-3">
+    {items.map((item) => (
+      <li class="mb-1 ms-3">
+        <div class="absolute w-2 h-2 bg-gray-300 rounded-full mt-[5px] -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-600"></div>
+
+        <time class="text-xs text-smtext-gray-400 dark:text-gray-500 leading-tight">
+            {item.dateRange}</time>
+        
+        {item.subtitle && (
+          <p class="text-sm font-semibold text-gray-900 leading-snug">
+            {item.subtitle}</p>
+        )}
+        
+        <h3 class="text-xs font-semibold text-gray-800 leading-snug">
+          {item.title}
+        </h3>
+
+        
+
+        {item.location && (
+          <p class="text-xs text-gray-500 italic leading-snug -mt-0.5 mb-1">{item.location}</p>
+        )}
+
+        {item.highlights && (
+          <ul class="list-disc pl-4 mt-1 space-y-[2px] text-xs leading-snug text-gray-700 dark:text-gray-400">
+            {item.highlights.map((point) => <li>{point}</li>)}
+          </ul>
+        )}
+        <!-- 
+        {item.url && (
+          <a
+            href={item.url}
+            class="inline-flex items-center mt-1 px-2 py-0.5 text-xs font-medium text-gray-800 bg-white border border-gray-200 rounded hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          >
+            Learn more
+          </a>
+        )} -->
+      </li>
+    ))}
+  </ol>
+) : (
+  <p class="text-sm text-gray-500 italic">No entries to show.</p>
+)}

@@ -1,0 +1,21 @@
+---
+interface SkillGroup {
+  title: string;
+  skills: string[];
+}
+
+const { groups } = Astro.props as { groups: SkillGroup[] };
+---
+
+<div class="grid grid-cols-1 min-[550px]:grid-cols-2 gap-x-6 gap-y-2 text-xs text-gray-800 dark:text-gray-100">
+  {groups.map((group) => (
+    <div>
+      <h3 class="font-semibold mb-1 text-xs text-gray-900">{group.title}</h3>
+      <ul class="list-disc list-inside space-y-[1px] text-gray-800">
+        {group.skills.map((skill) => (
+          <li>{skill}</li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

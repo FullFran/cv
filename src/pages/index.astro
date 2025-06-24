@@ -1,11 +1,30 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
+import About from '@components/sections/About.astro';
+import Projects from '@/components/sections/Projects.astro';
+import Education from '@/components/sections/Education.astro';
+import Experience from '@/components/sections/Experience.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Skills from '@/components/sections/Skills.astro';
+import KeyboardManager from '@/components/KeyboardManager.astro';
+
+import Section from '@/components/Section.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Portfolio minimalista">
+	<main class="min-h-screen bg-white text-gray-800 font-sans 
+			px-6 py-12 max-w-3xl mx-auto leading-relaxed
+			padding-4">
+		<Hero />
+		<About />
+		<Experience />
+		<Education />
+		<!-- <Projects />  -->
+		<Skills />
+	</main>
+
+	<KeyboardManager />
 </Layout>

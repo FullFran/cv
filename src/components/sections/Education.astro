@@ -1,0 +1,16 @@
+---
+import Section from "@components/Section.astro";
+import Timeline from "@components/Timeline.astro";
+import { education } from "@cv";
+
+// Adaptar al formato que espera Timeline.astro
+const eduItems = education.map((item) => ({
+  title: `${item.studyType} in ${item.area}`,
+  subtitle: item.institution,
+  dateRange: `${item.startDate} – ${item.endDate}`,
+}));
+---
+
+<Section title="Education">
+  <Timeline items={eduItems} />
+</Section>

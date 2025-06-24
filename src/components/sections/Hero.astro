@@ -1,0 +1,44 @@
+---
+import Section from "../Section.astro";
+import { basics } from "@cv";
+
+const { name, label, email, location, profiles, url } = basics;
+const { address } = location;
+
+const profileLinks = profiles.map((p) => ({
+  name: p.network,
+  url: p.url,
+}));
+---
+
+<Section>
+  <div class="text-sm text-gray-800">
+    <h1 class="text-2xl font-bold text-blue-900 mb-1">{name}</h1>
+    <h2 class="text-sm font-semibold text-gray-800 mb-1">{label}</h2>
+    <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{address}</p>
+
+    <div class="text-xs flex flex-wrap gap-x-2 text-gray-700">
+      <span>
+        <strong>Email:</strong>
+        <a href={`mailto:${email}`} class="text-blue-600 hover:underline"> {email}</a>
+      </span>
+      <span>·</span>
+      <span>
+        <strong>Web:</strong>
+        <a href={url} class="text-blue-600 hover:underline" target="_blank">{new URL(url).hostname}</a>
+      </span>
+      {profileLinks.map((link, index) => (
+        <>
+          <span>·</span>
+          <a
+            href={link.url}
+            class="text-blue-600 hover:underline"
+            target="_blank"
+          >
+            {link.name}
+          </a>
+        </>
+      ))}
+    </div>
+  </div>
+</Section>

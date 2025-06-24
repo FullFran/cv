@@ -1,0 +1,13 @@
+---
+import Section from "../Section.astro";
+import { basics } from "@cv";
+const { summary } = basics;
+---
+
+<Section title="About">
+  <div class="pl-4 mt-1 space-y-[2px] text-xs leading-snug text-gray-700 text-justify dark:text-gray-400">
+    {summary.split('\n\n').map((para) => (
+      <p>{para}</p>
+    ))}
+  </div>
+</Section>

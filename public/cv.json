@@ -97,21 +97,21 @@
   "education": [
     {
       "institution": "IUNIT centro universitario",
-      "area": "Artificial Intelligence Specialization",
+      "area": "Artificial Intelligence",
       "studyType": "Specialization",
       "startDate": "2024-10-01",
       "endDate": "2025-10-01"
     },
     {
       "institution": "Universidad de Córdoba",
-      "area": "Master in Physical Technology: Research and Applications",
+      "area": "Physical Technology: Research and Applications",
       "studyType": "Master",
       "startDate": "2023-09-01",
       "endDate": "2025-01-31"
     },
     {
       "institution": "Universidad de Córdoba",
-      "area": "Bachelor's in Physics",
+      "area": "Physics",
       "studyType": "Bachelor",
       "startDate": "2018-09-01",
       "endDate": "2023-06-30"
@@ -125,18 +125,18 @@
     }
   ],
   "skills": [
-    { "name": "AI Systems Architecture" },
-    { "name": "Large Language Models (LLMs)" },
-    { "name": "LangChain & RAG" },
-    { "name": "Python & FastAPI" },
-    { "name": "n8n & Automation" },
-    { "name": "OpenAI / API Integration" },
-    { "name": "Vector Databases (Qdrant, pgvector)" },
-    { "name": "Cloud Deployment (Hetzner, GCP)" },
-    { "name": "Git, Docker, CI/CD" },
-    { "name": "React & Astro" },
-    { "name": "HTML, CSS & Tailwind" }
+  { "name": "AI Systems Architecture" },
+  { "name": "LLMs, LangChain, RAG" },
+  { "name": "OpenAI API" },
+  { "name": "Workflow Automation with n8n" },
+  
+  { "name": "Python, FastAPI" },
+  { "name": "Git, Docker, CI/CD" },
+  { "name": "Vector Databases (Qdrant, Weaviate)" },
+  { "name": "Hetzner, GCP" },
+  { "name": "React, Astro, Tailwind CSS" }
   ],
+
   "languages": [
     { "language": "Spanish", "fluency": "Native" },
     { "language": "English", "fluency": "B2 Anglia" }
