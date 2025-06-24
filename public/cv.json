@@ -1,0 +1,144 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Francisco Manuel Olmedo Cortés",
+    "label": "AI Solutions Architect & Physicist",
+    "image": "",
+    "email": "fran@blakia.es",
+    "phone": "",
+    "url": "https://www.blakia.es",
+    "summary": "AI Solutions Architect and Physicist with 2+ years of experience building automation infrastructures and intelligent systems that solve real business problems. Founder of BlakIA, where I design AI solutions that reduce costs, increase operational efficiency, and deliver measurable impact. Strong academic background in physics and optics research, with hands-on expertise in LLMs, Python, and cloud-based deployments.",
+    "location": {
+      "countryCode": "ES",
+      "address": "Córdoba, Andalucía, España"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "francisco-manuel-olmedo-cortés-551023283",
+        "url": "https://www.linkedin.com/in/francisco-manuel-olmedo-cortés-551023283/"
+      },
+      {
+        "network": "GitHub",
+        "username": "FullFran",
+        "url": "https://github.com/FullFran"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "BlakIA",
+      "position": "Cofounder & AI Solutions Architect",
+      "startDate": "2024-07-01",
+      "endDate": "",
+      "highlights": [
+        "Designed and deployed custom AI pipelines for SMEs, integrating LLMs, RAG systems, and automation tools like n8n and LangChain.",
+        "Developed infrastructure that handled +100K messages during city events, enabling real-time communication via WhatsApp and web bots.",
+        "Implemented scalable multi-tenant SaaS architecture with monitoring, metrics, and self-service dashboards for clients."
+      ],
+      "url": "https://www.linkedin.com/company/blakiatech/",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "position": "Freelance AI & ML Developer",
+      "startDate": "2024-07-01",
+      "endDate": "",
+      "highlights": [
+        "Built end-to-end automation systems that reduced manual workload by 60% for consulting and marketing clients.",
+        "Developed lead qualification bots and internal tools using OpenAI APIs, LLMOps strategies, and vector databases."
+      ],
+      "url": ""
+    },
+    {
+      "name": "Universidad de Córdoba",
+      "position": "Researcher",
+      "startDate": "2024-09-01",
+      "endDate": "2025-01-31",
+      "highlights": [
+        "Led the development of simulation software for disordered optical materials using ray tracing and genetic algorithms."
+      ],
+      "url": "https://www.uco.es",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "name": "IDENER.AI",
+      "position": "Researcher",
+      "startDate": "2024-04-01",
+      "endDate": "2024-07-31",
+      "highlights": [
+        "Applied neural network models for time series forecasting to improve energy production predictions."
+      ],
+      "url": "https://www.idener.ai",
+      "location": "Sevilla, Andalucía, España"
+    },
+    {
+      "name": "Universidad de Córdoba",
+      "position": "Teaching Assistant",
+      "startDate": "2022-10-01",
+      "endDate": "2023-06-30",
+      "highlights": [
+        "Taught introductory courses in Python and data science, focusing on applications in scientific research."
+      ],
+      "url": "https://www.uco.es",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "name": "CIEMAT",
+      "position": "Intern",
+      "startDate": "2022-07-01",
+      "endDate": "2022-09-30",
+      "highlights": [
+        "Developed simulation models for thermoluminescent materials, enhancing performance prediction accuracy."
+      ],
+      "url": "https://www.ciemat.es",
+      "location": "Madrid, España"
+    }
+  ],
+  "education": [
+    {
+      "institution": "IUNIT centro universitario",
+      "area": "Artificial Intelligence Specialization",
+      "studyType": "Specialization",
+      "startDate": "2024-10-01",
+      "endDate": "2025-10-01"
+    },
+    {
+      "institution": "Universidad de Córdoba",
+      "area": "Master in Physical Technology: Research and Applications",
+      "studyType": "Master",
+      "startDate": "2023-09-01",
+      "endDate": "2025-01-31"
+    },
+    {
+      "institution": "Universidad de Córdoba",
+      "area": "Bachelor's in Physics",
+      "studyType": "Bachelor",
+      "startDate": "2018-09-01",
+      "endDate": "2023-06-30"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Correlation between figure of merit function and deviation in the assessment of kinetic parameters in realistic TLD-100 behavior using fully-connected neural networks",
+      "publisher": "Radiation Physics and Chemistry",
+      "releaseDate": "2023-09-01"
+    }
+  ],
+  "skills": [
+    { "name": "AI Systems Architecture" },
+    { "name": "Large Language Models (LLMs)" },
+    { "name": "LangChain & RAG" },
+    { "name": "Python & FastAPI" },
+    { "name": "n8n & Automation" },
+    { "name": "OpenAI / API Integration" },
+    { "name": "Vector Databases (Qdrant, pgvector)" },
+    { "name": "Cloud Deployment (Hetzner, GCP)" },
+    { "name": "Git, Docker, CI/CD" },
+    { "name": "React & Astro" },
+    { "name": "HTML, CSS & Tailwind" }
+  ],
+  "languages": [
+    { "language": "Spanish", "fluency": "Native" },
+    { "language": "English", "fluency": "B2 Anglia" }
+  ]
+}
