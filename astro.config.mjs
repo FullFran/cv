@@ -7,5 +7,8 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+  output: 'static',
+  site: 'https://fullfran.github.io',
+  base: '/cv/',
 });
