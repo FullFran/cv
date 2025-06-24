@@ -56,15 +56,5 @@ npm run preview
 * Anyone needing a **print-ready, A4‑styled digital CV**
 * Technical users who **value maintainability and standards compliance**
 
----
 
-**Built by Francisco Manuel Olmedo Cortés** — Physicist & AI Solutions Architect
-💼 founder of [BlakIA](https://blakia.es) | 📬 [fran@blakia.es](mailto:fran@blakia.es)
-
-```
-
----
-
-Let me know if you want to include a **PDF download button**, **dark/light mode toggle**, or section preview screenshots!
-::contentReference[oaicite:4]{index=4}
 
