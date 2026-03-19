@@ -1,0 +1,194 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Francisco Manuel Olmedo Cortés",
+    "label": "Arquitecto de Soluciones de IA & Backend Engineer",
+    "image": "",
+    "email": "franciscomanuelolmedocortes@gmail.com",
+    "phone": "",
+    "url": "https://www.fullfran.com",
+    "summary": "Físico y Arquitecto de Soluciones de IA especializado en IA Generativa e ingeniería Backend. Diseño y construyo sistemas listos para producción (RAG, Agentes Autónomos, orquestación de LLMs) que resuelven problemas reales de negocio, huyendo del 'hype' para centrarme en la eficiencia operativa. Lidero el ciclo de vida completo del software, aplicando Clean Architecture para asegurar sistemas mantenibles, escalables y de baja latencia. Mi formación en física me aporta un enfoque orientado a sistemas y basado en primeros principios para la toma de decisiones técnicas complejas.",
+    "location": {
+      "countryCode": "ES",
+      "address": "Córdoba, Andalucía, España"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "franciscoolmedo-cortes",
+        "url": "https://www.linkedin.com/in/franciscoolmedo-cortes/"
+      },
+      {
+        "network": "GitHub",
+        "username": "FullFran",
+        "url": "https://github.com/FullFran"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "BlakIA",
+      "position": "Cofundador & Lead Technical Architect",
+      "startDate": "2024-07-01",
+      "endDate": "",
+      "highlights": [
+        "Diseño e implementación desde cero de sistemas B2B basados en IA Generativa, con foco en pipelines RAG y Agentes Autónomos para la automatización de flujos de trabajo empresariales.",
+        "Responsable de las decisiones core de arquitectura, aplicando metodologías Lean y Clean Architecture para mantener sistemas robustos, escalables y con mínima deuda técnica.",
+        "Despliegue de sistemas de alta concurrencia en producción, incluyendo un chatbot oficial que gestionó más de 100.000 interacciones en una semana con picos superiores a 10.000 usuarios."
+      ],
+      "url": "https://www.linkedin.com/company/blakiatech/",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "name": "Hagalink",
+      "position": "Chief Data Scientist (CDS) / Lead AI Engineer",
+      "startDate": "2026-01-01",
+      "endDate": "",
+      "highlights": [
+        "Liderazgo en el diseño e implementación end-to-end de sistemas de IA/ML, traduciendo requerimientos ambiguos de clientes en arquitecturas backend escalables.",
+        "Desarrollo de APIs robustas en Python, gestionando bases de datos vectoriales y orquestación de LLMs en entornos de producción.",
+        "Nexo técnico con los clientes, explicando los compromisos (trade-offs) arquitectónicos entre precisión, coste computacional y latencia."
+      ],
+      "url": "https://hagalink.es",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "name": "Universidad de Córdoba (Proyecto Confidencial)",
+      "position": "Arquitecto de Software Científico / Investigador",
+      "startDate": "2024-09-01",
+      "endDate": "2025-01-31",
+      "highlights": [
+        "Refactorización de un simulador científico legacy de alta complejidad (ray tracing), aplicando principios de Clean Architecture para asegurar su escalabilidad y mantenibilidad.",
+        "Diseño e implementación de un optimizador basado en Algoritmos Genéticos para el diseño automatizado de estructuras físicas complejas.",
+        "Liderazgo en la estandarización técnica del código base."
+      ],
+      "url": "https://www.uco.es",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "name": "IDENER.AI",
+      "position": "Ingeniero de Software I+D",
+      "startDate": "2024-04-01",
+      "endDate": "2024-07-31",
+      "highlights": [
+        "Aplicación de modelos de Deep Learning para la predicción de series temporales, optimizando las estimaciones de producción energética.",
+        "Traducción de requerimientos científicos teóricos a código eficiente y funcional en un entorno ágil de I+D."
+      ],
+      "url": "https://www.idener.ai",
+      "location": "Sevilla, Andalucía, España"
+    },
+    {
+      "name": "CIEMAT / Universidad de Córdoba",
+      "position": "Investigador de IA & Desarrollador Científico",
+      "startDate": "2022-07-01",
+      "endDate": "2023-06-30",
+      "highlights": [
+        "Desarrollo de un simulador físico basado en la resolución numérica de ecuaciones diferenciales (Runge-Kutta) en Python, desplegado como herramienta web mediante Streamlit.",
+        "Generación de Datos Sintéticos: Uso del simulador como 'Oráculo' para generar datasets de alta precisión orientados a Deep Learning.",
+        "Diseño y entrenamiento de Redes Neuronales Densas (Fully-Connected) para la evaluación de parámetros cinéticos, resultando en una publicación científica (peer-reviewed).",
+        "Impartición de un curso introductorio de Python orientado a computación científica y ciencia de datos."
+      ],
+      "url": "https://www.ciemat.es",
+      "location": "Madrid / Córdoba, España"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad de Córdoba / Entorno CIEMAT",
+      "area": "Física / IA Aplicada",
+      "studyType": "Doctorando (Ph.D. Candidate)",
+      "startDate": "2025-01-01",
+      "endDate": ""
+    },
+    {
+      "institution": "Universidad de Córdoba",
+      "area": "Tecnología Física: Investigación y Aplicaciones",
+      "studyType": "Máster",
+      "startDate": "2023-09-01",
+      "endDate": "2025-01-31"
+    },
+    {
+      "institution": "Universidad de Córdoba",
+      "area": "Física",
+      "studyType": "Grado",
+      "startDate": "2018-09-01",
+      "endDate": "2023-06-30",
+      "score": "Matrícula de Honor en el Trabajo Fin de Grado (TFG)"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Correlation between figure of merit function and deviation in the assessment of kinetic parameters in realistic TLD-100 behavior using fully-connected neural networks",
+      "publisher": "Radiation Physics and Chemistry (Elsevier)",
+      "releaseDate": "2023-09-01",
+      "url": "https://doi.org/10.1016/j.radphyschem.2023.111259"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Backend & Arquitectura",
+      "keywords": [
+        "Clean Architecture",
+        "Python",
+        "FastAPI",
+        "TypeScript",
+        "NestJS",
+        "APIs RESTful",
+        "Diseño de Sistemas",
+        "Arquitectura de Bases de Datos"
+      ]
+    },
+    {
+      "name": "IA & Ingeniería de Datos",
+      "keywords": [
+        "IA Generativa",
+        "Agentes Autónomos",
+        "Pipelines RAG",
+        "LLMs (LangChain/LlamaIndex)",
+        "Bases de Datos Vectoriales (Qdrant, Weaviate)",
+        "Generación de Datos Sintéticos",
+        "Redes Neuronales"
+      ]
+    },
+    {
+      "name": "Infraestructura & Ops",
+      "keywords": [
+        "Linux",
+        "Docker",
+        "Git",
+        "CI/CD",
+        "Hetzner",
+        "GCP"
+      ]
+    },
+    {
+      "name": "Física & Matemáticas Base",
+      "keywords": [
+        "Modelado Matemático",
+        "Optimización Estadística",
+        "Algoritmos Genéticos",
+        "Métodos de Montecarlo"
+      ]
+    },
+    {
+      "name": "Productividad",
+      "keywords": [
+        "Neovim/Vim",
+        "Entornos TUI",
+        "Flujos de Trabajo en Terminal",
+        "Programación Asistida por IA",
+        "Opencode"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "fluency": "Nativo"
+    },
+    {
+      "language": "Inglés",
+      "fluency": "Competencia Profesional (B2)"
+    }
+  ]
+}
