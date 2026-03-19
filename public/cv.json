@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Francisco Manuel Olmedo Cortés",
-    "label": "AI Solutions Architect & Physicist",
+    "label": "AI Solutions Architect & Lead Backend Engineer",
     "image": "",
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
-    "url": "https://www.blakia.es",
-    "summary": "Physicist building production AI and data systems from real-world problems to deployment. I work across statistical modeling, classical machine learning, and LLM-based systems, prioritizing solutions that are simple, measurable, and maintainable. My background in physics shapes a first-principles, systems-oriented approach to technical decisions.",
+    "url": "https://www.fullfran.com",
+    "summary": "Physicist and AI Solutions Architect specialized in Generative AI and Backend engineering. I design and build production-ready systems (RAG, Autonomous Agents, LLM orchestration) that solve real business problems, cutting through the hype to focus on operational efficiency. I lead the full software lifecycle, applying Clean Architecture to ensure maintainable, scalable, and low-latency systems. My background in physics drives a first-principles, systems-oriented approach to complex technical decisions.",
     "location": {
       "countryCode": "ES",
       "address": "Córdoba, Andalucía, España"
@@ -28,108 +28,77 @@
   "work": [
     {
       "name": "BlakIA",
-      "position": "Cofounder",
+      "position": "Co-founder & Lead Technical Architect",
       "startDate": "2024-07-01",
       "endDate": "",
       "highlights": [
-        "Cofounded the company and led technical design for production systems spanning AI/ML applications, backend software, and automation platforms.",
-        "Delivered high-impact deployments for companies and public institutions, including the official Cordoba Fair chatbot with 100,000+ interactions in one week and peaks above 10,000 in real-world usage.",
-        "Owned architecture decisions, engineering trade-offs, and technical priorities to keep systems robust, maintainable, and aligned with business goals."
+        "Designed and implemented B2B Generative AI systems from scratch, focusing on RAG pipelines and Agentic AI for enterprise workflow automation.",
+        "Owned core architecture decisions, applying Lean methodologies and Clean Architecture to keep systems robust, scalable, and with minimal technical debt.",
+        "Delivered high-concurrency deployments in production, including an official chatbot handling 100,000+ interactions in a week with peaks above 10,000 users."
       ],
       "url": "https://www.linkedin.com/company/blakiatech/",
       "location": "Córdoba, Andalucía, España"
     },
     {
       "name": "Hagalink",
-      "position": "CDS",
+      "position": "Chief Data Scientist (CDS) / Lead AI Engineer",
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Lead the design and implementation of the company's AI and ML systems, from client requirements analysis to production deployment.",
-        "Work directly with clients to assess technical feasibility and explain trade-offs across accuracy, cost, latency, and complexity.",
-        "Define solution architecture and choose between classical ML, statistical models, and agent-based systems based on the problem context."
+        "Lead the end-to-end design and implementation of AI/ML systems, translating ambiguous client requirements into scalable backend architectures.",
+        "Build robust APIs in Python, managing vector databases and LLM orchestration in production environments.",
+        "Act as the technical bridge with clients, explaining architectural trade-offs across accuracy, computational cost, and latency."
       ],
       "url": "https://hagalink.es",
       "location": "Córdoba, Andalucía, España"
     },
     {
-      "name": "Cordob.ai",
-      "position": "Technical Contributor - AI & Platform",
-      "startDate": "2025-06-01",
-      "endDate": "",
-      "url": "",
-      "location": "Córdoba, Andalucía, España"
-    },
-    {
-      "position": "Freelance AI & ML Developer",
-      "startDate": "2024-07-01",
-      "endDate": "2025-06-30",
-      "highlights": [
-        "Worked independently on AI and ML projects before focusing full time on BlakIA."
-      ],
-      "url": ""
-    },
-    {
-      "name": "Universidad de Córdoba",
-      "position": "Researcher",
+      "name": "Universidad de Córdoba (Confidential Project)",
+      "position": "Scientific Software Architect / Researcher",
       "startDate": "2024-09-01",
       "endDate": "2025-01-31",
       "highlights": [
-        "Contributed as a project-funded researcher at the University of Cordoba."
+        "Refactored a highly complex legacy scientific simulator (ray tracing), applying Clean Architecture principles to ensure scalability and maintainability.",
+        "Designed and implemented an optimizer based on Genetic Algorithms for the automated design of complex physical structures.",
+        "Led the technical standardization of the codebase."
       ],
       "url": "https://www.uco.es",
       "location": "Córdoba, Andalucía, España"
     },
     {
       "name": "IDENER.AI",
-      "position": "Researcher",
+      "position": "R&D Software Engineer",
       "startDate": "2024-04-01",
       "endDate": "2024-07-31",
       "highlights": [
-        "Applied neural network models for time series forecasting to improve energy production predictions."
+        "Applied deep learning models for time series forecasting to optimize energy production predictions.",
+        "Bridged the gap between theoretical scientific requirements and efficient, functional code in a fast-paced R&D environment."
       ],
       "url": "https://www.idener.ai",
       "location": "Sevilla, Andalucía, España"
     },
     {
-      "position": "Freelance Data Analyst",
-      "startDate": "2022-10-01",
-      "endDate": "2023-10-31",
-      "highlights": [
-        "Delivered freelance data analysis work."
-      ],
-      "url": ""
-    },
-    {
-      "name": "Universidad de Córdoba",
-      "position": "Teaching Assistant",
-      "startDate": "2022-10-01",
+      "name": "CIEMAT / Universidad de Córdoba",
+      "position": "AI Researcher & Scientific Developer",
+      "startDate": "2022-07-01",
       "endDate": "2023-06-30",
       "highlights": [
-        "Taught introductory Python courses for scientific programming, AI, and data science."
-      ],
-      "url": "https://www.uco.es",
-      "location": "Córdoba, Andalucía, España"
-    },
-    {
-      "name": "CIEMAT",
-      "position": "Intern",
-      "startDate": "2022-07-01",
-      "endDate": "2022-09-30",
-      "highlights": [
-        "Built a Python simulator for thermoluminescent material behavior, strengthening my background in numerical methods and materials modeling."
+        "Developed a physical simulator based on the numerical resolution of differential equations (Runge-Kutta) in Python, deployed as a web tool via Streamlit.",
+        "Synthetic Data Generation: Utilized the simulator as an 'Oracle' to generate high-precision datasets for Deep Learning.",
+        "Designed and trained Fully-Connected Neural Networks for kinetic parameter assessment, leading to a peer-reviewed publication.",
+        "I taught an introductory course on Python for scientific computing and data science."
       ],
       "url": "https://www.ciemat.es",
-      "location": "Madrid, España"
+      "location": "Madrid / Córdoba, España"
     }
   ],
   "education": [
     {
-      "institution": "IUNIT centro universitario",
-      "area": "Artificial Intelligence",
-      "studyType": "Specialization",
-      "startDate": "2024-10-01",
-      "endDate": "2025-10-01"
+      "institution": "Universidad de Córdoba / CIEMAT Environment",
+      "area": "Physics / Applied AI",
+      "studyType": "Ph.D. Candidate (Doctorando)",
+      "startDate": "2025-01-01",
+      "endDate": ""
     },
     {
       "institution": "Universidad de Córdoba",
@@ -141,36 +110,50 @@
     {
       "institution": "Universidad de Córdoba",
       "area": "Physics",
-      "studyType": "Bachelor",
+      "studyType": "Bachelor (Degree)",
       "startDate": "2018-09-01",
-      "endDate": "2023-06-30"
+      "endDate": "2023-06-30",
+      "score": "Honors (Matrícula de Honor) in Bachelor Thesis"
     }
   ],
   "publications": [
     {
       "name": "Correlation between figure of merit function and deviation in the assessment of kinetic parameters in realistic TLD-100 behavior using fully-connected neural networks",
-      "publisher": "Radiation Physics and Chemistry",
-      "releaseDate": "2023-09-01"
+      "publisher": "Radiation Physics and Chemistry (Elsevier)",
+      "releaseDate": "2023-09-01",
+      "url": "https://doi.org/10.1016/j.radphyschem.2023.111259"
     }
   ],
   "skills": [
-  { "name": "Physics" },
-  { "name": "Mathematics" },
-  { "name": "Generative AI" },
-  { "name": "AI Systems Architecture" },
-  { "name": "LLMs, LangChain, RAG" },
-  { "name": "OpenAI API" },
-  { "name": "Workflow Automation with n8n" },
-  
-  { "name": "Python, FastAPI" },
-  { "name": "Git, Docker, CI/CD" },
-  { "name": "Vector Databases (Qdrant, Weaviate)" },
-  { "name": "Hetzner, GCP" },
-  { "name": "React, Astro, Tailwind CSS" }
+    {
+      "name": "Backend & Architecture",
+      "keywords": ["Clean Architecture", "Python", "FastAPI", "typescript", "nestjs", "RESTful APIs", "System Design", "database architecture"]
+    },
+    {
+      "name": "AI & Data Engineering",
+      "keywords": ["Generative AI", "Agentic AI", "RAG Pipelines", "LLMs (LangChain/LlamaIndex)", "Vector Databases (Qdrant, Weaviate)", "Synthetic Data Generation", "Neural Networks"]
+    },
+    {
+      "name": "Infrastructure & Ops",
+      "keywords": ["Linux", "Docker", "Git", "CI/CD", "Hetzner", "GCP"]
+    },
+    {
+      "name": "Core Physics & Math",
+      "keywords": ["Mathematical Modeling", "Statistical Optimization", "Genetic Algorithms", "Monte Carlo Methods"]
+    },
+    {
+      "name": "Productivity",
+      "keywords": ["Neovim/Vim", "TUI Environments", "High-speed Terminal Workflows", "AI asisted programming", "opencode"]
+    }
   ],
-
   "languages": [
-    { "language": "Spanish", "fluency": "Native" },
-    { "language": "English", "fluency": "B2 Anglia" }
+    {
+      "language": "Spanish",
+      "fluency": "Native"
+    },
+    {
+      "language": "English",
+      "fluency": "Professional Working Proficiency (B2)"
+    }
   ]
 }
