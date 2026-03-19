@@ -3,28 +3,13 @@ import Section from "../Section.astro";
 import SkillsLanguages from "../SkillsLanguages.astro";
 import { skills, languages } from "@cv";
 
-const skillGroups = [
-  {
-    title: "AI & Intelligent Systems",
-    skills: [
-      "AI Systems Architecture",
-      "LLMs, LangChain, RAG",
-      "OpenAI API",
-      "Workflow Automation with n8n",
-    ],
-  },
-  {
-    title: "Backend, Frontend & Infrastructure",
-    skills: [
-      "Python, FastAPI",
-      "Git, Docker, CI/CD",
-      "Vector Databases (Qdrant, Weaviate)",
-      "Hetzner, GCP",
-      "React, Astro, Tailwind CSS",
-    ],
-  },
-];
+// Transformar skills del JSON al formato que espera SkillsLanguages
+const skillGroups = skills.map((group) => ({
+  title: group.name,
+  skills: group.keywords,
+}));
 
+// Transformar languages del JSON
 const languageItems = languages.map((lang) => {
   const fluency = lang.fluency ? ` (${lang.fluency})` : "";
   return `${lang.language}${fluency}`;
@@ -42,13 +27,11 @@ const languagesGroup = {
 
 <Section title="Languages">
   <div class="grid grid-cols-2 text-xs text-gray-800">
-    <div>
-      <p class="font-semibold">Spanish</p>
-      <p class="text-gray-600">Native</p>
-    </div>
-    <div>
-      <p class="font-semibold">English</p>
-      <p class="text-gray-600">B2 (Anglia)</p>
-    </div>
+    {languages.map((lang) => (
+      <div>
+        <p class="font-semibold">{lang.language}</p>
+        <p class="text-gray-600">{lang.fluency}</p>
+      </div>
+    ))}
   </div>
 </Section>
