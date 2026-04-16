@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Francisco Manuel Olmedo Cortés",
-    "label": "Arquitecto de Soluciones de IA & Backend Engineer",
+    "label": "Arquitecto de Soluciones de IA & Lead Backend Engineer",
     "image": "",
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
@@ -27,19 +27,6 @@
   },
   "work": [
     {
-      "name": "BlakIA",
-      "position": "Cofundador & Lead Technical Architect",
-      "startDate": "2024-07-01",
-      "endDate": "",
-      "highlights": [
-        "Diseño e implementación desde cero de sistemas B2B basados en IA Generativa, con foco en pipelines RAG y Agentes Autónomos para la automatización de flujos de trabajo empresariales.",
-        "Responsable de las decisiones core de arquitectura, aplicando metodologías Lean y Clean Architecture para mantener sistemas robustos, escalables y con mínima deuda técnica.",
-        "Despliegue de sistemas de alta concurrencia en producción, incluyendo un chatbot oficial que gestionó más de 100.000 interacciones en una semana con picos superiores a 10.000 usuarios."
-      ],
-      "url": "https://www.linkedin.com/company/blakiatech/",
-      "location": "Córdoba, Andalucía, España"
-    },
-    {
       "name": "Hagalink",
       "position": "Chief Data Scientist (CDS) / Lead AI Engineer",
       "startDate": "2026-01-01",
@@ -50,6 +37,19 @@
         "Nexo técnico con los clientes, explicando los compromisos (trade-offs) arquitectónicos entre precisión, coste computacional y latencia."
       ],
       "url": "https://hagalink.es",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "name": "BlakIA",
+      "position": "Cofundador & Lead Technical Architect",
+      "startDate": "2024-07-01",
+      "endDate": "2026-04-17",
+      "highlights": [
+        "Diseño e implementación desde cero de sistemas B2B basados en IA Generativa, con foco en pipelines RAG y Agentes Autónomos para la automatización de flujos de trabajo empresariales.",
+        "Responsable de las decisiones core de arquitectura, aplicando metodologías Lean y Clean Architecture para mantener sistemas robustos, escalables y con mínima deuda técnica.",
+        "Despliegue de sistemas de alta concurrencia en producción, incluyendo un chatbot oficial que gestionó más de 100.000 interacciones en una semana con picos superiores a 10.000 usuarios."
+      ],
+      "url": "https://www.linkedin.com/company/blakiatech/",
       "location": "Córdoba, Andalucía, España"
     },
     {
@@ -84,7 +84,7 @@
       "endDate": "2023-06-30",
       "highlights": [
         "Desarrollo de un simulador físico basado en la resolución numérica de ecuaciones diferenciales (Runge-Kutta) en Python, desplegado como herramienta web mediante Streamlit.",
-        "Generación de Datos Sintéticos: Uso del simulador como 'Oráculo' para generar datasets de alta precisión orientados a Deep Learning.",
+        "Generación de Datos Sintéticos: uso del simulador como 'Oráculo' para generar datasets de alta precisión orientados a Deep Learning.",
         "Diseño y entrenamiento de Redes Neuronales Densas (Fully-Connected) para la evaluación de parámetros cinéticos, resultando en una publicación científica (peer-reviewed).",
         "Impartición de un curso introductorio de Python orientado a computación científica y ciencia de datos."
       ],
@@ -97,7 +97,7 @@
       "institution": "Universidad de Córdoba / Entorno CIEMAT",
       "area": "Física / IA Aplicada",
       "studyType": "Doctorando (Ph.D. Candidate)",
-      "startDate": "2025-01-01",
+      "startDate": "2026-01-01",
       "endDate": ""
     },
     {

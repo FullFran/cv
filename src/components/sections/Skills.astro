@@ -1,37 +1,40 @@
 ---
 import Section from "../Section.astro";
 import SkillsLanguages from "../SkillsLanguages.astro";
-import { skills, languages } from "@cv";
+import type { CVData, Locale } from "@lib/cv";
+import { labels } from "@lib/cv";
 
-// Transformar skills del JSON al formato que espera SkillsLanguages
-const skillGroups = skills.map((group) => ({
+interface Props {
+  data: CVData;
+  lang: Locale;
+}
+
+const { data, lang } = Astro.props;
+const t = labels[lang];
+
+const skillGroups = data.skills.map((group) => ({
   title: group.name,
   skills: group.keywords,
 }));
-
-// Transformar languages del JSON
-const languageItems = languages.map((lang) => {
-  const fluency = lang.fluency ? ` (${lang.fluency})` : "";
-  return `${lang.language}${fluency}`;
-});
-
-const languagesGroup = {
-  title: "Languages",
-  skills: languageItems,
-};
 ---
 
-<Section title="Technical Skills">
+<Section title={t.skills}>
   <SkillsLanguages groups={skillGroups} />
 </Section>
 
-<Section title="Languages">
-  <div class="grid grid-cols-2 text-xs text-gray-800">
-    {languages.map((lang) => (
-      <div>
-        <p class="font-semibold">{lang.language}</p>
-        <p class="text-gray-600">{lang.fluency}</p>
-      </div>
-    ))}
-  </div>
+<Section title={t.languages}>
+  <ul class="flex flex-wrap gap-x-6 gap-y-1">
+    {
+      data.languages.map((lng) => (
+        <li class="flex items-baseline gap-2">
+          <span class="text-[13px] font-semibold text-gray-900">
+            {lng.language}
+          </span>
+          {lng.fluency && (
+            <span class="text-xs text-gray-500">· {lng.fluency}</span>
+          )}
+        </li>
+      ))
+    }
+  </ul>
 </Section>

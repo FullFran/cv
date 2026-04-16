@@ -1,16 +1,27 @@
 ---
 import Section from "@components/Section.astro";
 import Timeline from "@components/Timeline.astro";
-import { education } from "@cv";
+import type { CVData, Locale } from "@lib/cv";
+import { labels } from "@lib/cv";
 
-// Adaptar al formato que espera Timeline.astro
-const eduItems = education.map((item) => ({
-  title: `${item.studyType} in ${item.area}`,
+interface Props {
+  data: CVData;
+  lang: Locale;
+}
+
+const { data, lang } = Astro.props;
+const t = labels[lang];
+
+const joiner = lang === "es" ? " en " : " in ";
+
+const eduItems = data.education.map((item) => ({
+  title: `${item.studyType}${joiner}${item.area}`,
   subtitle: item.institution,
-  dateRange: `${item.startDate} – ${item.endDate}`,
+  startDate: item.startDate,
+  endDate: item.endDate,
 }));
 ---
 
-<Section title="Education">
-  <Timeline items={eduItems} />
+<Section title={t.education}>
+  <Timeline items={eduItems} lang={lang} />
 </Section>

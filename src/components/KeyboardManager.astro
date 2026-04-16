@@ -1,8 +1,464 @@
-<footer>
+---
+/*
+  KeyboardManager.astro
+  Renders: status bar, help modal, TUI command prompt, slides progress bar.
+  Owns: keyboard shortcuts, mode switching (cv|tui|slides), language toggle
+        (en|es), slide navigation, PDF export trigger.
+*/
+---
 
+<div class="slide-progress" aria-hidden="true">
+  <div class="slide-progress-fill" id="slide-progress-fill"></div>
+</div>
 
+<footer class="status-bar no-print" id="status-bar">
+  <span class="sb-seg">
+    <span class="sb-dot"></span>
+    <span>mode:</span>
+    <span class="sb-mode" id="sb-mode">CV</span>
+  </span>
+  <span class="sb-seg">
+    <span>lang:</span>
+    <span class="sb-lang" id="sb-lang">EN</span>
+  </span>
+  <span id="sb-slide" class="sb-seg" hidden>
+    <span id="sb-slide-text">[1/1]</span>
+  </span>
+  <span class="sb-spacer"></span>
+  <span class="sb-seg" id="sb-hint">
+    <kbd>?</kbd><span>help</span>
+    <span>·</span>
+    <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><span>modes</span>
+    <span>·</span>
+    <kbd>l</kbd><span>lang</span>
+    <span>·</span>
+    <kbd>p</kbd><span>pdf</span>
+  </span>
 </footer>
 
-<script>
+<div class="cmd-prompt" id="cmd-prompt" data-open="false">
+  <span class="cmd-prefix">:</span>
+  <input
+    id="cmd-input"
+    type="text"
+    autocomplete="off"
+    spellcheck="false"
+    aria-label="command"
+  />
+</div>
+<div class="cmd-echo" id="cmd-echo" data-visible="false"></div>
 
+<div
+  class="cv-overlay"
+  id="help-modal"
+  data-open="false"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="cv-overlay-card">
+    <div class="mb-3 flex items-center justify-between">
+      <h3 class="text-sm font-semibold text-gray-900">Keyboard shortcuts</h3>
+      <button
+        id="help-close"
+        class="text-xs text-gray-500 hover:text-gray-800"
+        aria-label="Close help"
+      >
+        ✕ esc
+      </button>
+    </div>
+    <table class="w-full text-[12.5px] text-gray-700">
+      <tbody>
+        <tr class="border-b border-gray-100"
+          ><td class="py-1.5"><kbd class="help-kbd">?</kbd></td><td
+            >Toggle this help</td
+          ></tr
+        >
+        <tr class="border-b border-gray-100"
+          ><td class="py-1.5"><kbd class="help-kbd">1</kbd></td><td
+            >CV mode (clean print look)</td
+          ></tr
+        >
+        <tr class="border-b border-gray-100"
+          ><td class="py-1.5"><kbd class="help-kbd">2</kbd></td><td
+            >TUI mode (terminal)</td
+          ></tr
+        >
+        <tr class="border-b border-gray-100"
+          ><td class="py-1.5"><kbd class="help-kbd">3</kbd></td><td
+            >Slides mode (presentation)</td
+          ></tr
+        >
+        <tr class="border-b border-gray-100"
+          ><td class="py-1.5"><kbd class="help-kbd">l</kbd></td><td
+            >Toggle language EN ↔ ES</td
+          ></tr
+        >
+        <tr class="border-b border-gray-100"
+          ><td class="py-1.5"><kbd class="help-kbd">p</kbd></td><td
+            >Export to PDF (system print)</td
+          ></tr
+        >
+        <tr class="border-b border-gray-100"
+          ><td class="py-1.5"
+            ><kbd class="help-kbd">g</kbd><kbd class="help-kbd">G</kbd></td
+          ><td>Top / Bottom</td></tr
+        >
+        <tr class="border-b border-gray-100"
+          ><td class="py-1.5"
+            ><kbd class="help-kbd">j</kbd><kbd class="help-kbd">k</kbd></td
+          ><td>Scroll down / up</td></tr
+        >
+        <tr class="border-b border-gray-100"
+          ><td class="py-1.5"
+            ><kbd class="help-kbd">←</kbd><kbd class="help-kbd">→</kbd><kbd
+              class="help-kbd">space</kbd
+            ></td
+          ><td>Prev / Next slide (slides mode)</td></tr
+        >
+        <tr class="border-b border-gray-100"
+          ><td class="py-1.5"><kbd class="help-kbd">:</kbd></td><td
+            >Command prompt (TUI mode)</td
+          ></tr
+        >
+        <tr
+          ><td class="py-1.5"><kbd class="help-kbd">esc</kbd></td><td
+            >Close overlay / cancel command</td
+          ></tr
+        >
+      </tbody>
+    </table>
+    <p class="mt-3 text-[11px] text-gray-500">
+      Commands (TUI): <code>:help</code>
+      <code>:q</code>
+      <code>:lang en|es</code>
+      <code>:mode cv|tui|slides</code>
+      <code>:print</code>
+      <code>:gh</code>
+      <code>:li</code>
+      <code>:web</code>
+    </p>
+  </div>
+</div>
+
+<style>
+  .help-kbd {
+    display: inline-block;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-right: 4px;
+    font-size: 11px;
+    color: #334155;
+  }
+</style>
+
+<script>
+  type Mode = "cv" | "tui" | "slides";
+  type Lang = "en" | "es";
+
+  const root = document.documentElement;
+  const KEY_MODE = "cv:mode";
+  const KEY_LANG = "cv:lang";
+
+  const modeEl = document.getElementById("sb-mode")!;
+  const langEl = document.getElementById("sb-lang")!;
+  const slideSeg = document.getElementById("sb-slide")!;
+  const slideText = document.getElementById("sb-slide-text")!;
+  const progressFill = document.getElementById(
+    "slide-progress-fill",
+  )! as HTMLElement;
+  const helpModal = document.getElementById("help-modal")!;
+  const helpClose = document.getElementById("help-close")!;
+  const cmdPrompt = document.getElementById("cmd-prompt")!;
+  const cmdInput = document.getElementById("cmd-input") as HTMLInputElement;
+  const cmdEcho = document.getElementById("cmd-echo")!;
+
+  let currentSlide = 0;
+  let slideSections: HTMLElement[] = [];
+
+  const labelForMode: Record<Mode, string> = {
+    cv: "CV",
+    tui: "TUI",
+    slides: "SLIDES",
+  };
+
+  function getMode(): Mode {
+    return (localStorage.getItem(KEY_MODE) as Mode) || "cv";
+  }
+  function getLang(): Lang {
+    return (localStorage.getItem(KEY_LANG) as Lang) || "en";
+  }
+
+  function applyMode(mode: Mode) {
+    root.setAttribute("data-mode", mode);
+    localStorage.setItem(KEY_MODE, mode);
+    modeEl.textContent = labelForMode[mode];
+    if (mode === "slides") {
+      collectSlides();
+      goToSlide(currentSlide);
+      slideSeg.removeAttribute("hidden");
+    } else {
+      slideSeg.setAttribute("hidden", "");
+      document
+        .querySelectorAll(".slide-active")
+        .forEach((el) => el.classList.remove("slide-active"));
+    }
+    if (mode !== "tui") closeCmd();
+  }
+
+  function applyLang(lang: Lang) {
+    root.setAttribute("data-lang", lang);
+    root.setAttribute("lang", lang);
+    localStorage.setItem(KEY_LANG, lang);
+    langEl.textContent = lang.toUpperCase();
+    if (getMode() === "slides") {
+      collectSlides();
+      goToSlide(0);
+    }
+  }
+
+  function activeWrap(): HTMLElement | null {
+    return document.querySelector(`[data-lang-wrap="${getLang()}"]`);
+  }
+  function collectSlides() {
+    const wrap = activeWrap();
+    if (!wrap) return;
+    slideSections = Array.from(wrap.children).filter(
+      (c): c is HTMLElement =>
+        c instanceof HTMLElement && !c.classList.contains("cv-only"),
+    );
+  }
+  function goToSlide(idx: number) {
+    if (!slideSections.length) return;
+    currentSlide = Math.max(0, Math.min(idx, slideSections.length - 1));
+    slideSections.forEach((el, i) => {
+      el.classList.toggle("slide-active", i === currentSlide);
+    });
+    const total = slideSections.length;
+    slideText.textContent = `[${currentSlide + 1}/${total}]`;
+    progressFill.style.width = `${((currentSlide + 1) / total) * 100}%`;
+  }
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+  function prevSlide() {
+    goToSlide(currentSlide - 1);
+  }
+
+  function openHelp() {
+    helpModal.setAttribute("data-open", "true");
+  }
+  function closeHelp() {
+    helpModal.setAttribute("data-open", "false");
+  }
+  function openCmd() {
+    cmdPrompt.setAttribute("data-open", "true");
+    cmdInput.value = "";
+    setTimeout(() => cmdInput.focus(), 10);
+  }
+  function closeCmd() {
+    cmdPrompt.setAttribute("data-open", "false");
+    cmdInput.blur();
+  }
+  function echo(msg: string, err = false) {
+    cmdEcho.textContent = msg;
+    cmdEcho.classList.toggle("cmd-err", err);
+    cmdEcho.setAttribute("data-visible", "true");
+    window.clearTimeout((echo as any)._t);
+    (echo as any)._t = window.setTimeout(() => {
+      cmdEcho.setAttribute("data-visible", "false");
+    }, 2200);
+  }
+
+  function runCommand(raw: string) {
+    const cmd = raw.trim();
+    if (!cmd) return;
+    const [head, ...rest] = cmd.split(/\s+/);
+    const arg = rest.join(" ");
+    switch (head.toLowerCase()) {
+      case "h":
+      case "help":
+        openHelp();
+        echo("help opened");
+        break;
+      case "q":
+      case "quit":
+        applyMode("cv");
+        echo("back to CV mode");
+        break;
+      case "mode":
+        if (["cv", "tui", "slides"].includes(arg)) {
+          applyMode(arg as Mode);
+          echo(`mode → ${arg}`);
+        } else echo("usage: :mode cv|tui|slides", true);
+        break;
+      case "lang":
+        if (arg === "en" || arg === "es") {
+          applyLang(arg);
+          echo(`lang → ${arg}`);
+        } else echo("usage: :lang en|es", true);
+        break;
+      case "p":
+      case "print":
+      case "pdf":
+        window.print();
+        break;
+      case "gh":
+      case "github":
+        window.open("https://github.com/FullFran", "_blank");
+        break;
+      case "li":
+      case "linkedin":
+        window.open(
+          "https://www.linkedin.com/in/franciscoolmedo-cortes/",
+          "_blank",
+        );
+        break;
+      case "web":
+        window.open("https://www.fullfran.com", "_blank");
+        break;
+      case "mail":
+      case "email":
+        window.location.href =
+          "mailto:franciscomanuelolmedocortes@gmail.com";
+        break;
+      case "top":
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        break;
+      case "bottom":
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth",
+        });
+        break;
+      default:
+        echo(`unknown command: ${head}`, true);
+    }
+  }
+
+  let pendingG = false;
+  let pendingGTimer: number | undefined;
+  function armG() {
+    pendingG = true;
+    window.clearTimeout(pendingGTimer);
+    pendingGTimer = window.setTimeout(() => (pendingG = false), 600);
+  }
+
+  document.addEventListener("keydown", (e) => {
+    const target = e.target as HTMLElement;
+    const typing =
+      target &&
+      (target.tagName === "INPUT" ||
+        target.tagName === "TEXTAREA" ||
+        target.isContentEditable);
+
+    if (target === cmdInput) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const v = cmdInput.value;
+        closeCmd();
+        runCommand(v);
+      } else if (e.key === "Escape") {
+        e.preventDefault();
+        closeCmd();
+      }
+      return;
+    }
+
+    if (typing) return;
+
+    if (helpModal.getAttribute("data-open") === "true") {
+      if (e.key === "Escape" || e.key === "?") {
+        e.preventDefault();
+        closeHelp();
+      }
+      return;
+    }
+
+    switch (e.key) {
+      case "?":
+        e.preventDefault();
+        openHelp();
+        return;
+      case "Escape":
+        applyMode("cv");
+        return;
+      case "1":
+        applyMode("cv");
+        return;
+      case "2":
+        applyMode("tui");
+        return;
+      case "3":
+        applyMode("slides");
+        return;
+      case "l":
+      case "L":
+        applyLang(getLang() === "en" ? "es" : "en");
+        return;
+      case "p":
+      case "P":
+        e.preventDefault();
+        window.print();
+        return;
+      case ":":
+        if (getMode() === "tui") {
+          e.preventDefault();
+          openCmd();
+        }
+        return;
+      case "j":
+        if (getMode() !== "slides")
+          window.scrollBy({ top: 80, behavior: "smooth" });
+        return;
+      case "k":
+        if (getMode() !== "slides")
+          window.scrollBy({ top: -80, behavior: "smooth" });
+        return;
+      case "g":
+        if (getMode() === "slides") {
+          goToSlide(0);
+        } else if (pendingG) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          pendingG = false;
+        } else {
+          armG();
+        }
+        return;
+      case "G":
+        if (getMode() === "slides") {
+          goToSlide(slideSections.length - 1);
+        } else {
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth",
+          });
+        }
+        return;
+      case "ArrowRight":
+      case " ":
+        if (getMode() === "slides") {
+          e.preventDefault();
+          nextSlide();
+        }
+        return;
+      case "ArrowLeft":
+      case "b":
+        if (getMode() === "slides") {
+          e.preventDefault();
+          prevSlide();
+        }
+        return;
+    }
+  });
+
+  helpClose.addEventListener("click", closeHelp);
+  helpModal.addEventListener("click", (e) => {
+    if (e.target === helpModal) closeHelp();
+  });
+
+  applyLang(getLang());
+  applyMode(getMode());
 </script>

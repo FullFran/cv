@@ -1,17 +1,28 @@
 ---
 import Section from "../Section.astro";
-import { work } from "@cv";
 import Timeline from "../Timeline.astro";
-const workItems = work.map((job) => ({
+import type { CVData, Locale } from "@lib/cv";
+import { labels } from "@lib/cv";
+
+interface Props {
+  data: CVData;
+  lang: Locale;
+}
+
+const { data, lang } = Astro.props;
+const t = labels[lang];
+
+const workItems = data.work.map((job) => ({
   title: job.position,
   subtitle: job.name,
-  dateRange: `${job.startDate} – ${job.endDate || "Present"}`,
+  startDate: job.startDate,
+  endDate: job.endDate,
   highlights: job.highlights,
   url: job.url,
   location: job.location,
 }));
 ---
 
-<Section title="Experience">
-    <Timeline items={workItems} />
+<Section title={t.experience}>
+  <Timeline items={workItems} lang={lang} />
 </Section>

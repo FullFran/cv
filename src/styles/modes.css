@@ -1,0 +1,406 @@
+/* ======================================================================
+ * MODES — data-mode lives on <html>, data-lang on <html>, persisted in
+ * localStorage by KeyboardManager.astro. Each block overrides the base CV
+ * look without touching component markup.
+ * ====================================================================== */
+
+/* ------------------------------------------ Language switching ------- */
+html[data-lang="en"] [data-lang-wrap="es"] {
+  display: none !important;
+}
+html[data-lang="es"] [data-lang-wrap="en"] {
+  display: none !important;
+}
+
+/* ------------------------------------------ Help modal + overlays ---- */
+.cv-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+}
+.cv-overlay[data-open="true"] {
+  display: flex;
+}
+.cv-overlay-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  max-width: 520px;
+  width: calc(100% - 2rem);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  font-size: 13px;
+}
+
+/* ------------------------------------------ Status bar --------------- */
+.status-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 6px 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(140%) blur(6px);
+  border-top: 1px solid #e5e7eb;
+}
+.status-bar .sb-seg {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.status-bar .sb-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #10b981;
+}
+.status-bar .sb-spacer {
+  flex: 1;
+}
+.status-bar kbd {
+  font-family: inherit;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 3px;
+  padding: 0 4px;
+  font-size: 10px;
+  color: #334155;
+}
+
+/* ------------------------------------------ TUI MODE ----------------- */
+html[data-mode="tui"] {
+  --tui-bg: #0b0f14;
+  --tui-panel: #11161d;
+  --tui-border: #2b3440;
+  --tui-accent: #7ee787;
+  --tui-accent-soft: rgba(126, 231, 135, 0.12);
+  --tui-cyan: #79c0ff;
+  --tui-fg: #c9d1d9;
+  --tui-dim: #6b7785;
+  --tui-muted: #4b5563;
+}
+html[data-mode="tui"] body {
+  background: var(--tui-bg);
+  color: var(--tui-fg);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+html[data-mode="tui"] main {
+  background: var(--tui-panel) !important;
+  color: var(--tui-fg) !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+  --tw-ring-shadow: none !important;
+  border: 1px solid var(--tui-border);
+  font-size: 12.5px;
+}
+
+/* Hero */
+html[data-mode="tui"] header h1 {
+  color: var(--tui-accent) !important;
+  font-family: inherit;
+  text-shadow: 0 0 8px rgba(126, 231, 135, 0.25);
+}
+html[data-mode="tui"] header h1::before {
+  content: "╭─ ";
+  color: var(--tui-border);
+}
+html[data-mode="tui"] header h1::after {
+  content: " ─╮";
+  color: var(--tui-border);
+}
+html[data-mode="tui"] header p,
+html[data-mode="tui"] header {
+  color: var(--tui-fg) !important;
+  border-color: var(--tui-border) !important;
+}
+html[data-mode="tui"] header a {
+  color: var(--tui-cyan) !important;
+}
+html[data-mode="tui"] header a span {
+  color: var(--tui-dim) !important;
+}
+html[data-mode="tui"] header .text-gray-300 {
+  color: var(--tui-muted) !important;
+}
+
+/* Section titles */
+html[data-mode="tui"] section h2 {
+  color: var(--tui-accent) !important;
+  letter-spacing: 0.1em !important;
+}
+html[data-mode="tui"] section h2 > span:first-child {
+  display: none;
+}
+html[data-mode="tui"] section h2::before {
+  content: "▌ ";
+  color: var(--tui-accent);
+}
+
+/* Body text */
+html[data-mode="tui"] section p,
+html[data-mode="tui"] section li,
+html[data-mode="tui"] section h3 {
+  color: var(--tui-fg) !important;
+}
+html[data-mode="tui"] section .text-gray-500,
+html[data-mode="tui"] section .text-gray-600 {
+  color: var(--tui-dim) !important;
+}
+html[data-mode="tui"] section .text-blue-800,
+html[data-mode="tui"] section .text-blue-700,
+html[data-mode="tui"] section .text-blue-900 {
+  color: var(--tui-cyan) !important;
+}
+
+/* Timeline */
+html[data-mode="tui"] ol {
+  border-left-color: var(--tui-border) !important;
+  border-left-style: dashed !important;
+}
+html[data-mode="tui"] ol li > span:first-child {
+  background: var(--tui-accent) !important;
+  box-shadow: 0 0 0 3px var(--tui-panel);
+  --tw-ring-color: var(--tui-panel) !important;
+}
+html[data-mode="tui"] ol time {
+  color: var(--tui-dim) !important;
+}
+html[data-mode="tui"] ul.list-disc {
+  list-style: none;
+  padding-left: 0;
+}
+html[data-mode="tui"] ul.list-disc li {
+  position: relative;
+  padding-left: 1.1em;
+}
+html[data-mode="tui"] ul.list-disc li::before {
+  content: "▸";
+  color: var(--tui-accent);
+  position: absolute;
+  left: 0;
+}
+
+/* Skills as bracketed */
+html[data-mode="tui"] [class*="bg-blue-50"] {
+  background: transparent !important;
+  color: var(--tui-cyan) !important;
+  --tw-ring-color: var(--tui-border) !important;
+  border-radius: 2px !important;
+}
+html[data-mode="tui"] [class*="bg-blue-50"]::before {
+  content: "[";
+  color: var(--tui-muted);
+}
+html[data-mode="tui"] [class*="bg-blue-50"]::after {
+  content: "]";
+  color: var(--tui-muted);
+}
+
+/* Borders between sections */
+html[data-mode="tui"] header {
+  border-bottom-style: dashed !important;
+}
+
+/* Status bar TUI */
+html[data-mode="tui"] .status-bar {
+  background: var(--tui-bg);
+  border-top: 1px solid var(--tui-border);
+  color: var(--tui-dim);
+}
+html[data-mode="tui"] .status-bar .sb-mode {
+  color: var(--tui-bg);
+  background: var(--tui-accent);
+  padding: 1px 8px;
+  font-weight: 700;
+}
+html[data-mode="tui"] .status-bar .sb-lang {
+  color: var(--tui-cyan);
+}
+html[data-mode="tui"] .status-bar kbd {
+  background: var(--tui-panel);
+  border-color: var(--tui-border);
+  color: var(--tui-dim);
+}
+
+/* Command prompt (TUI only) */
+.cmd-prompt {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  z-index: 55;
+  padding: 6px 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 13px;
+  background: var(--tui-bg, #0b0f14);
+  border-top: 1px solid var(--tui-border, #2b3440);
+  color: var(--tui-fg, #c9d1d9);
+  align-items: center;
+  gap: 6px;
+}
+html[data-mode="tui"] .cmd-prompt[data-open="true"] {
+  display: flex;
+}
+.cmd-prompt .cmd-prefix {
+  color: var(--tui-accent, #7ee787);
+}
+.cmd-prompt input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font: inherit;
+  caret-color: var(--tui-accent, #7ee787);
+}
+.cmd-echo {
+  position: fixed;
+  left: 14px;
+  bottom: 50px;
+  z-index: 54;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--tui-dim, #6b7785);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.cmd-echo[data-visible="true"] {
+  opacity: 1;
+}
+.cmd-echo.cmd-err {
+  color: #f87171;
+}
+
+/* ------------------------------------------ SLIDES MODE -------------- */
+html[data-mode="slides"] body {
+  background: #0f172a;
+  overflow: hidden;
+}
+html[data-mode="slides"] main {
+  position: fixed !important;
+  inset: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 4rem 3rem 3rem !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  --tw-ring-shadow: none !important;
+  background: #fff !important;
+  overflow: hidden;
+}
+html[data-mode="slides"] [data-lang-wrap] {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+html[data-mode="slides"] [data-lang-wrap] > *:not(.slide-active) {
+  display: none !important;
+}
+html[data-mode="slides"] .slide-active {
+  animation: slideFade 0.25s ease-out;
+  max-width: 820px;
+  margin: 0 auto;
+  width: 100%;
+}
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+html[data-mode="slides"] .slide-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 52;
+  background: rgba(15, 23, 42, 0.08);
+  display: block;
+}
+html[data-mode="slides"] .slide-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transition: width 0.25s ease;
+}
+.slide-progress {
+  display: none;
+}
+html[data-mode="slides"] section h2,
+html[data-mode="slides"] header h1 {
+  font-size: 32px !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.01em !important;
+}
+html[data-mode="slides"] section h2 {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  font-weight: 700 !important;
+  color: #1e3a8a !important;
+  margin-bottom: 1.25rem !important;
+}
+html[data-mode="slides"] section h2 > span:first-child {
+  display: none;
+}
+html[data-mode="slides"] section,
+html[data-mode="slides"] header {
+  font-size: 15px;
+}
+html[data-mode="slides"] header {
+  border: none !important;
+}
+html[data-mode="slides"] .status-bar {
+  background: rgba(15, 23, 42, 0.9);
+  color: #cbd5e1;
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+html[data-mode="slides"] .status-bar kbd {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+}
+
+/* Slides mode hides anything marked cv-only */
+html[data-mode="slides"] .cv-only {
+  display: none !important;
+}
+
+/* ------------------------------------------ Print suppresses UI ----- */
+@media print {
+  .status-bar,
+  .cmd-prompt,
+  .cmd-echo,
+  .slide-progress,
+  .cv-overlay {
+    display: none !important;
+  }
+  html[data-mode="slides"] main {
+    position: static !important;
+    padding: 1rem 1.25rem !important;
+  }
+  html[data-mode="slides"] [data-lang-wrap] {
+    display: block !important;
+    height: auto;
+  }
+  html[data-mode="slides"] [data-lang-wrap] > *:not(.slide-active) {
+    display: block !important;
+  }
+}
