@@ -27,19 +27,6 @@
   },
   "work": [
     {
-      "name": "BlakIA",
-      "position": "Co-founder & Lead Technical Architect",
-      "startDate": "2024-07-01",
-      "endDate": "",
-      "highlights": [
-        "Designed and implemented B2B Generative AI systems from scratch, focusing on RAG pipelines and Agentic AI for enterprise workflow automation.",
-        "Owned core architecture decisions, applying Lean methodologies and Clean Architecture to keep systems robust, scalable, and with minimal technical debt.",
-        "Delivered high-concurrency deployments in production, including an official chatbot handling 100,000+ interactions in a week with peaks above 10,000 users."
-      ],
-      "url": "https://www.linkedin.com/company/blakiatech/",
-      "location": "Córdoba, Andalucía, España"
-    },
-    {
       "name": "Hagalink",
       "position": "Chief Data Scientist (CDS) / Lead AI Engineer",
       "startDate": "2026-01-01",
@@ -50,6 +37,19 @@
         "Act as the technical bridge with clients, explaining architectural trade-offs across accuracy, computational cost, and latency."
       ],
       "url": "https://hagalink.es",
+      "location": "Córdoba, Andalucía, España"
+    },
+    {
+      "name": "BlakIA",
+      "position": "Co-founder & Lead Technical Architect",
+      "startDate": "2024-07-01",
+      "endDate": "2026-04-17",
+      "highlights": [
+        "Designed and implemented B2B Generative AI systems from scratch, focusing on RAG pipelines and Agentic AI for enterprise workflow automation.",
+        "Owned core architecture decisions, applying Lean methodologies and Clean Architecture to keep systems robust, scalable, and with minimal technical debt.",
+        "Delivered high-concurrency deployments in production, including an official chatbot handling 100,000+ interactions in a week with peaks above 10,000 users."
+      ],
+      "url": "https://www.linkedin.com/company/blakiatech/",
       "location": "Córdoba, Andalucía, España"
     },
     {
