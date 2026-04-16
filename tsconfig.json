@@ -12,6 +12,8 @@
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
       "@cv": ["public/cv.json"],
+      "@cv-es": ["public/cv-es.json"],
+      "@lib/*": ["src/lib/*"],
     }
   }
 }

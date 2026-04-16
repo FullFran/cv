@@ -1,57 +1,89 @@
 ---
+import type { Locale } from "@lib/cv";
+import { labels, dateLocale } from "@lib/cv";
+
 interface TimelineItem {
   title: string;
   subtitle?: string;
-  dateRange: string;
+  startDate?: string;
+  endDate?: string;
   highlights?: string[];
   url?: string;
   location?: string;
 }
 
-const { items } = Astro.props as { items: TimelineItem[] };
+interface Props {
+  items: TimelineItem[];
+  lang: Locale;
+}
+
+const { items, lang } = Astro.props;
+const t = labels[lang];
+const loc = dateLocale[lang];
+
+const formatDate = (raw?: string) => {
+  if (!raw) return "";
+  const d = new Date(raw);
+  if (Number.isNaN(d.getTime())) return raw;
+  return d.toLocaleDateString(loc, { month: "short", year: "numeric" });
+};
+
+const formatRange = (start?: string, end?: string) => {
+  const s = formatDate(start);
+  const e = end ? formatDate(end) : t.present;
+  return `${s} — ${e}`;
+};
 ---
 
-{items?.length ? (
-  <ol class="relative border-s border-gray-200 dark:border-gray-700 pl-3">
-    {items.map((item) => (
-      <li class="mb-1 ms-3">
-        <div class="absolute w-2 h-2 bg-gray-300 rounded-full mt-[5px] -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-600"></div>
+{
+  items?.length ? (
+    <ol class="relative space-y-5 border-l border-gray-200 pl-5">
+      {items.map((item) => (
+        <li class="relative">
+          <span class="absolute -left-[23px] top-[6px] h-2.5 w-2.5 rounded-full bg-blue-700 ring-4 ring-white" />
 
-        <time class="text-xs text-smtext-gray-400 dark:text-gray-500 leading-tight">
-            {item.dateRange}</time>
-        
-        {item.subtitle && (
-          <p class="text-sm font-semibold text-gray-900 leading-snug">
-            {item.subtitle}</p>
-        )}
-        
-        <h3 class="text-xs font-semibold text-gray-800 leading-snug">
-          {item.title}
-        </h3>
+          <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <h3 class="text-[14px] font-semibold leading-snug text-gray-900">
+              {item.title}
+            </h3>
+            <time class="font-mono text-[11px] tracking-tight text-gray-500">
+              {formatRange(item.startDate, item.endDate)}
+            </time>
+          </div>
 
-        
+          {item.subtitle && (
+            <p class="mt-0.5 text-[13px] font-medium text-blue-800">
+              {item.url ? (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener"
+                  class="hover:underline"
+                >
+                  {item.subtitle}
+                </a>
+              ) : (
+                item.subtitle
+              )}
+              {item.location && (
+                <span class="ml-1 text-xs font-normal italic text-gray-500">
+                  · {item.location}
+                </span>
+              )}
+            </p>
+          )}
 
-        {item.location && (
-          <p class="text-xs text-gray-500 italic leading-snug -mt-0.5 mb-1">{item.location}</p>
-        )}
-
-        {item.highlights && (
-          <ul class="list-disc pl-4 mt-1 space-y-[2px] text-xs leading-snug text-gray-700 dark:text-gray-400">
-            {item.highlights.map((point) => <li>{point}</li>)}
-          </ul>
-        )}
-        <!-- 
-        {item.url && (
-          <a
-            href={item.url}
-            class="inline-flex items-center mt-1 px-2 py-0.5 text-xs font-medium text-gray-800 bg-white border border-gray-200 rounded hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          >
-            Learn more
-          </a>
-        )} -->
-      </li>
-    ))}
-  </ol>
-) : (
-  <p class="text-sm text-gray-500 italic">No entries to show.</p>
-)}
+          {item.highlights && (
+            <ul class="mt-1.5 list-disc space-y-1 pl-4 text-[12.5px] leading-snug text-gray-700 marker:text-gray-300">
+              {item.highlights.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <p class="text-sm italic text-gray-500">No entries.</p>
+  )
+}

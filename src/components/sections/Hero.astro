@@ -1,44 +1,48 @@
 ---
-import Section from "../Section.astro";
-import { basics } from "@cv";
+import type { CVData, Locale } from "@lib/cv";
+import { labels } from "@lib/cv";
 
-const { name, label, email, location, profiles, url } = basics;
+interface Props {
+  data: CVData;
+  lang: Locale;
+}
+
+const { data, lang } = Astro.props;
+const t = labels[lang];
+const { name, label, email, location, profiles, url } = data.basics;
 const { address } = location;
 
-const profileLinks = profiles.map((p) => ({
-  name: p.network,
-  url: p.url,
-}));
+const contactLinks = [
+  { label: t.web, href: url, text: new URL(url).hostname },
+  { label: t.email, href: `mailto:${email}`, text: email },
+  ...profiles.map((p) => ({ label: p.network, href: p.url, text: p.network })),
+];
 ---
 
-<Section>
-  <div class="text-sm text-gray-800">
-    <h1 class="text-2xl font-bold text-blue-900 mb-1">{name}</h1>
-    <h2 class="text-sm font-semibold text-gray-800 mb-1">{label}</h2>
-    <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{address}</p>
+<header class="mb-8 border-b border-gray-200 pb-6">
+  <h1 class="text-[28px] font-bold leading-tight tracking-tight text-gray-900">
+    {name}
+  </h1>
+  <p class="mt-1 text-sm font-medium text-blue-900">{label}</p>
+  <p class="mt-2 text-xs text-gray-500">{address}</p>
 
-    <div class="text-xs flex flex-wrap gap-x-2 text-gray-700">
-      <span>
-        <strong>Email:</strong>
-        <a href={`mailto:${email}`} class="text-blue-600 hover:underline"> {email}</a>
-      </span>
-      <span>·</span>
-      <span>
-        <strong>Web:</strong>
-        <a href={url} class="text-blue-600 hover:underline" target="_blank">{new URL(url).hostname}</a>
-      </span>
-      {profileLinks.map((link, index) => (
-        <>
-          <span>·</span>
+  <ul
+    class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-600"
+  >
+    {
+      contactLinks.map((link, i) => (
+        <li class="flex items-center gap-3">
+          {i > 0 && <span class="text-gray-300">·</span>}
           <a
-            href={link.url}
-            class="text-blue-600 hover:underline"
-            target="_blank"
+            href={link.href}
+            target={link.href.startsWith("mailto") ? "_self" : "_blank"}
+            rel="noopener"
+            class="text-blue-700 transition-colors hover:text-blue-900 hover:underline"
           >
-            {link.name}
+            <span class="text-gray-500">{link.label}:</span> {link.text}
           </a>
-        </>
-      ))}
-    </div>
-  </div>
-</Section>
+        </li>
+      ))
+    }
+  </ul>
+</header>

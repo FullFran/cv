@@ -1,13 +1,20 @@
 ---
 import Section from "../Section.astro";
-import { basics } from "@cv";
-const { summary } = basics;
+import type { CVData, Locale } from "@lib/cv";
+import { labels } from "@lib/cv";
+
+interface Props {
+  data: CVData;
+  lang: Locale;
+}
+
+const { data, lang } = Astro.props;
+const t = labels[lang];
+const { summary } = data.basics;
 ---
 
-<Section title="About">
-  <div class="pl-4 mt-1 space-y-[2px] text-xs leading-snug text-gray-700 text-justify dark:text-gray-400">
-    {summary.split('\n\n').map((para) => (
-      <p>{para}</p>
-    ))}
+<Section title={t.about}>
+  <div class="space-y-2 text-justify text-[13px] leading-relaxed text-gray-700">
+    {summary.split("\n\n").map((para) => <p>{para}</p>)}
   </div>
 </Section>
