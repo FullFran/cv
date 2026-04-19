@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Francisco Manuel Olmedo Cortés",
-    "label": "Physicist · AI Systems Engineer & Backend Architect",
+    "label": "Physicist · AI/ML Systems Engineer & Backend Architect",
     "image": "",
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
@@ -159,7 +159,7 @@
     },
     {
       "name": "AI & Data Engineering",
-      "keywords": ["Machine Learning", "Generative AI", "Agentic AI", "RAG Pipelines", "LLM Orchestration", "LangChain / LlamaIndex", "Vector Databases (Qdrant, Weaviate)", "Synthetic Data Generation", "Neural Networks"]
+      "keywords": ["Machine Learning", "Generative AI", "Agentic AI", "RAG Pipelines", "LLM Orchestration", "Vector Databases (Qdrant, Weaviate)", "Synthetic Data Generation", "Neural Networks"]
     },
     {
       "name": "Infrastructure & Ops",
