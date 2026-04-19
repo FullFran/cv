@@ -12,6 +12,7 @@ export const labels: Record<Locale, Record<string, string>> = {
   en: {
     about: "About",
     experience: "Experience",
+    projects: "Selected Projects",
     education: "Education",
     skills: "Technical Skills",
     languages: "Languages",
@@ -23,6 +24,7 @@ export const labels: Record<Locale, Record<string, string>> = {
   es: {
     about: "Sobre mí",
     experience: "Experiencia",
+    projects: "Proyectos Destacados",
     education: "Educación",
     skills: "Habilidades Técnicas",
     languages: "Idiomas",

@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Francisco Manuel Olmedo Cortés",
-    "label": "Arquitecto de Soluciones de IA & Lead Backend Engineer",
+    "label": "Físico · Ingeniero de Sistemas de IA & Arquitecto Backend",
     "image": "",
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
     "url": "https://www.fullfran.com",
-    "summary": "Físico y Arquitecto de Soluciones de IA especializado en IA Generativa e ingeniería Backend. Diseño y construyo sistemas listos para producción (RAG, Agentes Autónomos, orquestación de LLMs) que resuelven problemas reales de negocio, huyendo del 'hype' para centrarme en la eficiencia operativa. Lidero el ciclo de vida completo del software, aplicando Clean Architecture para asegurar sistemas mantenibles, escalables y de baja latencia. Mi formación en física me aporta un enfoque orientado a sistemas y basado en primeros principios para la toma de decisiones técnicas complejas.",
+    "summary": "Físico que diseña y despliega sistemas de IA listos para producción — RAG, agentes autónomos, backends NestJS multi-tenant y microservicios — con Clean Architecture y Machine Learning en el núcleo. Lidero el ciclo completo de backend, convirtiendo problemas ambiguos de negocio en servicios fiables, observables y multi-canal.",
     "location": {
       "countryCode": "ES",
       "address": "Córdoba, Andalucía, España"
@@ -32,9 +32,11 @@
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Liderazgo en el diseño e implementación end-to-end de sistemas de IA/ML, traduciendo requerimientos ambiguos de clientes en arquitecturas backend escalables.",
-        "Desarrollo de APIs robustas en Python, gestionando bases de datos vectoriales y orquestación de LLMs en entornos de producción.",
-        "Nexo técnico con los clientes, explicando los compromisos (trade-offs) arquitectónicos entre precisión, coste computacional y latencia."
+        "Lidero el diseño e implementación end-to-end de sistemas de IA/ML, traduciendo requerimientos ambiguos de clientes en arquitecturas backend escalables.",
+        "Diseñé y construí un backend RAG monolito-modular multi-tenant (NestJS + PostgreSQL + TypeORM) con workers en background e ingestión multi-canal (WhatsApp, Telegram, Web).",
+        "Diseñé un backend de microservicios para la ingesta y análisis estructurado de señales, reutilizando mi propio servicio open-source (feedpulse) como componente de ingesta junto a servicios propios de extracción y análisis.",
+        "Desarrollo de APIs robustas en Python, gestionando bases de datos vectoriales y orquestación de LLMs en producción.",
+        "Nexo técnico con los clientes, explicando los compromisos arquitectónicos entre precisión, coste computacional y latencia."
       ],
       "url": "https://hagalink.es",
       "location": "Córdoba, Andalucía, España"
@@ -54,7 +56,7 @@
     },
     {
       "name": "Universidad de Córdoba (Proyecto Confidencial)",
-      "position": "Arquitecto de Software Científico / Investigador",
+      "position": "Ingeniero de Software Científico",
       "startDate": "2024-09-01",
       "endDate": "2025-01-31",
       "highlights": [
@@ -79,7 +81,7 @@
     },
     {
       "name": "CIEMAT / Universidad de Córdoba",
-      "position": "Investigador de IA & Desarrollador Científico",
+      "position": "Asistente de Investigación (TFG / Computación Científica)",
       "startDate": "2022-07-01",
       "endDate": "2023-06-30",
       "highlights": [
@@ -124,61 +126,48 @@
       "url": "https://doi.org/10.1016/j.radphyschem.2023.111259"
     }
   ],
+  "projects": [
+    {
+      "name": "feedpulse",
+      "description": "Plataforma de monitorización RSS production-grade con arquitectura hexagonal/DDD: tres runtimes (api/scheduler/worker), observabilidad, colas y benchmarks.",
+      "url": "https://github.com/FullFran/feedpulse",
+      "keywords": ["TypeScript", "Hexagonal", "DDD", "Observabilidad"]
+    },
+    {
+      "name": "Hybrid-RAG-example",
+      "description": "RAG híbrido sobre Clean Architecture: recuperación vectorial y por keywords fusionadas con Reciprocal Rank Fusion. Agnóstico del proveedor, CLI-first, diseñado para ser testeable.",
+      "url": "https://github.com/FullFran/Hybrid-RAG-example",
+      "keywords": ["Python", "RAG", "Clean Architecture", "RRF"]
+    },
+    {
+      "name": "claudeops-tui",
+      "description": "TUI local para monitorizar uso, coste y tareas de Claude Code. Go + Bubbletea + SQLite.",
+      "url": "https://github.com/FullFran/claudeops-tui",
+      "keywords": ["Go", "Bubbletea", "SQLite", "DX"]
+    },
+    {
+      "name": "Agent-skills-POC",
+      "description": "POC de Agent Skills framework-agnóstico con Clean Architecture: progressive disclosure, integración MCP y reasoning loop sin estado.",
+      "url": "https://github.com/FullFran/Agent-skills-POC",
+      "keywords": ["Python", "Agentes", "MCP", "Clean Architecture"]
+    }
+  ],
   "skills": [
     {
       "name": "Backend & Arquitectura",
-      "keywords": [
-        "Clean Architecture",
-        "Python",
-        "FastAPI",
-        "TypeScript",
-        "NestJS",
-        "APIs RESTful",
-        "Diseño de Sistemas",
-        "Arquitectura de Bases de Datos"
-      ]
+      "keywords": ["Clean Architecture", "Hexagonal / DDD", "Python", "FastAPI", "TypeScript", "NestJS", "PostgreSQL", "Microservicios", "Multi-tenant", "Diseño de Sistemas"]
     },
     {
       "name": "IA & Ingeniería de Datos",
-      "keywords": [
-        "IA Generativa",
-        "Agentes Autónomos",
-        "Pipelines RAG",
-        "LLMs (LangChain/LlamaIndex)",
-        "Bases de Datos Vectoriales (Qdrant, Weaviate)",
-        "Generación de Datos Sintéticos",
-        "Redes Neuronales"
-      ]
+      "keywords": ["Machine Learning", "IA Generativa", "Agentes Autónomos", "Pipelines RAG", "Orquestación de LLMs", "LangChain / LlamaIndex", "Bases de Datos Vectoriales (Qdrant, Weaviate)", "Generación de Datos Sintéticos", "Redes Neuronales"]
     },
     {
       "name": "Infraestructura & Ops",
-      "keywords": [
-        "Linux",
-        "Docker",
-        "Git",
-        "CI/CD",
-        "Hetzner",
-        "GCP"
-      ]
+      "keywords": ["Linux", "Docker", "Git", "CI/CD", "Observabilidad", "Hetzner", "GCP"]
     },
     {
       "name": "Física & Matemáticas Base",
-      "keywords": [
-        "Modelado Matemático",
-        "Optimización Estadística",
-        "Algoritmos Genéticos",
-        "Métodos de Montecarlo"
-      ]
-    },
-    {
-      "name": "Productividad",
-      "keywords": [
-        "Neovim/Vim",
-        "Entornos TUI",
-        "Flujos de Trabajo en Terminal",
-        "Programación Asistida por IA",
-        "Opencode"
-      ]
+      "keywords": ["Modelado Matemático", "Optimización Estadística", "Algoritmos Genéticos", "Métodos de Montecarlo", "Métodos Numéricos"]
     }
   ],
   "languages": [

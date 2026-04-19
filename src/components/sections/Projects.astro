@@ -1,7 +1,43 @@
 ---
 import Section from "../Section.astro";
+import type { CVData, Locale } from "@lib/cv";
+import { labels } from "@lib/cv";
+
+interface Props {
+  data: CVData;
+  lang: Locale;
+}
+
+const { data, lang } = Astro.props;
+const t = labels[lang];
+const projects = data.projects ?? [];
 ---
 
-<Section title="Projects">
-    
-</Section>
+{
+  projects.length > 0 && (
+    <Section title={t.projects}>
+      <ul class="flex flex-col gap-3">
+        {projects.map((proj) => (
+          <li class="flex flex-col gap-0.5">
+            <div class="flex flex-wrap items-baseline gap-x-2">
+              <a
+                href={proj.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[13px] font-semibold text-gray-900 hover:underline"
+              >
+                {proj.name}
+              </a>
+              {proj.keywords && proj.keywords.length > 0 && (
+                <span class="text-[11px] text-gray-500">
+                  · {proj.keywords.join(" · ")}
+                </span>
+              )}
+            </div>
+            <p class="text-xs text-gray-700 leading-snug">{proj.description}</p>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  )
+}
