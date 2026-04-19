@@ -4,6 +4,8 @@ import About from "@components/sections/About.astro";
 import Education from "@/components/sections/Education.astro";
 import Experience from "@/components/sections/Experience.astro";
 import Hero from "@/components/sections/Hero.astro";
+import Projects from "@/components/sections/Projects.astro";
+import Publications from "@/components/sections/Publications.astro";
 import Skills from "@/components/sections/Skills.astro";
 import KeyboardManager from "@/components/KeyboardManager.astro";
 import { data, type Locale } from "@lib/cv";
@@ -21,6 +23,8 @@ const locales: Locale[] = ["en", "es"];
 					<Hero data={data[lng]} lang={lng} />
 					<About data={data[lng]} lang={lng} />
 					<Experience data={data[lng]} lang={lng} />
+					<Projects data={data[lng]} lang={lng} />
+					<Publications data={data[lng]} lang={lng} />
 					<Education data={data[lng]} lang={lng} />
 					<Skills data={data[lng]} lang={lng} />
 				</div>

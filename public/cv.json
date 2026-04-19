@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Francisco Manuel Olmedo Cortés",
-    "label": "AI Solutions Architect & Lead Backend Engineer",
+    "label": "Physicist · AI Systems Engineer & Backend Architect",
     "image": "",
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
     "url": "https://www.fullfran.com",
-    "summary": "Physicist and AI Solutions Architect specialized in Generative AI and Backend engineering. I design and build production-ready systems (RAG, Autonomous Agents, LLM orchestration) that solve real business problems, cutting through the hype to focus on operational efficiency. I lead the full software lifecycle, applying Clean Architecture to ensure maintainable, scalable, and low-latency systems. My background in physics drives a first-principles, systems-oriented approach to complex technical decisions.",
+    "summary": "Physicist designing and shipping production-grade AI systems — RAG, autonomous agents, multi-tenant NestJS backends and microservices — with Clean Architecture and Machine Learning at the core. I lead the full backend lifecycle, turning ambiguous business problems into reliable, observable, multi-channel services.",
     "location": {
       "countryCode": "ES",
       "address": "Córdoba, Andalucía, España"
@@ -32,8 +32,10 @@
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Lead the end-to-end design and implementation of AI/ML systems, translating ambiguous client requirements into scalable backend architectures.",
-        "Build robust APIs in Python, managing vector databases and LLM orchestration in production environments.",
+        "Lead end-to-end design and implementation of AI/ML systems, translating ambiguous client requirements into scalable backend architectures.",
+        "Designed and built a multi-tenant modular-monolith RAG backend (NestJS + PostgreSQL + TypeORM) with background workers and multi-channel ingestion (WhatsApp, Telegram, Web).",
+        "Designed a microservices backend for structured-intake analytics, reusing my own open-source service (feedpulse) as an ingestion component alongside custom extraction and downstream analysis services.",
+        "Build robust Python APIs, manage vector databases and LLM orchestration in production.",
         "Act as the technical bridge with clients, explaining architectural trade-offs across accuracy, computational cost, and latency."
       ],
       "url": "https://hagalink.es",
@@ -54,7 +56,7 @@
     },
     {
       "name": "Universidad de Córdoba (Confidential Project)",
-      "position": "Scientific Software Architect / Researcher",
+      "position": "Scientific Software Engineer",
       "startDate": "2024-09-01",
       "endDate": "2025-01-31",
       "highlights": [
@@ -79,14 +81,14 @@
     },
     {
       "name": "CIEMAT / Universidad de Córdoba",
-      "position": "AI Researcher & Scientific Developer",
+      "position": "Research Assistant (TFG / Scientific Computing)",
       "startDate": "2022-07-01",
       "endDate": "2023-06-30",
       "highlights": [
         "Developed a physical simulator based on the numerical resolution of differential equations (Runge-Kutta) in Python, deployed as a web tool via Streamlit.",
-        "Synthetic Data Generation: Utilized the simulator as an 'Oracle' to generate high-precision datasets for Deep Learning.",
+        "Synthetic data generation: used the simulator as an 'Oracle' to produce high-precision datasets for Deep Learning.",
         "Designed and trained Fully-Connected Neural Networks for kinetic parameter assessment, leading to a peer-reviewed publication.",
-        "I taught an introductory course on Python for scientific computing and data science."
+        "Taught an introductory course on Python for scientific computing and data science."
       ],
       "url": "https://www.ciemat.es",
       "location": "Madrid / Córdoba, España"
@@ -124,26 +126,48 @@
       "url": "https://doi.org/10.1016/j.radphyschem.2023.111259"
     }
   ],
+  "projects": [
+    {
+      "name": "feedpulse",
+      "description": "Production-grade RSS monitoring platform with hexagonal/DDD architecture: three runtimes (api/scheduler/worker), observability, queues and benchmarks.",
+      "url": "https://github.com/FullFran/feedpulse",
+      "keywords": ["TypeScript", "Hexagonal", "DDD", "Observability"]
+    },
+    {
+      "name": "Hybrid-RAG-example",
+      "description": "Hybrid RAG on Clean Architecture: vector + keyword retrieval fused via Reciprocal Rank Fusion. Provider-agnostic, CLI-first, designed for testability.",
+      "url": "https://github.com/FullFran/Hybrid-RAG-example",
+      "keywords": ["Python", "RAG", "Clean Architecture", "RRF"]
+    },
+    {
+      "name": "claudeops-tui",
+      "description": "Local TUI to track Claude Code usage, cost and tasks. Go + Bubbletea + SQLite.",
+      "url": "https://github.com/FullFran/claudeops-tui",
+      "keywords": ["Go", "Bubbletea", "SQLite", "DX"]
+    },
+    {
+      "name": "Agent-skills-POC",
+      "description": "Framework-agnostic Agent Skills POC built with Clean Architecture: progressive disclosure, MCP integration and stateless reasoning loop.",
+      "url": "https://github.com/FullFran/Agent-skills-POC",
+      "keywords": ["Python", "Agents", "MCP", "Clean Architecture"]
+    }
+  ],
   "skills": [
     {
       "name": "Backend & Architecture",
-      "keywords": ["Clean Architecture", "Python", "FastAPI", "typescript", "nestjs", "RESTful APIs", "System Design", "database architecture"]
+      "keywords": ["Clean Architecture", "Hexagonal / DDD", "Python", "FastAPI", "TypeScript", "NestJS", "PostgreSQL", "Microservices", "Multi-tenant", "System Design"]
     },
     {
       "name": "AI & Data Engineering",
-      "keywords": ["Generative AI", "Agentic AI", "RAG Pipelines", "LLMs (LangChain/LlamaIndex)", "Vector Databases (Qdrant, Weaviate)", "Synthetic Data Generation", "Neural Networks"]
+      "keywords": ["Machine Learning", "Generative AI", "Agentic AI", "RAG Pipelines", "LLM Orchestration", "LangChain / LlamaIndex", "Vector Databases (Qdrant, Weaviate)", "Synthetic Data Generation", "Neural Networks"]
     },
     {
       "name": "Infrastructure & Ops",
-      "keywords": ["Linux", "Docker", "Git", "CI/CD", "Hetzner", "GCP"]
+      "keywords": ["Linux", "Docker", "Git", "CI/CD", "Observability", "Hetzner", "GCP"]
     },
     {
       "name": "Core Physics & Math",
-      "keywords": ["Mathematical Modeling", "Statistical Optimization", "Genetic Algorithms", "Monte Carlo Methods"]
-    },
-    {
-      "name": "Productivity",
-      "keywords": ["Neovim/Vim", "TUI Environments", "High-speed Terminal Workflows", "AI asisted programming", "opencode"]
+      "keywords": ["Mathematical Modeling", "Statistical Optimization", "Genetic Algorithms", "Monte Carlo Methods", "Numerical Methods"]
     }
   ],
   "languages": [

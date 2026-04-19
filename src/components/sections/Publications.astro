@@ -1,0 +1,47 @@
+---
+import Section from "../Section.astro";
+import type { CVData, Locale } from "@lib/cv";
+import { labels, dateLocale } from "@lib/cv";
+
+interface Props {
+  data: CVData;
+  lang: Locale;
+}
+
+const { data, lang } = Astro.props;
+const t = labels[lang];
+const publications = data.publications ?? [];
+
+const fmtDate = (iso: string) =>
+  iso
+    ? new Date(iso).toLocaleDateString(dateLocale[lang], {
+        year: "numeric",
+        month: "short",
+      })
+    : "";
+---
+
+{
+  publications.length > 0 && (
+    <Section title={t.publications}>
+      <ul class="flex flex-col gap-3">
+        {publications.map((pub) => (
+          <li class="flex flex-col gap-0.5">
+            <a
+              href={pub.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[13px] font-semibold text-gray-900 hover:underline"
+            >
+              {pub.name}
+            </a>
+            <p class="text-xs text-gray-600">
+              <span class="italic">{pub.publisher}</span>
+              {pub.releaseDate && <span> · {fmtDate(pub.releaseDate)}</span>}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  )
+}
