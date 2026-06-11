@@ -19,7 +19,7 @@ const contactLinks = [
 ];
 ---
 
-<header class="mb-8 border-b border-gray-200 pb-6">
+<header class="mb-8 scroll-mt-24 border-b border-gray-200 pb-6" id="intro" data-search-section data-search-label="Intro">
   <h1 class="text-[28px] font-bold leading-tight tracking-tight text-gray-900">
     {name}
   </h1>
@@ -33,12 +33,13 @@ const contactLinks = [
       contactLinks.map((link, i) => (
         <li class="flex items-center gap-3">
           {i > 0 && <span class="text-gray-300">·</span>}
-          <a
-            href={link.href}
-            target={link.href.startsWith("mailto") ? "_self" : "_blank"}
-            rel="noopener"
-            class="text-blue-700 transition-colors hover:text-blue-900 hover:underline"
-          >
+			<a
+				href={link.href}
+				target={link.href.startsWith("mailto") ? "_self" : "_blank"}
+				rel="noopener"
+				aria-label={`${link.label}: ${link.text}`}
+				class="text-blue-700 transition-colors hover:text-blue-900 hover:underline"
+			>
             <span class="text-gray-500">{link.label}:</span> {link.text}
           </a>
         </li>

@@ -15,7 +15,10 @@ const locales: Locale[] = ["en", "es"];
 
 <Layout title="Francisco Olmedo — CV">
 	<main
-		class="mx-auto my-6 max-w-3xl rounded-xl bg-white px-8 py-10 pb-16 text-gray-800 shadow-sm ring-1 ring-gray-200 print:my-0 print:rounded-none print:shadow-none print:ring-0"
+		id="main-content"
+		tabindex="-1"
+		data-tui-title="fullfran/cv"
+		class="mx-auto my-4 w-[min(100%-1rem,72rem)] rounded-2xl bg-white px-4 py-6 pb-28 text-gray-800 shadow-sm ring-1 ring-gray-200 sm:my-6 sm:w-[min(100%-2rem,72rem)] sm:px-6 sm:py-8 md:px-8 md:py-10 md:pb-28 lg:w-[min(100%-3rem,76rem)] print:my-0 print:w-full print:rounded-none print:shadow-none print:ring-0"
 	>
 		{
 			locales.map((lng) => (

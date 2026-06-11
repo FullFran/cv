@@ -18,11 +18,11 @@ const skillGroups = data.skills.map((group) => ({
 }));
 ---
 
-<Section title={t.skills}>
+<Section title={t.skills} id="skills">
   <SkillsLanguages groups={skillGroups} />
 </Section>
 
-<Section title={t.languages}>
+<Section title={t.languages} id="languages">
   <ul class="flex flex-wrap gap-x-6 gap-y-1">
     {
       data.languages.map((lng) => (
