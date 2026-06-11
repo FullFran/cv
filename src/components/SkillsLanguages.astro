@@ -8,18 +8,18 @@ const { groups } = Astro.props as { groups: SkillGroup[] };
 ---
 
 <div class="space-y-3">
-  {
-    groups.map((group) => (
-      <div class="grid grid-cols-1 gap-x-4 gap-y-1 min-[560px]:grid-cols-[140px_1fr] min-[560px]:items-baseline">
-        <h3 class="text-[11px] font-semibold uppercase tracking-wider text-gray-500">
-          {group.title}
-        </h3>
-        <ul class="flex flex-wrap gap-1.5">
-          {group.skills.map((skill) => (
-            <li class="rounded-md bg-blue-50 px-2 py-[2px] text-[11.5px] font-medium text-blue-900 ring-1 ring-inset ring-blue-100">
-              {skill}
-            </li>
-          ))}
+	{
+		groups.map((group) => (
+			<div class="grid grid-cols-1 gap-x-4 gap-y-1 sm:grid-cols-[140px_1fr] sm:items-baseline">
+				<h3 class="text-[11px] font-semibold uppercase tracking-wider text-gray-500">
+					{group.title}
+				</h3>
+				<ul class="flex flex-wrap gap-1.5">
+					{group.skills.map((skill) => (
+						<li class="skill-badge rounded-md bg-blue-50 px-2 py-[2px] text-[11.5px] font-medium text-blue-900 ring-1 ring-inset ring-blue-100">
+							{skill}
+						</li>
+					))}
         </ul>
       </div>
     ))
