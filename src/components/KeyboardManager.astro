@@ -1,9 +1,10 @@
 ---
 /*
   KeyboardManager.astro
-  Renders: status bar, help modal, TUI command prompt, slides progress bar.
-  Owns: keyboard shortcuts, mode switching (cv|tui|slides), language toggle
-        (en|es), slide navigation, PDF export trigger.
+  Renders: status bar, help modal, command prompt, search prompt, slides progress bar.
+  Owns: keyboard shortcuts, mode switching (cv|tui|slides), language toggle,
+        slide navigation, PDF export trigger, TUI command history/completion,
+        lightweight section search.
 */
 ---
 
@@ -11,9 +12,9 @@
   <div class="slide-progress-fill" id="slide-progress-fill"></div>
 </div>
 
-<footer class="status-bar no-print" id="status-bar">
+<footer class="status-bar no-print" id="status-bar" aria-label="CV controls and status">
   <span class="sb-seg">
-    <span class="sb-dot"></span>
+    <span class="sb-dot" aria-hidden="true"></span>
     <span>mode:</span>
     <span class="sb-mode" id="sb-mode">CV</span>
   </span>
@@ -21,45 +22,69 @@
     <span>lang:</span>
     <span class="sb-lang" id="sb-lang">EN</span>
   </span>
+  <span class="sb-seg">
+    <span>section:</span>
+    <span class="sb-current" id="sb-current">Intro</span>
+  </span>
   <span id="sb-slide" class="sb-seg" hidden>
     <span id="sb-slide-text">[1/1]</span>
   </span>
   <span class="sb-spacer"></span>
-  <span class="sb-seg" id="sb-hint">
-    <kbd>?</kbd><span>help</span>
+  <span class="sb-seg sb-actions">
+    <button type="button" class="sb-button" id="help-open" aria-haspopup="dialog" aria-controls="help-modal">
+      <kbd>?</kbd><span>help</span>
+    </button>
+    <button type="button" class="sb-button" id="search-open">
+      <kbd>/</kbd><span>search</span>
+    </button>
+    <button type="button" class="sb-button" id="command-open">
+      <kbd>:</kbd><span>cmd</span>
+    </button>
     <span>·</span>
     <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><span>modes</span>
     <span>·</span>
-    <kbd>l</kbd><span>lang</span>
-    <span>·</span>
-    <kbd>p</kbd><span>pdf</span>
+    <kbd>H</kbd><kbd>M</kbd><kbd>L</kbd>
   </span>
 </footer>
 
-<div class="cmd-prompt" id="cmd-prompt" data-open="false">
-  <span class="cmd-prefix">:</span>
+<div class="cmd-prompt" id="cmd-prompt" hidden>
+  <span class="cmd-prefix" aria-hidden="true">:</span>
   <input
     id="cmd-input"
     type="text"
     autocomplete="off"
     spellcheck="false"
-    aria-label="command"
+    aria-label="Command prompt"
+    placeholder="Type a command, then press Enter"
   />
 </div>
-<div class="cmd-echo" id="cmd-echo" data-visible="false"></div>
 
-<div
-  class="cv-overlay"
-  id="help-modal"
-  data-open="false"
-  role="dialog"
-  aria-modal="true"
->
-  <div class="cv-overlay-card">
-    <div class="mb-3 flex items-center justify-between">
-      <h3 class="text-sm font-semibold text-gray-900">Keyboard shortcuts</h3>
+<div class="search-prompt" id="search-prompt" hidden>
+  <span class="cmd-prefix" aria-hidden="true">/</span>
+  <input
+    id="search-input"
+    type="text"
+    autocomplete="off"
+    spellcheck="false"
+    aria-label="Search sections"
+    placeholder="Search sections or content"
+  />
+  <span class="search-meta" id="search-meta">0 matches</span>
+</div>
+
+<div class="cmd-echo" id="cmd-echo" data-visible="false" role="status" aria-live="polite"></div>
+<div class="sr-only" id="sr-updates" aria-live="polite"></div>
+
+<div class="cv-overlay" id="help-modal" role="dialog" aria-modal="true" aria-labelledby="help-title" hidden>
+  <div class="cv-overlay-card" role="document">
+    <div class="mb-3 flex items-center justify-between gap-3">
+      <div>
+        <h3 id="help-title" class="text-sm font-semibold text-gray-900">Keyboard shortcuts</h3>
+        <p class="mt-1 text-[11px] text-gray-500">Designed for fast keyboard navigation across CV, TUI, and slides modes.</p>
+      </div>
       <button
         id="help-close"
+        type="button"
         class="text-xs text-gray-500 hover:text-gray-800"
         aria-label="Close help"
       >
@@ -68,74 +93,31 @@
     </div>
     <table class="w-full text-[12.5px] text-gray-700">
       <tbody>
-        <tr class="border-b border-gray-100"
-          ><td class="py-1.5"><kbd class="help-kbd">?</kbd></td><td
-            >Toggle this help</td
-          ></tr
-        >
-        <tr class="border-b border-gray-100"
-          ><td class="py-1.5"><kbd class="help-kbd">1</kbd></td><td
-            >CV mode (clean print look)</td
-          ></tr
-        >
-        <tr class="border-b border-gray-100"
-          ><td class="py-1.5"><kbd class="help-kbd">2</kbd></td><td
-            >TUI mode (terminal)</td
-          ></tr
-        >
-        <tr class="border-b border-gray-100"
-          ><td class="py-1.5"><kbd class="help-kbd">3</kbd></td><td
-            >Slides mode (presentation)</td
-          ></tr
-        >
-        <tr class="border-b border-gray-100"
-          ><td class="py-1.5"><kbd class="help-kbd">l</kbd></td><td
-            >Toggle language EN ↔ ES</td
-          ></tr
-        >
-        <tr class="border-b border-gray-100"
-          ><td class="py-1.5"><kbd class="help-kbd">p</kbd></td><td
-            >Export to PDF (system print)</td
-          ></tr
-        >
-        <tr class="border-b border-gray-100"
-          ><td class="py-1.5"
-            ><kbd class="help-kbd">g</kbd><kbd class="help-kbd">G</kbd></td
-          ><td>Top / Bottom</td></tr
-        >
-        <tr class="border-b border-gray-100"
-          ><td class="py-1.5"
-            ><kbd class="help-kbd">j</kbd><kbd class="help-kbd">k</kbd></td
-          ><td>Scroll down / up</td></tr
-        >
-        <tr class="border-b border-gray-100"
-          ><td class="py-1.5"
-            ><kbd class="help-kbd">←</kbd><kbd class="help-kbd">→</kbd><kbd
-              class="help-kbd">space</kbd
-            ></td
-          ><td>Prev / Next slide (slides mode)</td></tr
-        >
-        <tr class="border-b border-gray-100"
-          ><td class="py-1.5"><kbd class="help-kbd">:</kbd></td><td
-            >Command prompt (TUI mode)</td
-          ></tr
-        >
-        <tr
-          ><td class="py-1.5"><kbd class="help-kbd">esc</kbd></td><td
-            >Close overlay / cancel command</td
-          ></tr
-        >
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">?</kbd></td><td>Toggle help</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">1</kbd><kbd class="help-kbd">2</kbd><kbd class="help-kbd">3</kbd></td><td>Switch CV / TUI / slides modes</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">l</kbd></td><td>Toggle language EN ↔ ES</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">p</kbd></td><td>Export to PDF (system print)</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">j</kbd><kbd class="help-kbd">k</kbd></td><td>Scroll down / up</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">g</kbd><kbd class="help-kbd">G</kbd></td><td>Jump to top / bottom</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">H</kbd><kbd class="help-kbd">M</kbd><kbd class="help-kbd">L</kbd></td><td>Jump to top / middle / lower viewport position</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">:</kbd></td><td>Open command prompt in TUI mode</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">↑</kbd><kbd class="help-kbd">↓</kbd><kbd class="help-kbd">Tab</kbd></td><td>Command history and completion</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">/</kbd></td><td>Search visible sections and jump to matches</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">←</kbd><kbd class="help-kbd">→</kbd><kbd class="help-kbd">space</kbd></td><td>Prev / Next slide (slides mode)</td></tr>
+        <tr><td class="py-1.5"><kbd class="help-kbd">esc</kbd></td><td>Close help, search, or command prompt first</td></tr>
       </tbody>
     </table>
     <p class="mt-3 text-[11px] text-gray-500">
-      Commands (TUI): <code>:help</code>
-      <code>:q</code>
-      <code>:lang en|es</code>
+      Commands: <code>:help</code>
       <code>:mode cv|tui|slides</code>
+      <code>:lang en|es</code>
       <code>:print</code>
       <code>:gh</code>
       <code>:li</code>
       <code>:web</code>
+      <code>:mail</code>
+      <code>:top</code>
+      <code>:bottom</code>
     </p>
   </div>
 </div>
@@ -158,25 +140,59 @@
   type Mode = "cv" | "tui" | "slides";
   type Lang = "en" | "es";
 
+  const VALID_MODES: Mode[] = ["cv", "tui", "slides"];
+  const VALID_LANGS: Lang[] = ["en", "es"];
+  const COMMANDS = [
+    "help",
+    "quit",
+    "mode cv",
+    "mode tui",
+    "mode slides",
+    "lang en",
+    "lang es",
+    "print",
+    "gh",
+    "li",
+    "web",
+    "mail",
+    "top",
+    "bottom",
+  ];
+
   const root = document.documentElement;
   const KEY_MODE = "cv:mode";
   const KEY_LANG = "cv:lang";
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const modeEl = document.getElementById("sb-mode")!;
   const langEl = document.getElementById("sb-lang")!;
+  const currentEl = document.getElementById("sb-current")!;
   const slideSeg = document.getElementById("sb-slide")!;
   const slideText = document.getElementById("sb-slide-text")!;
-  const progressFill = document.getElementById(
-    "slide-progress-fill",
-  )! as HTMLElement;
-  const helpModal = document.getElementById("help-modal")!;
-  const helpClose = document.getElementById("help-close")!;
-  const cmdPrompt = document.getElementById("cmd-prompt")!;
-  const cmdInput = document.getElementById("cmd-input") as HTMLInputElement;
+  const progressFill = document.getElementById("slide-progress-fill")! as HTMLElement;
+  const helpModal = document.getElementById("help-modal")! as HTMLDivElement;
+  const helpOpen = document.getElementById("help-open")! as HTMLButtonElement;
+  const helpClose = document.getElementById("help-close")! as HTMLButtonElement;
+  const commandOpen = document.getElementById("command-open")! as HTMLButtonElement;
+  const searchOpen = document.getElementById("search-open")! as HTMLButtonElement;
+  const cmdPrompt = document.getElementById("cmd-prompt")! as HTMLDivElement;
+  const cmdInput = document.getElementById("cmd-input")! as HTMLInputElement;
+  const searchPrompt = document.getElementById("search-prompt")! as HTMLDivElement;
+  const searchInput = document.getElementById("search-input")! as HTMLInputElement;
+  const searchMeta = document.getElementById("search-meta")!;
   const cmdEcho = document.getElementById("cmd-echo")!;
+  const srUpdates = document.getElementById("sr-updates")!;
+  const main = document.getElementById("main-content")! as HTMLElement;
 
   let currentSlide = 0;
   let slideSections: HTMLElement[] = [];
+  let commandHistory: string[] = [];
+  let historyIndex = -1;
+  let searchMatches: HTMLElement[] = [];
+  let searchIndex = 0;
+  let pendingG = false;
+  let pendingGTimer: number | undefined;
+  let lastFocused: HTMLElement | null = null;
 
   const labelForMode: Record<Mode, string> = {
     cv: "CV",
@@ -184,11 +200,78 @@
     slides: "SLIDES",
   };
 
-  function getMode(): Mode {
-    return (localStorage.getItem(KEY_MODE) as Mode) || "cv";
+  function safeScroll(top: number) {
+    window.scrollTo({ top, behavior: prefersReducedMotion ? "auto" : "smooth" });
   }
+
+  function safeScrollBy(top: number) {
+    window.scrollBy({ top, behavior: prefersReducedMotion ? "auto" : "smooth" });
+  }
+
+  function getMode(): Mode {
+    const stored = localStorage.getItem(KEY_MODE);
+    return VALID_MODES.includes(stored as Mode) ? (stored as Mode) : "cv";
+  }
+
   function getLang(): Lang {
-    return (localStorage.getItem(KEY_LANG) as Lang) || "en";
+    const stored = localStorage.getItem(KEY_LANG);
+    return VALID_LANGS.includes(stored as Lang) ? (stored as Lang) : "en";
+  }
+
+  function setAnnouncement(message: string) {
+    srUpdates.textContent = message;
+  }
+
+  function activeWrap(): HTMLElement | null {
+    return document.querySelector(`[data-lang-wrap="${getLang()}"]`);
+  }
+
+  function sectionNodes(): HTMLElement[] {
+    const wrap = activeWrap();
+    if (!wrap) return [];
+    return Array.from(wrap.querySelectorAll("[data-search-section]")) as HTMLElement[];
+  }
+
+  function updateCurrentSection(sectionName?: string) {
+    const fallback = sectionName || "Intro";
+    currentEl.textContent = fallback;
+    main.dataset.currentSection = fallback;
+  }
+
+  function updateSearchMeta() {
+    searchMeta.textContent = `${searchMatches.length} match${searchMatches.length === 1 ? "" : "es"}`;
+  }
+
+  function collectSlides() {
+    const wrap = activeWrap();
+    if (!wrap) return;
+    slideSections = Array.from(wrap.children).filter(
+      (child): child is HTMLElement => child instanceof HTMLElement && !child.classList.contains("cv-only"),
+    );
+  }
+
+  function goToSlide(idx: number) {
+    if (!slideSections.length) return;
+    currentSlide = Math.max(0, Math.min(idx, slideSections.length - 1));
+    slideSections.forEach((el, index) => {
+      el.classList.toggle("slide-active", index === currentSlide);
+    });
+    const total = slideSections.length;
+    slideText.textContent = `[${currentSlide + 1}/${total}]`;
+    progressFill.style.width = `${((currentSlide + 1) / total) * 100}%`;
+    const currentLabel =
+      slideSections[currentSlide]?.getAttribute("data-search-label") ||
+      slideSections[currentSlide]?.querySelector("h1, h2")?.textContent?.trim() ||
+      `Slide ${currentSlide + 1}`;
+    updateCurrentSection(currentLabel);
+  }
+
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentSlide - 1);
   }
 
   function applyMode(mode: Mode) {
@@ -201,11 +284,14 @@
       slideSeg.removeAttribute("hidden");
     } else {
       slideSeg.setAttribute("hidden", "");
-      document
-        .querySelectorAll(".slide-active")
-        .forEach((el) => el.classList.remove("slide-active"));
+      document.querySelectorAll(".slide-active").forEach((el) => el.classList.remove("slide-active"));
+      updateCurrentSection();
     }
-    if (mode !== "tui") closeCmd();
+    if (mode !== "tui") {
+      closeCmd();
+      closeSearch();
+    }
+    setAnnouncement(`Mode set to ${labelForMode[mode]}`);
   }
 
   function applyLang(lang: Lang) {
@@ -213,92 +299,110 @@
     root.setAttribute("lang", lang);
     localStorage.setItem(KEY_LANG, lang);
     langEl.textContent = lang.toUpperCase();
+    updateCurrentSection();
     if (getMode() === "slides") {
       collectSlides();
       goToSlide(0);
     }
+    setAnnouncement(`Language set to ${lang.toUpperCase()}`);
   }
 
-  function activeWrap(): HTMLElement | null {
-    return document.querySelector(`[data-lang-wrap="${getLang()}"]`);
-  }
-  function collectSlides() {
-    const wrap = activeWrap();
-    if (!wrap) return;
-    slideSections = Array.from(wrap.children).filter(
-      (c): c is HTMLElement =>
-        c instanceof HTMLElement && !c.classList.contains("cv-only"),
-    );
-  }
-  function goToSlide(idx: number) {
-    if (!slideSections.length) return;
-    currentSlide = Math.max(0, Math.min(idx, slideSections.length - 1));
-    slideSections.forEach((el, i) => {
-      el.classList.toggle("slide-active", i === currentSlide);
-    });
-    const total = slideSections.length;
-    slideText.textContent = `[${currentSlide + 1}/${total}]`;
-    progressFill.style.width = `${((currentSlide + 1) / total) * 100}%`;
-  }
-  function nextSlide() {
-    goToSlide(currentSlide + 1);
-  }
-  function prevSlide() {
-    goToSlide(currentSlide - 1);
+  function focusPrompt(input: HTMLInputElement) {
+    window.setTimeout(() => input.focus(), 10);
   }
 
   function openHelp() {
-    helpModal.setAttribute("data-open", "true");
+    lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    helpModal.hidden = false;
+    helpOpen.setAttribute("aria-expanded", "true");
+    focusPrompt(helpClose as unknown as HTMLInputElement);
   }
+
   function closeHelp() {
-    helpModal.setAttribute("data-open", "false");
+    helpModal.hidden = true;
+    helpOpen.setAttribute("aria-expanded", "false");
+    lastFocused?.focus();
   }
+
   function openCmd() {
-    cmdPrompt.setAttribute("data-open", "true");
+    if (getMode() !== "tui") {
+      echo("Switch to TUI mode to use commands", true);
+      return;
+    }
+    lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    cmdPrompt.hidden = false;
     cmdInput.value = "";
-    setTimeout(() => cmdInput.focus(), 10);
+    historyIndex = commandHistory.length;
+    focusPrompt(cmdInput);
   }
+
   function closeCmd() {
-    cmdPrompt.setAttribute("data-open", "false");
+    cmdPrompt.hidden = true;
     cmdInput.blur();
   }
+
+  function openSearch() {
+    lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    searchPrompt.hidden = false;
+    searchInput.value = "";
+    searchMatches = [];
+    searchIndex = 0;
+    updateSearchMeta();
+    focusPrompt(searchInput);
+  }
+
+  function closeSearch() {
+    searchPrompt.hidden = true;
+    searchInput.blur();
+    lastFocused?.focus();
+  }
+
   function echo(msg: string, err = false) {
     cmdEcho.textContent = msg;
     cmdEcho.classList.toggle("cmd-err", err);
     cmdEcho.setAttribute("data-visible", "true");
-    window.clearTimeout((echo as any)._t);
-    (echo as any)._t = window.setTimeout(() => {
+    setAnnouncement(msg);
+    window.clearTimeout((echo as typeof echo & { _t?: number })._t);
+    (echo as typeof echo & { _t?: number })._t = window.setTimeout(() => {
       cmdEcho.setAttribute("data-visible", "false");
-    }, 2200);
+    }, 4000);
   }
 
   function runCommand(raw: string) {
     const cmd = raw.trim();
     if (!cmd) return;
+    if (commandHistory.at(-1) !== cmd) {
+      commandHistory.push(cmd);
+    }
+    historyIndex = commandHistory.length;
     const [head, ...rest] = cmd.split(/\s+/);
     const arg = rest.join(" ");
     switch (head.toLowerCase()) {
       case "h":
       case "help":
         openHelp();
-        echo("help opened");
+        echo("Help opened");
         break;
       case "q":
       case "quit":
         applyMode("cv");
-        echo("back to CV mode");
+        echo("Back to CV mode");
         break;
       case "mode":
-        if (["cv", "tui", "slides"].includes(arg)) {
+        if (VALID_MODES.includes(arg as Mode)) {
           applyMode(arg as Mode);
-          echo(`mode → ${arg}`);
-        } else echo("usage: :mode cv|tui|slides", true);
+          echo(`Mode → ${arg}`);
+        } else {
+          echo("Usage: :mode cv|tui|slides", true);
+        }
         break;
       case "lang":
-        if (arg === "en" || arg === "es") {
-          applyLang(arg);
-          echo(`lang → ${arg}`);
-        } else echo("usage: :lang en|es", true);
+        if (VALID_LANGS.includes(arg as Lang)) {
+          applyLang(arg as Lang);
+          echo(`Language → ${arg}`);
+        } else {
+          echo("Usage: :lang en|es", true);
+        }
         break;
       case "p":
       case "print":
@@ -307,83 +411,225 @@
         break;
       case "gh":
       case "github":
-        window.open("https://github.com/FullFran", "_blank");
+        window.open("https://github.com/FullFran", "_blank", "noopener,noreferrer");
+        echo("Opened GitHub");
         break;
       case "li":
       case "linkedin":
-        window.open(
-          "https://www.linkedin.com/in/franciscoolmedo-cortes/",
-          "_blank",
-        );
+        window.open("https://www.linkedin.com/in/franciscoolmedo-cortes/", "_blank", "noopener,noreferrer");
+        echo("Opened LinkedIn");
         break;
       case "web":
-        window.open("https://www.fullfran.com", "_blank");
+        window.open("https://www.fullfran.com", "_blank", "noopener,noreferrer");
+        echo("Opened website");
         break;
       case "mail":
       case "email":
-        window.location.href =
-          "mailto:franciscomanuelolmedocortes@gmail.com";
+        window.location.href = "mailto:franciscomanuelolmedocortes@gmail.com";
         break;
       case "top":
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        safeScroll(0);
         break;
       case "bottom":
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: "smooth",
-        });
+        safeScroll(document.body.scrollHeight);
         break;
       default:
-        echo(`unknown command: ${head}`, true);
+        echo(`Unknown command: ${head}`, true);
     }
   }
 
-  let pendingG = false;
-  let pendingGTimer: number | undefined;
+  function completeCommand(value: string) {
+    const query = value.trim().toLowerCase();
+    if (!query) return ":help";
+    const cleanQuery = query.startsWith(":") ? query.slice(1) : query;
+    const match = COMMANDS.find((command) => command.startsWith(cleanQuery));
+    return match ? `:${match}` : value;
+  }
+
+  function updateSearchMatches(query: string) {
+    const normalized = query.trim().toLowerCase();
+    if (!normalized) {
+      searchMatches = [];
+      searchIndex = 0;
+      updateSearchMeta();
+      return;
+    }
+    searchMatches = sectionNodes().filter((section) => {
+      const haystack = `${section.getAttribute("data-search-label") || ""} ${section.textContent || ""}`.toLowerCase();
+      return haystack.includes(normalized);
+    });
+    searchIndex = 0;
+    updateSearchMeta();
+  }
+
+  function jumpToMatch(index = 0) {
+    if (!searchMatches.length) {
+      echo("No matches found", true);
+      return;
+    }
+    const target = searchMatches[((index % searchMatches.length) + searchMatches.length) % searchMatches.length];
+    const label = target.getAttribute("data-search-label") || target.querySelector("h1, h2")?.textContent?.trim() || "Section";
+    target.scrollIntoView({ block: "start", behavior: prefersReducedMotion ? "auto" : "smooth" });
+    updateCurrentSection(label);
+    echo(`Jumped to ${label}`);
+  }
+
   function armG() {
     pendingG = true;
     window.clearTimeout(pendingGTimer);
     pendingGTimer = window.setTimeout(() => (pendingG = false), 600);
   }
 
-  document.addEventListener("keydown", (e) => {
-    const target = e.target as HTMLElement;
-    const typing =
-      target &&
-      (target.tagName === "INPUT" ||
-        target.tagName === "TEXTAREA" ||
-        target.isContentEditable);
+  function trapFocus(event: KeyboardEvent) {
+    if (event.key !== "Tab" || helpModal.hidden) return;
+    const focusable = helpModal.querySelectorAll<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!first || !last) return;
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
 
-    if (target === cmdInput) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        const v = cmdInput.value;
-        closeCmd();
-        runCommand(v);
-      } else if (e.key === "Escape") {
-        e.preventDefault();
-        closeCmd();
-      }
+  function moveViewport(position: "top" | "middle" | "lower") {
+    const base = window.scrollY;
+    const viewport = window.innerHeight;
+    if (position === "top") {
+      safeScroll(base);
+    } else if (position === "middle") {
+      safeScroll(base + viewport * 0.5);
+    } else {
+      safeScroll(base + viewport * 0.85);
+    }
+  }
+
+  function observeSections() {
+    const sections = sectionNodes();
+    if (!sections.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const label =
+          visible.target.getAttribute("data-search-label") ||
+          visible.target.querySelector("h1, h2")?.textContent?.trim() ||
+          "Intro";
+        updateCurrentSection(label);
+      },
+      { rootMargin: "-20% 0px -55% 0px", threshold: [0.2, 0.45, 0.7] },
+    );
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  cmdInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const value = cmdInput.value.replace(/^:/, "");
+      closeCmd();
+      runCommand(value);
       return;
     }
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeCmd();
+      lastFocused?.focus();
+      return;
+    }
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (!commandHistory.length) return;
+      historyIndex = Math.max(0, historyIndex - 1);
+      cmdInput.value = `:${commandHistory[historyIndex]}`;
+      cmdInput.setSelectionRange(cmdInput.value.length, cmdInput.value.length);
+      return;
+    }
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      if (!commandHistory.length) return;
+      historyIndex = Math.min(commandHistory.length, historyIndex + 1);
+      cmdInput.value = historyIndex >= commandHistory.length ? "" : `:${commandHistory[historyIndex]}`;
+      cmdInput.setSelectionRange(cmdInput.value.length, cmdInput.value.length);
+      return;
+    }
+    if (event.key === "Tab") {
+      event.preventDefault();
+      cmdInput.value = completeCommand(cmdInput.value);
+      cmdInput.setSelectionRange(cmdInput.value.length, cmdInput.value.length);
+    }
+  });
 
-    if (typing) return;
+  searchInput.addEventListener("input", () => updateSearchMatches(searchInput.value));
+  searchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeSearch();
+      return;
+    }
+    if (event.key === "Enter") {
+      event.preventDefault();
+      jumpToMatch(searchIndex);
+      return;
+    }
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      if (!searchMatches.length) return;
+      searchIndex = (searchIndex + 1) % searchMatches.length;
+      jumpToMatch(searchIndex);
+      return;
+    }
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (!searchMatches.length) return;
+      searchIndex = (searchIndex - 1 + searchMatches.length) % searchMatches.length;
+      jumpToMatch(searchIndex);
+    }
+  });
 
-    if (helpModal.getAttribute("data-open") === "true") {
-      if (e.key === "Escape" || e.key === "?") {
-        e.preventDefault();
+  document.addEventListener("keydown", (event) => {
+    const target = event.target as HTMLElement;
+    const typing =
+      target &&
+      (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable);
+
+    trapFocus(event);
+
+    if (typing && target !== cmdInput && target !== searchInput) return;
+
+    if (!helpModal.hidden) {
+      if (event.key === "Escape" || event.key === "?") {
+        event.preventDefault();
         closeHelp();
       }
       return;
     }
 
-    switch (e.key) {
+    if (target === searchInput || target === cmdInput) return;
+
+    switch (event.key) {
       case "?":
-        e.preventDefault();
+        event.preventDefault();
         openHelp();
         return;
       case "Escape":
-        applyMode("cv");
+        if (!searchPrompt.hidden) {
+          event.preventDefault();
+          closeSearch();
+          return;
+        }
+        if (!cmdPrompt.hidden) {
+          event.preventDefault();
+          closeCmd();
+          return;
+        }
+        if (getMode() !== "cv") {
+          applyMode("cv");
+        }
         return;
       case "1":
         applyMode("cv");
@@ -395,33 +641,32 @@
         applyMode("slides");
         return;
       case "l":
-      case "L":
         applyLang(getLang() === "en" ? "es" : "en");
         return;
       case "p":
       case "P":
-        e.preventDefault();
+        event.preventDefault();
         window.print();
         return;
+      case "/":
+        event.preventDefault();
+        openSearch();
+        return;
       case ":":
-        if (getMode() === "tui") {
-          e.preventDefault();
-          openCmd();
-        }
+        event.preventDefault();
+        openCmd();
         return;
       case "j":
-        if (getMode() !== "slides")
-          window.scrollBy({ top: 80, behavior: "smooth" });
+        if (getMode() !== "slides") safeScrollBy(80);
         return;
       case "k":
-        if (getMode() !== "slides")
-          window.scrollBy({ top: -80, behavior: "smooth" });
+        if (getMode() !== "slides") safeScrollBy(-80);
         return;
       case "g":
         if (getMode() === "slides") {
           goToSlide(0);
         } else if (pendingG) {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          safeScroll(0);
           pendingG = false;
         } else {
           armG();
@@ -431,34 +676,44 @@
         if (getMode() === "slides") {
           goToSlide(slideSections.length - 1);
         } else {
-          window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: "smooth",
-          });
+          safeScroll(document.body.scrollHeight);
         }
+        return;
+      case "H":
+        moveViewport("top");
+        return;
+      case "M":
+        moveViewport("middle");
+        return;
+      case "L":
+        moveViewport("lower");
         return;
       case "ArrowRight":
       case " ":
         if (getMode() === "slides") {
-          e.preventDefault();
+          event.preventDefault();
           nextSlide();
         }
         return;
       case "ArrowLeft":
       case "b":
         if (getMode() === "slides") {
-          e.preventDefault();
+          event.preventDefault();
           prevSlide();
         }
         return;
     }
   });
 
+  helpOpen.addEventListener("click", openHelp);
   helpClose.addEventListener("click", closeHelp);
-  helpModal.addEventListener("click", (e) => {
-    if (e.target === helpModal) closeHelp();
+  helpModal.addEventListener("click", (event) => {
+    if (event.target === helpModal) closeHelp();
   });
+  commandOpen.addEventListener("click", openCmd);
+  searchOpen.addEventListener("click", openSearch);
 
   applyLang(getLang());
   applyMode(getMode());
+  observeSections();
 </script>

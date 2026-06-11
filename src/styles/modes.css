@@ -23,7 +23,7 @@ html[data-lang="es"] [data-lang-wrap="en"] {
   background: rgba(15, 23, 42, 0.55);
   backdrop-filter: blur(4px);
 }
-.cv-overlay[data-open="true"] {
+.cv-overlay:not([hidden]) {
   display: flex;
 }
 .cv-overlay-card {
@@ -53,6 +53,7 @@ html[data-lang="es"] [data-lang-wrap="en"] {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: saturate(140%) blur(6px);
   border-top: 1px solid #e5e7eb;
+  flex-wrap: wrap;
 }
 .status-bar .sb-seg {
   display: inline-flex;
@@ -68,6 +69,10 @@ html[data-lang="es"] [data-lang-wrap="en"] {
 .status-bar .sb-spacer {
   flex: 1;
 }
+.status-bar .sb-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
 .status-bar kbd {
   font-family: inherit;
   background: #f1f5f9;
@@ -76,6 +81,23 @@ html[data-lang="es"] [data-lang-wrap="en"] {
   padding: 0 4px;
   font-size: 10px;
   color: #334155;
+}
+.status-bar .sb-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+.status-bar .sb-current {
+  max-width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #0f172a;
 }
 
 /* ------------------------------------------ TUI MODE ----------------- */
@@ -95,7 +117,18 @@ html[data-mode="tui"] body {
   color: var(--tui-fg);
   font-family: "JetBrains Mono", ui-monospace, monospace;
 }
+html[data-mode="tui"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 4px;
+  opacity: 0.18;
+  z-index: 1;
+}
 html[data-mode="tui"] main {
+  position: relative;
   background: var(--tui-panel) !important;
   color: var(--tui-fg) !important;
   box-shadow: none !important;
@@ -103,6 +136,33 @@ html[data-mode="tui"] main {
   --tw-ring-shadow: none !important;
   border: 1px solid var(--tui-border);
   font-size: 12.5px;
+  padding-top: 3.5rem !important;
+}
+html[data-mode="tui"] main::before {
+  content: attr(data-tui-title) " • " attr(data-current-section);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.35rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  border-bottom: 1px solid var(--tui-border);
+  color: var(--tui-dim);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+html[data-mode="tui"] main::after {
+  content: "● ● ●";
+  position: absolute;
+  top: 0.7rem;
+  right: 1rem;
+  color: var(--tui-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.25rem;
 }
 
 /* Hero */
@@ -192,17 +252,17 @@ html[data-mode="tui"] ul.list-disc li::before {
 }
 
 /* Skills as bracketed */
-html[data-mode="tui"] [class*="bg-blue-50"] {
+html[data-mode="tui"] .skill-badge {
   background: transparent !important;
   color: var(--tui-cyan) !important;
   --tw-ring-color: var(--tui-border) !important;
   border-radius: 2px !important;
 }
-html[data-mode="tui"] [class*="bg-blue-50"]::before {
+html[data-mode="tui"] .skill-badge::before {
   content: "[";
   color: var(--tui-muted);
 }
-html[data-mode="tui"] [class*="bg-blue-50"]::after {
+html[data-mode="tui"] .skill-badge::after {
   content: "]";
   color: var(--tui-muted);
 }
@@ -218,6 +278,9 @@ html[data-mode="tui"] .status-bar {
   border-top: 1px solid var(--tui-border);
   color: var(--tui-dim);
 }
+html[data-mode="tui"] .status-bar .sb-dot {
+  box-shadow: 0 0 10px rgba(126, 231, 135, 0.65);
+}
 html[data-mode="tui"] .status-bar .sb-mode {
   color: var(--tui-bg);
   background: var(--tui-accent);
@@ -227,10 +290,16 @@ html[data-mode="tui"] .status-bar .sb-mode {
 html[data-mode="tui"] .status-bar .sb-lang {
   color: var(--tui-cyan);
 }
+html[data-mode="tui"] .status-bar .sb-current {
+  color: var(--tui-accent);
+}
 html[data-mode="tui"] .status-bar kbd {
   background: var(--tui-panel);
   border-color: var(--tui-border);
   color: var(--tui-dim);
+}
+html[data-mode="tui"] .status-bar .sb-button {
+  color: inherit;
 }
 
 /* Command prompt (TUI only) */
@@ -249,14 +318,36 @@ html[data-mode="tui"] .status-bar kbd {
   color: var(--tui-fg, #c9d1d9);
   align-items: center;
   gap: 6px;
+  box-sizing: border-box;
 }
-html[data-mode="tui"] .cmd-prompt[data-open="true"] {
+html[data-mode="tui"] .cmd-prompt:not([hidden]) {
+  display: flex;
+}
+.search-prompt {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 66px;
+  z-index: 55;
+  padding: 8px 14px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 13px;
+  background: rgba(15, 23, 42, 0.96);
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  color: #e2e8f0;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+}
+.search-prompt:not([hidden]) {
   display: flex;
 }
 .cmd-prompt .cmd-prefix {
   color: var(--tui-accent, #7ee787);
 }
-.cmd-prompt input {
+.cmd-prompt input,
+.search-prompt input {
   flex: 1;
   background: transparent;
   border: none;
@@ -264,6 +355,10 @@ html[data-mode="tui"] .cmd-prompt[data-open="true"] {
   color: inherit;
   font: inherit;
   caret-color: var(--tui-accent, #7ee787);
+}
+.search-prompt .search-meta {
+  color: #94a3b8;
+  font-size: 11px;
 }
 .cmd-echo {
   position: fixed;
@@ -282,6 +377,10 @@ html[data-mode="tui"] .cmd-prompt[data-open="true"] {
 }
 .cmd-echo.cmd-err {
   color: #f87171;
+}
+
+main {
+  scroll-margin-top: 2rem;
 }
 
 /* ------------------------------------------ SLIDES MODE -------------- */
@@ -383,10 +482,46 @@ html[data-mode="slides"] .cv-only {
   display: none !important;
 }
 
+@media (max-width: 768px) {
+  .status-bar {
+    gap: 0.6rem;
+    padding: 8px 12px;
+  }
+
+  .status-bar .sb-current {
+    max-width: 10ch;
+  }
+
+  .cmd-prompt,
+  .search-prompt {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  html[data-mode="tui"] main {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-mode="tui"] body::before {
+    opacity: 0.08;
+  }
+
+  html[data-mode="slides"] .slide-active,
+  .cmd-echo,
+  html[data-mode="slides"] .slide-progress-fill {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /* ------------------------------------------ Print suppresses UI ----- */
 @media print {
   .status-bar,
   .cmd-prompt,
+  .search-prompt,
   .cmd-echo,
   .slide-progress,
   .cv-overlay {
