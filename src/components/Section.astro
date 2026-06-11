@@ -1,8 +1,15 @@
 ---
-const { title, id } = Astro.props;
+const { title, id, sectionKey } = Astro.props;
 ---
 
-<section class="mb-6 scroll-mt-24" id={id} data-search-section data-search-label={title} aria-labelledby={id ? `${id}-title` : undefined}>
+<section
+	class="mb-6 scroll-mt-24"
+	id={id}
+	data-search-section
+	data-section-key={sectionKey}
+	data-search-label={title}
+	aria-labelledby={id ? `${id}-title` : undefined}
+>
 	{
 		title && (
 			<h2 id={id ? `${id}-title` : undefined} class="mb-3 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-900">

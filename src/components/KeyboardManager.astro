@@ -43,6 +43,8 @@
     <span>·</span>
     <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><span>modes</span>
     <span>·</span>
+    <kbd>[</kbd><kbd>]</kbd><span>sections</span>
+    <span>·</span>
     <kbd>H</kbd><kbd>M</kbd><kbd>L</kbd>
   </span>
 </footer>
@@ -98,8 +100,9 @@
         <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">l</kbd></td><td>Toggle language EN ↔ ES</td></tr>
         <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">p</kbd></td><td>Export to PDF (system print)</td></tr>
         <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">j</kbd><kbd class="help-kbd">k</kbd></td><td>Scroll down / up</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">[</kbd><kbd class="help-kbd">]</kbd></td><td>Previous / next section</td></tr>
         <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">g</kbd><kbd class="help-kbd">G</kbd></td><td>Jump to top / bottom</td></tr>
-        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">H</kbd><kbd class="help-kbd">M</kbd><kbd class="help-kbd">L</kbd></td><td>Jump to top / middle / lower viewport position</td></tr>
+        <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">H</kbd><kbd class="help-kbd">M</kbd><kbd class="help-kbd">L</kbd></td><td>Align current section top / middle / bottom</td></tr>
         <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">:</kbd></td><td>Open command prompt in TUI mode</td></tr>
         <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">↑</kbd><kbd class="help-kbd">↓</kbd><kbd class="help-kbd">Tab</kbd></td><td>Command history and completion</td></tr>
         <tr class="border-b border-gray-100"><td class="py-1.5"><kbd class="help-kbd">/</kbd></td><td>Search visible sections and jump to matches</td></tr>
@@ -118,6 +121,10 @@
       <code>:mail</code>
       <code>:top</code>
       <code>:bottom</code>
+      <code>:next</code>
+      <code>:prev</code>
+      <code>:about</code>
+      <code>:skills</code>
     </p>
   </div>
 </div>
@@ -157,6 +164,20 @@
     "mail",
     "top",
     "bottom",
+    "next",
+    "prev",
+    "intro",
+    "about",
+    "experience",
+    "education",
+    "skills",
+    "languages",
+    "section intro",
+    "section about",
+    "section experience",
+    "section education",
+    "section skills",
+    "section languages",
   ];
 
   const root = document.documentElement;
@@ -190,6 +211,7 @@
   let historyIndex = -1;
   let searchMatches: HTMLElement[] = [];
   let searchIndex = 0;
+  let currentSectionKey = "intro";
   let pendingG = false;
   let pendingGTimer: number | undefined;
   let lastFocused: HTMLElement | null = null;
@@ -232,10 +254,12 @@
     return Array.from(wrap.querySelectorAll("[data-search-section]")) as HTMLElement[];
   }
 
-  function updateCurrentSection(sectionName?: string) {
+  function updateCurrentSection(sectionName?: string, sectionKey?: string) {
     const fallback = sectionName || "Intro";
+    currentSectionKey = sectionKey || currentSectionKey || "intro";
     currentEl.textContent = fallback;
     main.dataset.currentSection = fallback;
+    main.dataset.currentSectionKey = currentSectionKey;
   }
 
   function updateSearchMeta() {
@@ -263,7 +287,8 @@
       slideSections[currentSlide]?.getAttribute("data-search-label") ||
       slideSections[currentSlide]?.querySelector("h1, h2")?.textContent?.trim() ||
       `Slide ${currentSlide + 1}`;
-    updateCurrentSection(currentLabel);
+    const currentKey = slideSections[currentSlide]?.getAttribute("data-section-key") || undefined;
+    updateCurrentSection(currentLabel, currentKey);
   }
 
   function nextSlide() {
@@ -285,7 +310,7 @@
     } else {
       slideSeg.setAttribute("hidden", "");
       document.querySelectorAll(".slide-active").forEach((el) => el.classList.remove("slide-active"));
-      updateCurrentSection();
+      updateCurrentSection("Intro", "intro");
     }
     if (mode !== "tui") {
       closeCmd();
@@ -299,7 +324,7 @@
     root.setAttribute("lang", lang);
     localStorage.setItem(KEY_LANG, lang);
     langEl.textContent = lang.toUpperCase();
-    updateCurrentSection();
+    updateCurrentSection("Intro", "intro");
     if (getMode() === "slides") {
       collectSlides();
       goToSlide(0);
@@ -433,9 +458,65 @@
       case "bottom":
         safeScroll(document.body.scrollHeight);
         break;
+      case "next":
+        jumpSection(1);
+        break;
+      case "prev":
+      case "previous":
+        jumpSection(-1);
+        break;
+      case "section":
+        if (goToSection(arg)) {
+          echo(`Section → ${arg}`);
+        } else {
+          echo("Usage: :section intro|about|experience|education|skills|languages", true);
+        }
+        break;
+      case "intro":
+      case "about":
+      case "experience":
+      case "education":
+      case "skills":
+      case "languages":
+        goToSection(head.toLowerCase());
+        break;
       default:
         echo(`Unknown command: ${head}`, true);
     }
+  }
+
+  function sectionIndex() {
+    const sections = sectionNodes();
+    const directIndex = sections.findIndex((section) => section.getAttribute("data-section-key") === currentSectionKey);
+    if (directIndex >= 0) return directIndex;
+    const viewportMiddle = window.scrollY + window.innerHeight / 2;
+    return sections.reduce((closestIndex, section, index) => {
+      const currentDistance = Math.abs(section.offsetTop - viewportMiddle);
+      const closestDistance = Math.abs(sections[closestIndex]?.offsetTop - viewportMiddle);
+      return currentDistance < closestDistance ? index : closestIndex;
+    }, 0);
+  }
+
+  function goToSection(key: string) {
+    const normalized = key.trim().toLowerCase();
+    const target = sectionNodes().find((section) => section.getAttribute("data-section-key") === normalized);
+    if (!target) return false;
+    const label = target.getAttribute("data-search-label") || target.querySelector("h1, h2")?.textContent?.trim() || normalized;
+    target.scrollIntoView({ block: "start", behavior: prefersReducedMotion ? "auto" : "smooth" });
+    updateCurrentSection(label, normalized);
+    return true;
+  }
+
+  function jumpSection(direction: 1 | -1) {
+    const sections = sectionNodes();
+    if (!sections.length) return;
+    const nextIndex = Math.max(0, Math.min(sectionIndex() + direction, sections.length - 1));
+    const target = sections[nextIndex];
+    const key = target.getAttribute("data-section-key") || "intro";
+    const label = target.getAttribute("data-search-label") || target.querySelector("h1, h2")?.textContent?.trim() || "Section";
+    target.scrollIntoView({ block: "start", behavior: prefersReducedMotion ? "auto" : "smooth" });
+    updateCurrentSection(label, key);
+    echo(`${direction > 0 ? "Next" : "Previous"} section → ${label}`);
   }
 
   function completeCommand(value: string) {
@@ -470,7 +551,8 @@
     const target = searchMatches[((index % searchMatches.length) + searchMatches.length) % searchMatches.length];
     const label = target.getAttribute("data-search-label") || target.querySelector("h1, h2")?.textContent?.trim() || "Section";
     target.scrollIntoView({ block: "start", behavior: prefersReducedMotion ? "auto" : "smooth" });
-    updateCurrentSection(label);
+    const key = target.getAttribute("data-section-key") || undefined;
+    updateCurrentSection(label, key);
     echo(`Jumped to ${label}`);
   }
 
@@ -495,16 +577,9 @@
     }
   }
 
-  function moveViewport(position: "top" | "middle" | "lower") {
-    const base = window.scrollY;
-    const viewport = window.innerHeight;
-    if (position === "top") {
-      safeScroll(base);
-    } else if (position === "middle") {
-      safeScroll(base + viewport * 0.5);
-    } else {
-      safeScroll(base + viewport * 0.85);
-    }
+  function alignCurrentSection(position: "start" | "center" | "end") {
+    const current = sectionNodes().find((section) => section.getAttribute("data-section-key") === currentSectionKey);
+    current?.scrollIntoView({ block: position, behavior: prefersReducedMotion ? "auto" : "smooth" });
   }
 
   function observeSections() {
@@ -520,7 +595,8 @@
           visible.target.getAttribute("data-search-label") ||
           visible.target.querySelector("h1, h2")?.textContent?.trim() ||
           "Intro";
-        updateCurrentSection(label);
+        const key = visible.target.getAttribute("data-section-key") || undefined;
+        updateCurrentSection(label, key);
       },
       { rootMargin: "-20% 0px -55% 0px", threshold: [0.2, 0.45, 0.7] },
     );
@@ -662,6 +738,12 @@
       case "k":
         if (getMode() !== "slides") safeScrollBy(-80);
         return;
+      case "]":
+        if (getMode() !== "slides") jumpSection(1);
+        return;
+      case "[":
+        if (getMode() !== "slides") jumpSection(-1);
+        return;
       case "g":
         if (getMode() === "slides") {
           goToSlide(0);
@@ -680,13 +762,13 @@
         }
         return;
       case "H":
-        moveViewport("top");
+        alignCurrentSection("start");
         return;
       case "M":
-        moveViewport("middle");
+        alignCurrentSection("center");
         return;
       case "L":
-        moveViewport("lower");
+        alignCurrentSection("end");
         return;
       case "ArrowRight":
       case " ":

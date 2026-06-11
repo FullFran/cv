@@ -13,7 +13,7 @@ const t = labels[lang];
 const { summary } = data.basics;
 ---
 
-<Section title={t.about} id="about">
+<Section title={t.about} id={`${lang}-about`} sectionKey="about">
   <div class="space-y-2 text-justify text-[13px] leading-relaxed text-gray-700">
     {summary.split("\n\n").map((para) => <p>{para}</p>)}
   </div>
