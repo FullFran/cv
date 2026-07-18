@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Francisco Manuel Olmedo Cortés",
-    "label": "Físico · Ingeniero de Sistemas IA/ML & Arquitecto Backend",
+    "label": "Físico · construyo sistemas de IA que llegan a producción",
     "image": "",
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
     "url": "https://www.fullfran.com",
-    "summary": "Físico que diseña y despliega sistemas de IA listos para producción — RAG, agentes autónomos, backends NestJS multi-tenant y microservicios — con Clean Architecture y Machine Learning en el núcleo. Lidero el ciclo completo de backend, convirtiendo problemas ambiguos de negocio en servicios fiables, observables y multi-canal.",
+    "summary": "Físico que construye sistemas de IA para producción. Uso IA y simulaciones para resolver problemas reales —de pipelines RAG y agentes a backends multi-tenant— con Clean Architecture y ML en el núcleo. Socio y responsable del dominio de IA/ML en Hagalink: convierto problemas difusos de cliente en servicios fiables y observables.",
     "location": {
       "countryCode": "ES",
       "address": "Córdoba, Andalucía, España"
@@ -15,8 +15,8 @@
     "profiles": [
       {
         "network": "LinkedIn",
-        "username": "franciscoolmedo-cortes",
-        "url": "https://www.linkedin.com/in/franciscoolmedo-cortes/"
+        "username": "francisco-olmedo-cortes",
+        "url": "https://www.linkedin.com/in/francisco-olmedo-cortes/"
       },
       {
         "network": "GitHub",
@@ -28,28 +28,39 @@
   "work": [
     {
       "name": "Hagalink",
-      "position": "Chief Data Scientist (CDS) / Lead AI Engineer",
+      "position": "Chief Data Scientist · Socio",
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Lidero el diseño e implementación end-to-end de sistemas de IA/ML, traduciendo requerimientos ambiguos de clientes en arquitecturas backend escalables.",
-        "Diseñé y construí un backend RAG monolito-modular multi-tenant (NestJS + PostgreSQL + TypeORM) con workers en background e ingestión multi-canal (WhatsApp, Telegram, Web).",
-        "Diseñé un backend de microservicios para la ingesta y análisis estructurado de señales, reutilizando mi propio servicio open-source (feedpulse) como componente de ingesta junto a servicios propios de extracción y análisis.",
-        "Desarrollo de APIs robustas en Python, gestionando bases de datos vectoriales y orquestación de LLMs en producción.",
-        "Nexo técnico con los clientes, explicando los compromisos arquitectónicos entre precisión, coste computacional y latencia."
+        "Socio de la compañía y responsable del dominio de IA/ML de extremo a extremo: descubrimiento con cliente, diseño de producto, arquitectura y entrega. Última palabra técnica en IA/ML.",
+        "Diseñé y construí un backend RAG multi-tenant (NestJS + PostgreSQL) con workers en background e ingesta multi-canal (WhatsApp, Telegram, web).",
+        "Arquitectura completa de aplicaciones seleccionadas y microservicios de ingesta/análisis, reutilizando mi servicio open-source feedpulse como componente.",
+        "Continuidad del chatbot oficial de la Feria de Córdoba (Ayuntamiento de Córdoba).",
+        "Nexo técnico con cliente: explico los compromisos entre precisión, coste computacional y latencia."
       ],
       "url": "https://hagalink.es",
       "location": "Córdoba, Andalucía, España"
     },
     {
+      "name": "Universidad de Córdoba / CIEMAT",
+      "position": "Investigador pre-doctoral",
+      "startDate": "2026-01-01",
+      "endDate": "",
+      "highlights": [
+        "Investigación en dosimetría termoluminiscente (TLD-100) con métodos de ML, retomando la línea de mi publicación de 2022 de cara a la tesis doctoral (en preparación)."
+      ],
+      "url": "https://www.ciemat.es",
+      "location": "Córdoba / Madrid, España"
+    },
+    {
       "name": "BlakIA",
-      "position": "Cofundador & Lead Technical Architect",
+      "position": "Fundador & Arquitecto Técnico",
       "startDate": "2024-07-01",
       "endDate": "2026-04-17",
       "highlights": [
-        "Diseño e implementación desde cero de sistemas B2B basados en IA Generativa, con foco en pipelines RAG y Agentes Autónomos para la automatización de flujos de trabajo empresariales.",
-        "Responsable de las decisiones core de arquitectura, aplicando metodologías Lean y Clean Architecture para mantener sistemas robustos, escalables y con mínima deuda técnica.",
-        "Despliegue de sistemas de alta concurrencia en producción, incluyendo un chatbot oficial que gestionó más de 100.000 interacciones en una semana con picos superiores a 10.000 usuarios."
+        "Fundé la empresa. Diseño e implementación desde cero de sistemas B2B de IA generativa: pipelines RAG y agentes autónomos para la automatización de flujos de trabajo empresariales.",
+        "Decisiones core de arquitectura, aplicando metodologías Lean y Clean Architecture para mantener sistemas robustos, escalables y con mínima deuda técnica.",
+        "Chatbot oficial de la Feria de Córdoba (Ayuntamiento de Córdoba) y chatbot Cruz de Guía de Semana Santa (Asociación de Cofradías Cordobesas): servicios de alta concurrencia durante los picos de las fiestas."
       ],
       "url": "https://www.linkedin.com/company/blakiatech/",
       "location": "Córdoba, Andalucía, España"
@@ -60,9 +71,8 @@
       "startDate": "2024-09-01",
       "endDate": "2025-01-31",
       "highlights": [
-        "Refactorización de un simulador científico legacy de alta complejidad (ray tracing), aplicando principios de Clean Architecture para asegurar su escalabilidad y mantenibilidad.",
-        "Diseño e implementación de un optimizador basado en Algoritmos Genéticos para el diseño automatizado de estructuras físicas complejas.",
-        "Liderazgo en la estandarización técnica del código base."
+        "Refactoricé un simulador científico legacy (ray tracing) aplicando Clean Architecture; introduje control de versiones y buenas prácticas de desarrollo en el grupo.",
+        "Construí un optimizador basado en algoritmos genéticos para el diseño de cristales (medios ópticos desordenados)."
       ],
       "url": "https://www.uco.es",
       "location": "Córdoba, Andalucía, España"
@@ -73,35 +83,28 @@
       "startDate": "2024-04-01",
       "endDate": "2024-07-31",
       "highlights": [
-        "Aplicación de modelos de Deep Learning para la predicción de series temporales, optimizando las estimaciones de producción energética.",
+        "Apliqué modelos de Deep Learning para la predicción de series temporales, optimizando las estimaciones de producción energética.",
         "Traducción de requerimientos científicos teóricos a código eficiente y funcional en un entorno ágil de I+D."
       ],
       "url": "https://www.idener.ai",
       "location": "Sevilla, Andalucía, España"
     },
     {
-      "name": "CIEMAT / Universidad de Córdoba",
-      "position": "Alumno Colaborador / Desarrollador Científico (TFG)",
+      "name": "Universidad de Córdoba / CIEMAT",
+      "position": "Desarrollador científico",
       "startDate": "2022-07-01",
       "endDate": "2023-06-30",
       "highlights": [
         "Desarrollo de un simulador físico basado en la resolución numérica de ecuaciones diferenciales (Runge-Kutta) en Python, desplegado como herramienta web mediante Streamlit.",
-        "Generación de Datos Sintéticos: uso del simulador como 'Oráculo' para generar datasets de alta precisión orientados a Deep Learning.",
-        "Diseño y entrenamiento de Redes Neuronales Densas (Fully-Connected) para la evaluación de parámetros cinéticos, resultando en una publicación científica (peer-reviewed).",
-        "Impartición de un curso introductorio de Python orientado a computación científica y ciencia de datos."
+        "Generación de datos sintéticos: uso del simulador como 'oráculo' para generar datasets de alta precisión orientados a Deep Learning.",
+        "Diseño y entrenamiento de redes neuronales densas para la evaluación de parámetros cinéticos, resultando en una publicación científica (peer-reviewed).",
+        "Impartición de un curso introductorio de Python para scientific computing, IA y ciencia de datos."
       ],
       "url": "https://www.ciemat.es",
       "location": "Madrid / Córdoba, España"
     }
   ],
   "education": [
-    {
-      "institution": "Universidad de Córdoba / Entorno CIEMAT",
-      "area": "Física / IA Aplicada",
-      "studyType": "Doctorando (Ph.D. Candidate)",
-      "startDate": "2026-01-01",
-      "endDate": ""
-    },
     {
       "institution": "Universidad de Córdoba",
       "area": "Tecnología Física: Investigación y Aplicaciones",
@@ -154,20 +157,16 @@
   ],
   "skills": [
     {
-      "name": "Backend & Arquitectura",
-      "keywords": ["Clean Architecture", "Hexagonal / DDD", "Python", "FastAPI", "TypeScript", "NestJS", "PostgreSQL", "Microservicios", "Multi-tenant", "Diseño de Sistemas"]
+      "name": "Arquitectura & backend",
+      "keywords": ["Clean / Hexagonal / DDD", "Diseño de sistemas", "Python", "TypeScript (NestJS)", "PostgreSQL"]
     },
     {
-      "name": "IA & Ingeniería de Datos",
-      "keywords": ["Machine Learning", "IA Generativa", "Agentes Autónomos", "Pipelines RAG", "Orquestación de LLMs", "Bases de Datos Vectoriales (Qdrant, Weaviate)", "Generación de Datos Sintéticos", "Redes Neuronales"]
+      "name": "IA en producción",
+      "keywords": ["RAG", "Agentes", "Orquestación de LLMs", "Bases vectoriales", "Datos sintéticos"]
     },
     {
-      "name": "Infraestructura & Ops",
-      "keywords": ["Linux", "Docker", "Git", "CI/CD", "Observabilidad", "Hetzner", "GCP"]
-    },
-    {
-      "name": "Física & Matemáticas Base",
-      "keywords": ["Modelado Matemático", "Optimización Estadística", "Algoritmos Genéticos", "Métodos de Montecarlo", "Métodos Numéricos"]
+      "name": "Física computacional",
+      "keywords": ["Métodos de Montecarlo (implementados desde cero)", "Algoritmos genéticos", "Métodos numéricos", "Redes neuronales"]
     }
   ],
   "languages": [
