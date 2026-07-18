@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Francisco Manuel Olmedo Cortés",
-    "label": "Physicist · AI/ML Systems Engineer & Backend Architect",
+    "label": "Physicist · building AI systems that ship",
     "image": "",
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
     "url": "https://www.fullfran.com",
-    "summary": "Physicist designing and shipping production-grade AI systems — RAG, autonomous agents, multi-tenant NestJS backends and microservices — with Clean Architecture and Machine Learning at the core. I lead the full backend lifecycle, turning ambiguous business problems into reliable, observable, multi-channel services.",
+    "summary": "Physicist who builds AI systems for production. I use AI and simulations to solve real problems —from RAG pipelines and agents to multi-tenant backends— with Clean Architecture and ML at the core. Partner and owner of the AI/ML domain at Hagalink: I turn ambiguous client problems into reliable, observable services.",
     "location": {
       "countryCode": "ES",
       "address": "Córdoba, Andalucía, España"
@@ -15,8 +15,8 @@
     "profiles": [
       {
         "network": "LinkedIn",
-        "username": "franciscoolmedo-cortes",
-        "url": "https://www.linkedin.com/in/franciscoolmedo-cortes/"
+        "username": "francisco-olmedo-cortes",
+        "url": "https://www.linkedin.com/in/francisco-olmedo-cortes/"
       },
       {
         "network": "GitHub",
@@ -28,28 +28,39 @@
   "work": [
     {
       "name": "Hagalink",
-      "position": "Chief Data Scientist (CDS) / Lead AI Engineer",
+      "position": "Chief Data Scientist · Partner",
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Lead end-to-end design and implementation of AI/ML systems, translating ambiguous client requirements into scalable backend architectures.",
-        "Designed and built a multi-tenant modular-monolith RAG backend (NestJS + PostgreSQL + TypeORM) with background workers and multi-channel ingestion (WhatsApp, Telegram, Web).",
-        "Designed a microservices backend for structured-intake analytics, reusing my own open-source service (feedpulse) as an ingestion component alongside custom extraction and downstream analysis services.",
-        "Build robust Python APIs, manage vector databases and LLM orchestration in production.",
-        "Act as the technical bridge with clients, explaining architectural trade-offs across accuracy, computational cost, and latency."
+        "Partner in the company and owner of the AI/ML domain end-to-end: client discovery, product design, architecture and delivery. Final technical authority on AI/ML.",
+        "Designed and built a multi-tenant RAG backend (NestJS + PostgreSQL) with background workers and multi-channel ingestion (WhatsApp, Telegram, Web).",
+        "Full architecture of selected applications and ingestion/analysis microservices, reusing my own open-source service feedpulse as a component.",
+        "Continued the official chatbot for the Feria de Córdoba (Córdoba City Council).",
+        "Technical bridge with clients: I explain the trade-offs across accuracy, computational cost, and latency."
       ],
       "url": "https://hagalink.es",
       "location": "Córdoba, Andalucía, España"
     },
     {
+      "name": "Universidad de Córdoba / CIEMAT",
+      "position": "Pre-doctoral Researcher",
+      "startDate": "2026-01-01",
+      "endDate": "",
+      "highlights": [
+        "Research in thermoluminescence dosimetry (TLD-100) with ML methods, resuming the line of my 2022 publication toward the doctoral thesis (in preparation)."
+      ],
+      "url": "https://www.ciemat.es",
+      "location": "Córdoba / Madrid, Spain"
+    },
+    {
       "name": "BlakIA",
-      "position": "Co-founder & Lead Technical Architect",
+      "position": "Founder & Technical Architect",
       "startDate": "2024-07-01",
       "endDate": "2026-04-17",
       "highlights": [
-        "Designed and implemented B2B Generative AI systems from scratch, focusing on RAG pipelines and Agentic AI for enterprise workflow automation.",
+        "Founded the company. Designed and implemented B2B Generative AI systems from scratch: RAG pipelines and autonomous agents for enterprise workflow automation.",
         "Owned core architecture decisions, applying Lean methodologies and Clean Architecture to keep systems robust, scalable, and with minimal technical debt.",
-        "Delivered high-concurrency deployments in production, including an official chatbot handling 100,000+ interactions in a week with peaks above 10,000 users."
+        "Official chatbot for the Feria de Córdoba (Córdoba City Council) and the Cruz de Guía chatbot for Holy Week (Association of Córdoba Brotherhoods): high-concurrency services during peak festival traffic."
       ],
       "url": "https://www.linkedin.com/company/blakiatech/",
       "location": "Córdoba, Andalucía, España"
@@ -60,9 +71,8 @@
       "startDate": "2024-09-01",
       "endDate": "2025-01-31",
       "highlights": [
-        "Refactored a highly complex legacy scientific simulator (ray tracing), applying Clean Architecture principles to ensure scalability and maintainability.",
-        "Designed and implemented an optimizer based on Genetic Algorithms for the automated design of complex physical structures.",
-        "Led the technical standardization of the codebase."
+        "Refactored a legacy scientific simulator (ray tracing) applying Clean Architecture; introduced version control and good development practices in the group.",
+        "Built an optimizer based on Genetic Algorithms for the design of crystals (disordered optical media)."
       ],
       "url": "https://www.uco.es",
       "location": "Córdoba, Andalucía, España"
@@ -73,35 +83,28 @@
       "startDate": "2024-04-01",
       "endDate": "2024-07-31",
       "highlights": [
-        "Applied deep learning models for time series forecasting to optimize energy production predictions.",
-        "Bridged the gap between theoretical scientific requirements and efficient, functional code in a fast-paced R&D environment."
+        "Applied Deep Learning models for time series forecasting to optimize energy production predictions.",
+        "Translated theoretical scientific requirements into efficient, functional code in a fast-paced R&D environment."
       ],
       "url": "https://www.idener.ai",
       "location": "Sevilla, Andalucía, España"
     },
     {
-      "name": "CIEMAT / Universidad de Córdoba",
-      "position": "Research Collaborator / Scientific Developer (TFG)",
+      "name": "Universidad de Córdoba / CIEMAT",
+      "position": "Scientific Developer",
       "startDate": "2022-07-01",
       "endDate": "2023-06-30",
       "highlights": [
         "Developed a physical simulator based on the numerical resolution of differential equations (Runge-Kutta) in Python, deployed as a web tool via Streamlit.",
-        "Synthetic data generation: used the simulator as an 'Oracle' to produce high-precision datasets for Deep Learning.",
-        "Designed and trained Fully-Connected Neural Networks for kinetic parameter assessment, leading to a peer-reviewed publication.",
-        "Taught an introductory course on Python for scientific computing and data science."
+        "Synthetic data generation: used the simulator as an 'oracle' to produce high-precision datasets for Deep Learning.",
+        "Designed and trained fully-connected neural networks for kinetic parameter assessment, resulting in a peer-reviewed publication.",
+        "Taught an introductory Python course for scientific computing, AI and data science."
       ],
       "url": "https://www.ciemat.es",
       "location": "Madrid / Córdoba, España"
     }
   ],
   "education": [
-    {
-      "institution": "Universidad de Córdoba / CIEMAT Environment",
-      "area": "Physics / Applied AI",
-      "studyType": "Ph.D. Candidate (Doctorando)",
-      "startDate": "2026-01-01",
-      "endDate": ""
-    },
     {
       "institution": "Universidad de Córdoba",
       "area": "Physical Technology: Research and Applications",
@@ -154,20 +157,16 @@
   ],
   "skills": [
     {
-      "name": "Backend & Architecture",
-      "keywords": ["Clean Architecture", "Hexagonal / DDD", "Python", "FastAPI", "TypeScript", "NestJS", "PostgreSQL", "Microservices", "Multi-tenant", "System Design"]
+      "name": "Architecture & backend",
+      "keywords": ["Clean / Hexagonal / DDD", "System design", "Python", "TypeScript (NestJS)", "PostgreSQL"]
     },
     {
-      "name": "AI & Data Engineering",
-      "keywords": ["Machine Learning", "Generative AI", "Agentic AI", "RAG Pipelines", "LLM Orchestration", "Vector Databases (Qdrant, Weaviate)", "Synthetic Data Generation", "Neural Networks"]
+      "name": "AI in production",
+      "keywords": ["RAG", "Agents", "LLM orchestration", "Vector databases", "Synthetic data"]
     },
     {
-      "name": "Infrastructure & Ops",
-      "keywords": ["Linux", "Docker", "Git", "CI/CD", "Observability", "Hetzner", "GCP"]
-    },
-    {
-      "name": "Core Physics & Math",
-      "keywords": ["Mathematical Modeling", "Statistical Optimization", "Genetic Algorithms", "Monte Carlo Methods", "Numerical Methods"]
+      "name": "Computational physics",
+      "keywords": ["Monte Carlo methods (built from scratch)", "Genetic algorithms", "Numerical methods", "Neural networks"]
     }
   ],
   "languages": [
