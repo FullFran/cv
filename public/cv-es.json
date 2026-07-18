@@ -132,25 +132,25 @@
   "projects": [
     {
       "name": "feedpulse",
-      "description": "Plataforma de monitorización RSS production-grade con arquitectura hexagonal/DDD: tres runtimes (api/scheduler/worker), observabilidad, colas y benchmarks.",
+      "description": "Plataforma de monitorización RSS con arquitectura hexagonal/DDD — tres runtimes (api/scheduler/worker), observabilidad, colas, benchmarks y tests production-grade.",
       "url": "https://github.com/FullFran/feedpulse",
       "keywords": ["TypeScript", "Hexagonal", "DDD", "Observabilidad"]
     },
     {
       "name": "Hybrid-RAG-example",
-      "description": "RAG híbrido sobre Clean Architecture: recuperación vectorial y por keywords fusionadas con Reciprocal Rank Fusion. Agnóstico del proveedor, CLI-first, diseñado para ser testeable.",
+      "description": "Recurso didáctico que construí para formar a mis alumnos en Hybrid RAG de nivel producción — recuperación semántica + keywords con RRF, Clean Architecture.",
       "url": "https://github.com/FullFran/Hybrid-RAG-example",
       "keywords": ["Python", "RAG", "Clean Architecture", "RRF"]
     },
     {
       "name": "claudeops-tui",
-      "description": "TUI local para monitorizar uso, coste y tareas de Claude Code. Go + Bubbletea + SQLite.",
+      "description": "TUI local para monitorizar uso, coste y tareas de Claude Code (Go + Bubbletea + SQLite).",
       "url": "https://github.com/FullFran/claudeops-tui",
       "keywords": ["Go", "Bubbletea", "SQLite", "DX"]
     },
     {
       "name": "Agent-skills-POC",
-      "description": "POC de Agent Skills framework-agnóstico con Clean Architecture: progressive disclosure, integración MCP y reasoning loop sin estado.",
+      "description": "Construido para formar a mi equipo en IA agéntica — Agent Skills framework-agnóstico con Progressive Disclosure, MCP y reasoning loop sin estado. Clean Architecture.",
       "url": "https://github.com/FullFran/Agent-skills-POC",
       "keywords": ["Python", "Agentes", "MCP", "Clean Architecture"]
     }

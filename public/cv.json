@@ -132,25 +132,25 @@
   "projects": [
     {
       "name": "feedpulse",
-      "description": "Production-grade RSS monitoring platform with hexagonal/DDD architecture: three runtimes (api/scheduler/worker), observability, queues and benchmarks.",
+      "description": "RSS monitoring platform with hexagonal/DDD architecture — three runtimes (api/scheduler/worker), observability, queues, benchmarks and production-grade tests.",
       "url": "https://github.com/FullFran/feedpulse",
       "keywords": ["TypeScript", "Hexagonal", "DDD", "Observability"]
     },
     {
       "name": "Hybrid-RAG-example",
-      "description": "Hybrid RAG on Clean Architecture: vector + keyword retrieval fused via Reciprocal Rank Fusion. Provider-agnostic, CLI-first, designed for testability.",
+      "description": "Teaching resource I built to train my students in production-grade Hybrid RAG — semantic + keyword retrieval with RRF, Clean Architecture.",
       "url": "https://github.com/FullFran/Hybrid-RAG-example",
       "keywords": ["Python", "RAG", "Clean Architecture", "RRF"]
     },
     {
       "name": "claudeops-tui",
-      "description": "Local TUI to track Claude Code usage, cost and tasks. Go + Bubbletea + SQLite.",
+      "description": "Local TUI to track Claude Code usage, costs, and tasks (Go + Bubbletea + SQLite).",
       "url": "https://github.com/FullFran/claudeops-tui",
       "keywords": ["Go", "Bubbletea", "SQLite", "DX"]
     },
     {
       "name": "Agent-skills-POC",
-      "description": "Framework-agnostic Agent Skills POC built with Clean Architecture: progressive disclosure, MCP integration and stateless reasoning loop.",
+      "description": "Built to upskill my team on agentic AI — framework-agnostic Agent Skills with Progressive Disclosure, MCP, and a stateless reasoning loop. Clean Architecture.",
       "url": "https://github.com/FullFran/Agent-skills-POC",
       "keywords": ["Python", "Agents", "MCP", "Clean Architecture"]
     }
