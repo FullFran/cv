@@ -32,10 +32,10 @@
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Socio de la compañía y responsable del dominio de IA/ML de extremo a extremo: descubrimiento con cliente, diseño de producto, arquitectura y entrega. Última palabra técnica en IA/ML.",
-        "Diseñé y construí un backend RAG multi-tenant (NestJS + PostgreSQL) con workers en background e ingesta multi-canal (WhatsApp, Telegram, web).",
-        "Arquitectura completa de aplicaciones seleccionadas y microservicios de ingesta/análisis, reutilizando mi servicio open-source feedpulse como componente.",
-        "Continuidad del chatbot oficial de la Feria de Córdoba (Ayuntamiento de Córdoba).",
+        "Socio y responsable del dominio de IA/ML de extremo a extremo en múltiples proyectos y clientes: del descubrimiento al diseño de producto, la arquitectura y la entrega. Última palabra técnica en IA/ML.",
+        "Diseño y construyo sistemas de IA variados —backends RAG multi-tenant, microservicios de ingesta y análisis, agentes y automatizaciones— con NestJS, Python, PostgreSQL y bases vectoriales, reutilizando componentes propios como mi servicio open-source feedpulse.",
+        "Ingesta multi-canal (WhatsApp, Telegram, web) y despliegue en producción con observabilidad.",
+        "Entre los proyectos, el chatbot oficial de la Feria de Córdoba (Ayuntamiento de Córdoba).",
         "Nexo técnico con cliente: explico los compromisos entre precisión, coste computacional y latencia."
       ],
       "url": "https://hagalink.es",
