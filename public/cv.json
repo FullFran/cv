@@ -32,11 +32,11 @@
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Partner in the company and owner of the AI/ML domain end-to-end: client discovery, product design, architecture and delivery. Final technical authority on AI/ML.",
-        "Designed and built a multi-tenant RAG backend (NestJS + PostgreSQL) with background workers and multi-channel ingestion (WhatsApp, Telegram, Web).",
-        "Full architecture of selected applications and ingestion/analysis microservices, reusing my own open-source service feedpulse as a component.",
-        "Continued the official chatbot for the Feria de Córdoba (Córdoba City Council).",
-        "Technical bridge with clients: I explain the trade-offs across accuracy, computational cost, and latency."
+        "Partner and owner of the AI/ML domain end-to-end across multiple projects and clients: from discovery to product design, architecture and delivery. Final technical authority on AI/ML.",
+        "I design and build a variety of AI systems —multi-tenant RAG backends, ingestion/analysis microservices, agents and automations— with NestJS, Python, PostgreSQL and vector databases, reusing my own components such as my open-source feedpulse.",
+        "Multi-channel ingestion (WhatsApp, Telegram, Web) and production deployment with observability.",
+        "Among the projects, the official chatbot for the Feria de Córdoba (Córdoba City Council).",
+        "Technical bridge with clients: I explain the trade-offs across accuracy, cost and latency."
       ],
       "url": "https://hagalink.es",
       "location": "Córdoba, Andalucía, España"
