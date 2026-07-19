@@ -28,14 +28,14 @@
   "work": [
     {
       "name": "Hagalink",
-      "position": "Chief Data Scientist · Partner",
+      "position": "Chief Data Scientist",
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
         "Partner and owner of the AI/ML domain end-to-end across multiple projects and clients: from discovery to product design, architecture and delivery. Final technical authority on AI/ML.",
         "I design and build a variety of AI systems —multi-tenant RAG backends, ingestion/analysis microservices, agents and automations— with NestJS, Python, PostgreSQL and vector databases, reusing my own components such as my open-source feedpulse.",
         "Multi-channel ingestion (WhatsApp, Telegram, Web) and production deployment with observability.",
-        "Among the projects, the official chatbot for the Feria de Córdoba (Córdoba City Council).",
+        "Among the projects, the official chatbot for the Feria de Córdoba (Córdoba City Council), inheriting BlakIA's products and responsibilities.",
         "Technical bridge with clients: I explain the trade-offs across accuracy, cost and latency."
       ],
       "url": "https://hagalink.es",
@@ -47,7 +47,7 @@
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Research in thermoluminescence dosimetry (TLD-100) with ML methods, resuming the line of my 2022 publication toward the doctoral thesis (in preparation)."
+        "Research in thermoluminescence dosimetry (TLD-100) with ML methods, resuming the line of my 2022 publication toward the doctoral thesis (in preparation), in collaboration with Hagalink on the development side."
       ],
       "url": "https://www.ciemat.es",
       "location": "Córdoba / Madrid, Spain"
