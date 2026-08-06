@@ -7,7 +7,7 @@
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
     "url": "https://www.fullfran.com",
-    "summary": "Physicist who builds AI systems for production. I use AI and simulations to solve real problems —from RAG pipelines and agents to multi-tenant backends— with Clean Architecture and ML at the core. Partner and owner of the AI/ML domain at Hagalink: I turn ambiguous client problems into reliable, observable services.",
+    "summary": "Physicist who builds AI systems for production. I use AI and simulations to solve real problems —from RAG pipelines and agents to multi-tenant backends— and I take them all the way to deployment. Partner and owner of the AI/ML domain at Hagalink: I turn ambiguous client problems into reliable, observable services.",
     "location": {
       "countryCode": "ES",
       "address": "Córdoba, Andalucía, España"
@@ -28,11 +28,11 @@
   "work": [
     {
       "name": "Hagalink",
-      "position": "Chief Data Scientist",
+      "position": "Lead AI Engineer · Partner",
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Partner and owner of the AI/ML domain end-to-end across multiple projects and clients: from discovery to product design, architecture and delivery. Final technical authority on AI/ML.",
+        "Technical owner of the AI/ML domain across multiple client projects: I lead the decisions from discovery to product design, architecture and delivery.",
         "I design and build a variety of AI systems —multi-tenant RAG backends, ingestion/analysis microservices, agents and automations— with NestJS, Python, PostgreSQL and vector databases, reusing my own components such as my open-source feedpulse.",
         "Multi-channel ingestion (WhatsApp, Telegram, Web) and production deployment with observability.",
         "Among the projects, the official chatbot for the Feria de Córdoba (Córdoba City Council), inheriting BlakIA's products and responsibilities.",
@@ -43,11 +43,12 @@
     },
     {
       "name": "Universidad de Córdoba / CIEMAT",
-      "position": "Pre-doctoral Researcher",
+      "position": "Research Collaborator · Part-time",
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Research in thermoluminescence dosimetry (TLD-100) with ML methods, resuming the line of my 2022 publication toward the doctoral thesis (in preparation), in collaboration with Hagalink on the development side."
+        "Ongoing research in thermoluminescence dosimetry (TLD-100) with ML methods, continuing the line of my 2023 publication, in collaboration with Hagalink on the development side.",
+        "Results accepted for presentation at the Annual Meeting of the Spanish Nuclear Society (SNE), October 2026; enrolling in the doctoral programme in the next admission call."
       ],
       "url": "https://www.ciemat.es",
       "location": "Córdoba / Madrid, Spain"
@@ -59,8 +60,9 @@
       "endDate": "2026-04-17",
       "highlights": [
         "Founded the company. Designed and implemented B2B Generative AI systems from scratch: RAG pipelines and autonomous agents for enterprise workflow automation.",
-        "Owned core architecture decisions, applying Lean methodologies and Clean Architecture to keep systems robust, scalable, and with minimal technical debt.",
-        "Official chatbot for the Feria de Córdoba (Córdoba City Council) and the Cruz de Guía chatbot for Holy Week (Association of Córdoba Brotherhoods): high-concurrency services during peak festival traffic."
+        "Owned core architecture decisions, applying Lean methodologies and standardizing reusable components and project structure across client deployments.",
+        "Official chatbot for the Feria de Córdoba (Córdoba City Council) and the Cruz de Guía chatbot for Holy Week (Association of Córdoba Brotherhoods): public-facing assistants running through the festival peaks.",
+        "Transitioned products, clients and responsibilities into Hagalink."
       ],
       "url": "https://www.linkedin.com/company/blakiatech/",
       "location": "Córdoba, Andalucía, España"
@@ -138,9 +140,15 @@
     },
     {
       "name": "Hybrid-RAG-example",
-      "description": "Teaching resource I built to train my students in production-grade Hybrid RAG — semantic + keyword retrieval with RRF, Clean Architecture.",
+      "description": "Teaching resource I built to train my students in production-grade Hybrid RAG — semantic + keyword retrieval fused with RRF, Clean Architecture.",
       "url": "https://github.com/FullFran/Hybrid-RAG-example",
       "keywords": ["Python", "RAG", "Clean Architecture", "RRF"]
+    },
+    {
+      "name": "llm-pii-redactor",
+      "description": "Reference implementation of PII redaction at the AI-provider boundary: the app depends on an interface, and a redacting wrapper keeps personal data inside the backend. Written for GDPR-sensitive public-sector deployments.",
+      "url": "https://github.com/FullFran/llm-pii-redactor",
+      "keywords": ["TypeScript", "PII", "GDPR", "LLM boundary"]
     },
     {
       "name": "claudeops-tui",
@@ -149,10 +157,10 @@
       "keywords": ["Go", "Bubbletea", "SQLite", "DX"]
     },
     {
-      "name": "Agent-skills-POC",
-      "description": "Built to upskill my team on agentic AI — framework-agnostic Agent Skills with Progressive Disclosure, MCP, and a stateless reasoning loop. Clean Architecture.",
-      "url": "https://github.com/FullFran/Agent-skills-POC",
-      "keywords": ["Python", "Agents", "MCP", "Clean Architecture"]
+      "name": "snow-mcrt",
+      "description": "Monte Carlo photon transport for light in snow, written from first principles and validated against closed-form radiative transfer and published albedo benchmarks. 3-D engine with a Fresnel surface and measured detection of buried objects.",
+      "url": "https://github.com/FullFran/snow-mcrt",
+      "keywords": ["Python", "Monte Carlo", "Radiative transfer", "Validation"]
     }
   ],
   "skills": [
