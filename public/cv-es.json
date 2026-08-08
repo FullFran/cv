@@ -62,6 +62,7 @@
         "Fundé la empresa. Diseño e implementación desde cero de sistemas B2B de IA generativa: pipelines RAG y agentes autónomos para la automatización de flujos de trabajo empresariales.",
         "Decisiones core de arquitectura, aplicando metodologías Lean y estandarizando componentes reutilizables y estructura de proyecto entre despliegues de cliente.",
         "Chatbot oficial de la Feria de Córdoba (Ayuntamiento de Córdoba) y chatbot Cruz de Guía de Semana Santa (Asociación de Cofradías Cordobesas): asistentes de cara al público funcionando durante los picos de las fiestas.",
+        "Reconocido con el premio Emprende UCO; startup acelerada en El Patio – Andalucía Open Future.",
         "Traspasé productos, clientes y responsabilidades a Hagalink."
       ],
       "url": "https://www.linkedin.com/company/blakiatech/",
@@ -166,11 +167,15 @@
   "skills": [
     {
       "name": "Arquitectura & backend",
-      "keywords": ["Clean / Hexagonal / DDD", "Diseño de sistemas", "Python", "TypeScript (NestJS)", "PostgreSQL"]
+      "keywords": ["Clean / Hexagonal / DDD", "Diseño de sistemas", "Python", "TypeScript (NestJS)", "FastAPI", "PostgreSQL", "Multi-tenant"]
     },
     {
       "name": "IA en producción",
-      "keywords": ["RAG", "Agentes", "Orquestación de LLMs", "Bases vectoriales", "Datos sintéticos"]
+      "keywords": ["RAG", "Agentes", "Orquestación de agentes (LangGraph, Mastra)", "MCP (Model Context Protocol)", "Embeddings", "Bases vectoriales", "Evaluación de LLM/SLM", "Anonimización de PII", "Human-in-the-loop", "Datos sintéticos"]
+    },
+    {
+      "name": "Infraestructura & despliegue",
+      "keywords": ["Docker", "Docker Compose", "Traefik", "CI/CD (GitHub Actions)", "Dokploy", "Linux / VPS"]
     },
     {
       "name": "Física computacional",

@@ -62,6 +62,7 @@
         "Founded the company. Designed and implemented B2B Generative AI systems from scratch: RAG pipelines and autonomous agents for enterprise workflow automation.",
         "Owned core architecture decisions, applying Lean methodologies and standardizing reusable components and project structure across client deployments.",
         "Official chatbot for the Feria de Córdoba (Córdoba City Council) and the Cruz de Guía chatbot for Holy Week (Association of Córdoba Brotherhoods): public-facing assistants running through the festival peaks.",
+        "Recognised with the Emprende UCO award; accelerated at El Patio – Andalucía Open Future.",
         "Transitioned products, clients and responsibilities into Hagalink."
       ],
       "url": "https://www.linkedin.com/company/blakiatech/",
@@ -166,11 +167,15 @@
   "skills": [
     {
       "name": "Architecture & backend",
-      "keywords": ["Clean / Hexagonal / DDD", "System design", "Python", "TypeScript (NestJS)", "PostgreSQL"]
+      "keywords": ["Clean / Hexagonal / DDD", "System design", "Python", "TypeScript (NestJS)", "FastAPI", "PostgreSQL", "Multi-tenant"]
     },
     {
       "name": "AI in production",
-      "keywords": ["RAG", "Agents", "LLM orchestration", "Vector databases", "Synthetic data"]
+      "keywords": ["RAG", "Agents", "Agent orchestration (LangGraph, Mastra)", "MCP (Model Context Protocol)", "Embeddings", "Vector databases", "LLM/SLM evaluation", "PII anonymisation", "Human-in-the-loop", "Synthetic data"]
+    },
+    {
+      "name": "Infrastructure & deployment",
+      "keywords": ["Docker", "Docker Compose", "Traefik", "CI/CD (GitHub Actions)", "Dokploy", "Linux / VPS"]
     },
     {
       "name": "Computational physics",
