@@ -80,6 +80,10 @@ Tailoring is mostly **ordering**, not new prose.
 
 He has twice asked to cut narrative detail. Do not re-add it.
 
+**Avoid self-congratulatory phrasing.** "Con herramientas propias, publicadas"
+was cut as cringe. State the fact, name the repository, and let the reader draw
+the conclusion. The CV should never sound like it is admiring itself.
+
 ## Step 5 — Honest gaps
 
 Never claim a missing capability. Handle it in one of three ways:

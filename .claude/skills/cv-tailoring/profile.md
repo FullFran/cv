@@ -133,7 +133,13 @@ Pinned order on GitHub, as he set it:
 3. **snow-mcrt** — Monte Carlo photon transport in snow, validated against closed-form radiative transfer and published albedo curves. Now also band integration for Sentinel-2/MODIS
 4. **feedpulse** — RSS platform, hexagonal/DDD, three runtimes, queues, observability
 5. **Agent-skills-POC** — framework-agnostic Agent Skills, Progressive Disclosure, MCP
-6. **claudeops-tui** ⭐2 — LLM usage and cost observability, Go + Bubbletea + SQLite
+6. **claudeops-tui** ⭐2 — usage, cost and task tracking for **AI coding assistants (Claude Code and OpenCode)**, Go + Bubbletea + SQLite
+
+⚠️ **Describe `claudeops-tui` accurately.** It measures his *development*
+assistants, not production LLM traffic. Calling it "observabilidad de agentes"
+or "LLMOps" reads as production model ops and is wrong. The accurate framing is
+also the stronger one whenever an offer asks about AI-assisted development or
+applying AI to the software lifecycle.
 
 Other public assets worth pulling in when relevant: `training-mcp` (Go MCP
 server, hexagonal, 32 tools, documented architecture), `vertir` ⭐2 (LLM plans
