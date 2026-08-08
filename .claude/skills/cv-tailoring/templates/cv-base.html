@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Francisco Manuel Olmedo Cortés — Ingeniero de IA</title>
+<style>
+  @page {
+    size: A4;
+    margin: 13mm 14mm 12mm 14mm;
+    @bottom-center {
+      content: "Francisco Manuel Olmedo Cortés · Ingeniero de IA · página " counter(page) " de " counter(pages);
+      font-family: "Fira Sans", sans-serif;
+      font-size: 7pt;
+      color: #94a3b8;
+      padding-top: 4mm;
+    }
+  }
+
+  :root {
+    --ink: #0f172a;
+    --body: #27303f;
+    --muted: #64748b;
+    --line: #dbe1ea;
+    --accent: #1d4ed8;
+    --accent-soft: #eef2ff;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    font-family: "Fira Sans", "DejaVu Sans", sans-serif;
+    font-size: 9.0pt;
+    line-height: 1.33;
+    color: var(--body);
+  }
+
+  body { margin: 0; }
+
+  a { color: var(--accent); text-decoration: none; }
+
+  /* ---------- Header ---------- */
+  header {
+    border-bottom: 2.2pt solid var(--ink);
+    padding-bottom: 3.4mm;
+    margin-bottom: 3.6mm;
+  }
+
+  h1 {
+    font-size: 20.5pt;
+    line-height: 1.08;
+    letter-spacing: -0.4pt;
+    margin: 0 0 1.1mm;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .role {
+    font-size: 10.4pt;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 2.2mm;
+  }
+
+  .contact {
+    font-size: 8.1pt;
+    color: var(--muted);
+  }
+  .contact span { white-space: nowrap; }
+  .contact span + span::before {
+    content: "·";
+    margin: 0 1.6mm;
+    color: var(--line);
+  }
+  .contact a { color: var(--body); }
+
+  /* ---------- Sections ---------- */
+  section { margin-bottom: 2.6mm; }
+
+  h2 {
+    font-size: 8.3pt;
+    font-weight: 700;
+    letter-spacing: 1.1pt;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 2.2mm;
+    padding-bottom: 1mm;
+    border-bottom: 0.7pt solid var(--line);
+  }
+
+  .summary {
+    margin: 0;
+    text-align: justify;
+    font-size: 9.5pt;
+  }
+  .summary strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Skills ---------- */
+  .skill-row {
+    display: flex;
+    margin-bottom: 1.5mm;
+    page-break-inside: avoid;
+  }
+  .skill-row:last-child { margin-bottom: 0; }
+  .skill-label {
+    width: 34mm;
+    flex: none;
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 8.8pt;
+    padding-top: 0.3mm;
+  }
+  .skill-items { font-size: 8.8pt; color: var(--body); }
+  .tag {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: #1e3a8a;
+    border-radius: 2pt;
+    padding: 0.25mm 1.5mm;
+    margin: 0 1mm 1mm 0;
+    font-size: 8.3pt;
+    white-space: nowrap;
+  }
+
+  /* ---------- Experience ---------- */
+  .job {
+    margin-bottom: 2.2mm;
+    page-break-inside: avoid;
+  }
+  .job:last-child { margin-bottom: 0; }
+
+  .job-head { margin-bottom: 0.9mm; }
+  .job-title {
+    font-size: 9.9pt;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .job-org { font-weight: 600; color: var(--accent); }
+  .job-meta {
+    font-size: 8.1pt;
+    color: var(--muted);
+  }
+  .job-meta span + span::before {
+    content: "·";
+    margin: 0 1.4mm;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 3.6mm;
+    list-style: none;
+  }
+  li {
+    position: relative;
+    margin-bottom: 0.7mm;
+    padding-left: 0.4mm;
+  }
+  li:last-child { margin-bottom: 0; }
+  li::before {
+    content: "▪";
+    position: absolute;
+    left: -3.4mm;
+    color: var(--accent);
+    font-size: 7pt;
+    top: -0.2mm;
+  }
+  li strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Projects ---------- */
+  .project {
+    margin-bottom: 1.5mm;
+    page-break-inside: avoid;
+  }
+  .project:last-child { margin-bottom: 0; }
+  .project-name {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .project-link {
+    font-size: 7.8pt;
+    color: var(--muted);
+  }
+  .project p {
+    margin: 0.2mm 0 0;
+    font-size: 8.8pt;
+  }
+
+  /* ---------- Two-column footer block ---------- */
+  .cols {
+    display: flex;
+    gap: 8mm;
+  }
+  .cols > div { flex: 1; }
+
+  .item { margin-bottom: 1.8mm; page-break-inside: avoid; }
+  .item:last-child { margin-bottom: 0; }
+  .item-title { font-weight: 600; color: var(--ink); font-size: 9pt; }
+  .item-sub { font-size: 8.3pt; color: var(--muted); }
+
+  .pub {
+    font-size: 8.6pt;
+    page-break-inside: avoid;
+  }
+  .pub-title { font-style: italic; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Francisco Manuel Olmedo Cortés</h1>
+  <p class="role">Ingeniero de IA · Físico · LLMs, RAG y agentes en producción</p>
+  <div class="contact">
+    <span>Córdoba, España · remoto</span>
+    <span><a href="mailto:franciscomanuelolmedocortes@gmail.com">franciscomanuelolmedocortes@gmail.com</a></span>
+    <span><a href="https://www.fullfran.com">fullfran.com</a></span>
+    <span><a href="https://github.com/FullFran">github.com/FullFran</a></span>
+    <span><a href="https://www.linkedin.com/in/francisco-olmedo-cortes/">in/francisco-olmedo-cortes</a></span>
+  </div>
+</header>
+
+<section>
+  <h2>Perfil</h2>
+  <p class="summary">
+    Físico que construye <strong>sistemas de IA Generativa que llegan a producción</strong>, no pruebas de
+    concepto. Diseño y despliego <strong>pipelines RAG, agentes y automatizaciones basadas en LLMs</strong>
+    sobre Python y TypeScript, con arquitectura limpia, bases de datos vectoriales y observabilidad desde
+    el primer día. Como responsable del dominio de IA/ML en Hagalink convierto problemas difusos de cliente
+    en servicios fiables —incluidos asistentes públicos con picos reales de tráfico— y explico sin rodeos
+    los compromisos entre precisión, coste computacional y latencia. Vengo de la física computacional:
+    me interesa <strong>entender cómo funcionan los modelos por dentro</strong>, no solo consumir la API.
+  </p>
+</section>
+
+<section>
+  <h2>Competencias técnicas</h2>
+
+  <div class="skill-row">
+    <div class="skill-label">IA Generativa &amp; LLMs</div>
+    <div class="skill-items">
+      <span class="tag">RAG (semántico + híbrido con RRF)</span><span class="tag">Agentes autónomos</span><span class="tag">Orquestación de agentes (LangGraph, Mastra)</span><span class="tag">Bases de datos vectoriales</span><span class="tag">Generación de datos sintéticos</span><span class="tag">MCP (Model Context Protocol)</span><span class="tag">Anonimización de PII (spaCy NER + OCR)</span><span class="tag">Human-in-the-loop (HIL)</span><span class="tag">Trazabilidad y auditoría</span>
+    </div>
+  </div>
+
+  <div class="skill-row">
+    <div class="skill-label">Lenguajes</div>
+    <div class="skill-items">
+      <span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">Go</span><span class="tag">SQL</span>
+    </div>
+  </div>
+
+  <div class="skill-row">
+    <div class="skill-label">Backend &amp; arquitectura</div>
+    <div class="skill-items">
+      <span class="tag">Clean / Hexagonal / DDD</span><span class="tag">Diseño de sistemas</span><span class="tag">NestJS</span><span class="tag">FastAPI</span><span class="tag">Microservicios</span><span class="tag">Colas y workers</span><span class="tag">PostgreSQL</span><span class="tag">Multi-tenant</span>
+    </div>
+  </div>
+
+  <div class="skill-row">
+    <div class="skill-label">Producción</div>
+    <div class="skill-items">
+      <span class="tag">Observabilidad</span><span class="tag">Testing production-grade</span><span class="tag">Benchmarking</span><span class="tag">Ingesta multi-canal (WhatsApp / Telegram / web)</span>
+    </div>
+  </div>
+
+  <div class="skill-row">
+    <div class="skill-label">Infraestructura &amp; despliegue</div>
+    <div class="skill-items">
+      <span class="tag">Docker</span><span class="tag">Docker Compose</span><span class="tag">Traefik</span><span class="tag">CI/CD (GitHub Actions)</span><span class="tag">Dokploy</span><span class="tag">Linux / VPS</span><span class="tag">Git</span>
+    </div>
+  </div>
+
+  <div class="skill-row">
+    <div class="skill-label">ML &amp; computación</div>
+    <div class="skill-items">
+      <span class="tag">Redes neuronales</span><span class="tag">Deep Learning para series temporales</span><span class="tag">Monte Carlo</span><span class="tag">Algoritmos genéticos</span><span class="tag">Métodos numéricos</span>
+    </div>
+  </div>
+
+  <div class="skill-row">
+    <div class="skill-label">Idiomas</div>
+    <div class="skill-items">Español (nativo) · Inglés (competencia profesional, B2)</div>
+  </div>
+</section>
+
+<section>
+  <h2>Experiencia</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">Lead AI Engineer · Socio <span class="job-org">— Hagalink</span></div>
+      <div class="job-meta"><span>Ene 2026 — Actualidad</span><span>Córdoba, España</span><span>hagalink.es</span></div>
+    </div>
+    <ul>
+      <li>Diseño y construyo <strong>sistemas de IA Generativa en producción</strong>: backends RAG multi-tenant, agentes, automatizaciones y microservicios de ingesta y análisis, con Python, NestJS, PostgreSQL y bases de datos vectoriales.</li>
+      <li><strong>Responsable técnico del dominio de IA/ML</strong> en varios proyectos de cliente: lidero las decisiones desde el descubrimiento hasta el diseño de producto, la arquitectura y la entrega.</li>
+      <li>Como parte de mi trabajo <strong>diseño aplicaciones completas de principio a fin</strong>: modelo de datos, arquitectura backend y orquestación de agentes.</li>
+      <li><strong>RAG documental multitenant para sector público</strong> con runtime agéntico (LangGraph.js), trazabilidad por fuente y cita, validación humana obligatoria y anonimización de PII previa a persistencia.</li>
+      <li>Ingesta multi-canal (WhatsApp, Telegram, web) y <strong>despliegue en producción con observabilidad</strong>.</li>
+      <li>Entre los proyectos, el <strong>chatbot oficial de la Feria de Córdoba</strong> (Ayuntamiento de Córdoba), heredando los productos y responsabilidades de BlakIA.</li>
+      
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">Fundador &amp; Arquitecto Técnico <span class="job-org">— BlakIA</span></div>
+      <div class="job-meta"><span>Jul 2024 — Abr 2026</span><span>Córdoba, España</span></div>
+    </div>
+    <ul>
+      <li>Fundé la empresa. Diseño e implementación <strong>desde cero de sistemas B2B de IA Generativa</strong>: pipelines RAG y agentes autónomos para automatizar flujos de trabajo empresariales.</li>
+      <li>Decisiones core de arquitectura, aplicando metodologías Lean y estandarizando componentes reutilizables y estructura de proyecto entre despliegues de cliente.</li>
+      <li>Asistentes de cara al público funcionando durante picos de fiestas: <strong>chatbot oficial de la Feria de Córdoba</strong> (Ayuntamiento de Córdoba) y <strong>chatbot Cruz de Guía</strong> de Semana Santa (Asociación de Cofradías Cordobesas).</li>
+      <li>Reconocido con el <strong>premio Emprende UCO</strong>; startup acelerada en <strong>El Patio – Andalucía Open Future</strong>.</li>
+      <li>Traspasé productos, clientes y responsabilidades a Hagalink.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">Investigador colaborador · Tiempo parcial <span class="job-org">— Universidad de Córdoba / CIEMAT</span></div>
+      <div class="job-meta"><span>Ene 2026 — Actualidad</span><span>Córdoba / Madrid, España</span></div>
+    </div>
+    <ul>
+      <li>Investigación en curso en <strong>dosimetría termoluminiscente (TLD-100) con métodos de ML</strong>, continuando la línea de mi publicación de 2023, en colaboración con Hagalink para el desarrollo.</li>
+      <li>Resultados aceptados para presentación en la Reunión Anual de la Sociedad Nuclear Española (SNE), octubre de 2026; matriculación en el programa de doctorado en la próxima convocatoria.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">Ingeniero de Software Científico <span class="job-org">— Universidad de Córdoba (proyecto confidencial)</span></div>
+      <div class="job-meta"><span>Sep 2024 — Ene 2025</span><span>Córdoba, España</span></div>
+    </div>
+    <ul>
+      <li>Refactoricé un <strong>simulador científico legacy</strong> (ray tracing) aplicando Clean Architecture; introduje control de versiones y buenas prácticas de desarrollo en el grupo.</li>
+      <li>Construí un <strong>optimizador basado en algoritmos genéticos</strong> para el diseño de cristales (medios ópticos desordenados).</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">Ingeniero de Software I+D <span class="job-org">— IDENER.AI</span></div>
+      <div class="job-meta"><span>Abr 2024 — Jul 2024</span><span>Sevilla, España</span></div>
+    </div>
+    <ul>
+      <li>Apliqué modelos de <strong>Deep Learning para predicción de series temporales</strong>, optimizando las estimaciones de producción energética.</li>
+      <li>Traducción de requerimientos científicos teóricos a código eficiente y funcional en un entorno ágil de I+D.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">Desarrollador científico <span class="job-org">— Universidad de Córdoba / CIEMAT</span></div>
+      <div class="job-meta"><span>Jul 2022 — Jun 2023</span><span>Madrid / Córdoba, España</span></div>
+    </div>
+    <ul>
+      <li>Simulador físico basado en resolución numérica de ecuaciones diferenciales (Runge-Kutta) en <strong>Python</strong>, desplegado como herramienta web con Streamlit.</li>
+      <li><strong>Generación de datos sintéticos</strong>: uso del simulador como «oráculo» para producir datasets de alta precisión orientados a Deep Learning.</li>
+      <li>Diseño y entrenamiento de redes neuronales densas para evaluación de parámetros cinéticos, con <strong>publicación peer-reviewed</strong> como resultado.</li>
+      <li>Impartí un curso introductorio de Python para computación científica, IA y ciencia de datos.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Proyectos seleccionados (open source)</h2>
+
+  <div class="project">
+    <div><span class="project-name">Hybrid-RAG-example</span> <span class="project-link">github.com/FullFran/Hybrid-RAG-example · Python, RAG, Clean Architecture, RRF</span></div>
+    <p>Recurso didáctico para formar a mis alumnos en <strong>Hybrid RAG de nivel producción</strong>: recuperación semántica + keywords fusionadas con Reciprocal Rank Fusion, sobre Clean Architecture.</p>
+  </div>
+
+  <div class="project">
+    <div><span class="project-name">llm-pii-redactor</span> <span class="project-link">github.com/FullFran/llm-pii-redactor · TypeScript, PII, RGPD</span></div>
+    <p>Patrón de <strong>redacción de PII en la frontera con el proveedor de IA</strong>: un wrapper redactor mantiene los datos personales dentro del backend. Destilado de trabajo real en sector público.</p>
+  </div>
+
+  <div class="project">
+    <div><span class="project-name">feedpulse</span> <span class="project-link">github.com/FullFran/feedpulse · TypeScript, Hexagonal, DDD, Observabilidad</span></div>
+    <p>Plataforma de monitorización RSS con <strong>arquitectura hexagonal/DDD</strong> — tres runtimes (api / scheduler / worker), colas, benchmarks y observabilidad.</p>
+  </div>
+
+  <div class="project">
+    <div><span class="project-name">claudeops-tui</span> <span class="project-link">github.com/FullFran/claudeops-tui · Go, Bubbletea, SQLite</span></div>
+    <p>TUI local para monitorizar <strong>uso, coste y tareas de agentes de IA</strong> (Claude Code): observabilidad práctica del gasto en LLMs.</p>
+  </div>
+
+  <div class="project">
+    <div><span class="project-name">snow-mcrt</span> <span class="project-link">github.com/FullFran/snow-mcrt · Python, Monte Carlo, Validación</span></div>
+    <p>Transporte Monte Carlo de fotones en nieve escrito <strong>desde primeros principios</strong> y validado contra transferencia radiativa en forma cerrada y curvas de albedo publicadas.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Formación y publicaciones</h2>
+  <div class="cols">
+    <div>
+      <div class="item">
+        <div class="item-title">Máster en Tecnología Física: Investigación y Aplicaciones</div>
+        <div class="item-sub">Universidad de Córdoba · 2023 — 2025</div>
+      </div>
+      <div class="item">
+        <div class="item-title">Grado en Física</div>
+        <div class="item-sub">Universidad de Córdoba · 2018 — 2023<br>Matrícula de Honor en el Trabajo Fin de Grado</div>
+      </div>
+    </div>
+    <div>
+      <div class="pub">
+        <span class="pub-title">Correlation between figure of merit function and deviation in the assessment of kinetic parameters in realistic TLD-100 behavior using fully-connected neural networks</span><br>
+        <span class="item-sub">Radiation Physics and Chemistry (Elsevier), 2023 · doi.org/10.1016/j.radphyschem.2023.111259</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Ideas de proyectos — IA y datos</title>
+<style>
+  @page { size: 338mm 190mm; margin: 0; }
+
+  :root {
+    --bg: #0b1220;
+    --panel: #16223a;
+    --ink: #f1f5f9;
+    --dim: #94a3b8;
+    --faint: #64748b;
+    --line: #27354f;
+    --teal: #2dd4bf;
+    --blue: #60a5fa;
+    --amber: #fbbf24;
+    --rose: #fb7185;
+    --green: #4ade80;
+    --violet: #c4b5fd;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    background: var(--bg);
+    font-family: "Fira Sans", "DejaVu Sans", sans-serif;
+    color: var(--ink);
+    font-size: 12pt;
+    line-height: 1.45;
+  }
+  body { margin: 0; }
+
+  .slide {
+    width: 338mm; height: 190mm;
+    padding: 15mm 20mm;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slide:last-child { page-break-after: auto; }
+
+  .kicker {
+    font-size: 9pt; letter-spacing: 2pt; text-transform: uppercase;
+    color: var(--teal); font-weight: 600; margin-bottom: 3mm;
+  }
+
+  h1 { font-size: 40pt; line-height: 1.02; letter-spacing: -1pt; margin: 0 0 5mm; font-weight: 700; }
+  h2 { font-size: 25pt; line-height: 1.08; letter-spacing: -0.6pt; margin: 0 0 6mm; font-weight: 700; }
+  .sub { font-size: 13pt; color: var(--dim); margin: 0; }
+
+  .num { color: var(--faint); position: absolute; bottom: 8mm; right: 20mm; font-size: 8.5pt; }
+  .foot { color: var(--faint); position: absolute; bottom: 8mm; left: 20mm; font-size: 8.5pt; }
+
+  .rule { width: 40mm; height: 2.5pt; background: var(--teal); margin: 0 0 7mm; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 10.5pt; }
+  th {
+    text-align: left; font-size: 8.5pt; letter-spacing: 1pt; text-transform: uppercase;
+    color: var(--faint); font-weight: 600; padding: 0 3mm 2.5mm 0;
+    border-bottom: 1pt solid var(--line);
+  }
+  td { padding: 2.6mm 3mm 2.6mm 0; border-bottom: 0.5pt solid var(--line); vertical-align: top; }
+  td.k { font-weight: 600; color: #fff; }
+
+  ul { margin: 0; padding-left: 5mm; list-style: none; }
+  li { position: relative; margin-bottom: 2.8mm; }
+  li::before { content: "▪"; position: absolute; left: -5mm; color: var(--teal); font-size: 9pt; }
+  li strong { color: #fff; }
+
+  .cols { display: flex; gap: 8mm; }
+  .cols > div { flex: 1; }
+
+  .card { background: var(--panel); padding: 6mm; border-left: 2.5pt solid var(--teal); }
+  .card h3 { margin: 0 0 3mm; font-size: 13pt; }
+  .card p { margin: 0; font-size: 10pt; color: var(--dim); }
+  .card.b { border-left-color: var(--blue); }
+  .card.a { border-left-color: var(--amber); }
+  .card.r { border-left-color: var(--rose); }
+  .card.v { border-left-color: var(--violet); }
+
+  .big { font-size: 19pt; line-height: 1.32; font-weight: 600; letter-spacing: -0.3pt; }
+  .mono { font-family: "Fira Mono", monospace; }
+
+  .t { color: var(--teal); }
+  .b { color: var(--blue); }
+  .a { color: var(--amber); }
+  .r { color: var(--rose); }
+  .g { color: var(--green); }
+  .v { color: var(--violet); }
+  .muted { color: var(--dim); }
+
+  .pill {
+    display: inline-block; font-size: 8pt; padding: 0.5mm 2mm; border-radius: 2pt;
+    background: #24324a; color: var(--dim);
+  }
+  .pill.ok { background: #14532d; color: var(--green); }
+  .pill.hi { background: #0f3f43; color: var(--teal); }
+  .pill.wr { background: #4a3410; color: var(--amber); }
+
+  .idea { margin-bottom: 3.4mm; page-break-inside: avoid; }
+  .idea .h { font-size: 12.5pt; font-weight: 700; color: #fff; }
+  .idea .d { font-size: 10pt; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="slide">
+  <div class="kicker">Portfolio · 8 de agosto de 2026</div>
+  <h1>Ideas de proyectos<br>de IA y datos</h1>
+  <div class="rule"></div>
+  <p class="sub">Ocho candidatos que tienen que servir a la vez<br>como pieza de portfolio y como herramienta de uso diario</p>
+  <div class="foot">Francisco Manuel Olmedo Cortés</div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <div class="kicker">El diagnóstico</div>
+  <h2>Qué le falta al portfolio</h2>
+  <p class="big">Los seis repos pineados son todos <span class="t">sistemas</span>.<br>
+  Ninguno dice: «cogí datos, entrené un modelo, lo evalué<br>contra una línea base y lo puse a decidir».</p>
+  <div class="cols" style="margin-top:10mm">
+    <div class="card b">
+      <h3 class="b">Lo que ya se demuestra</h3>
+      <p>RAG, agentes, MCP, arquitectura hexagonal, física computacional, infraestructura y despliegue, observabilidad.</p>
+    </div>
+    <div class="card r">
+      <h3 class="r">Lo que no aparece</h3>
+      <p>El ciclo completo del dato con evaluación honesta. Es justo el hueco para las ofertas de Data Scientist, y las de IA también lo miran.</p>
+    </div>
+    <div class="card a">
+      <h3 class="a">El criterio de selección</h3>
+      <p>Portfolio <strong>y</strong> uso diario. Lo que solo cumple una de las dos cosas no entra en la lista.</p>
+    </div>
+  </div>
+  <div class="num">2</div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <div class="kicker">La elegida</div>
+  <h2>Banco de evaluación de LLMs y agentes</h2>
+  <p class="sub" style="margin-bottom:7mm">Una TUI para probar y comparar agentes, en la línea de <span class="mono">claudeops-tui</span>.</p>
+  <p class="big">Casi todos los bancos ejecutan el caso <span class="r">una vez</span>,<br>
+  sacan un número y lo pintan bonito.<br>
+  Con un LLM, eso es <span class="r">ruido disfrazado de medida</span>.</p>
+  <div class="cols" style="margin-top:9mm">
+    <div class="card r">
+      <h3 class="r">Lo que hace todo el mundo</h3>
+      <p style="font-size:13pt;color:#fff" class="mono">A: 0,82 &nbsp; B: 0,79</p>
+      <p style="margin-top:3mm">¿B es peor, o esa tirada salió mal? No hay forma de saberlo.</p>
+    </div>
+    <div class="card">
+      <h3 class="t">Lo que se puede hacer aquí</h3>
+      <p style="font-size:13pt;color:#fff" class="mono">A − B = 0,03 ± 0,01 &nbsp; n=30</p>
+      <p style="margin-top:3mm">Muestreo repetido, varianza, barras de error, significancia. <strong>La ventaja injusta de ser físico.</strong></p>
+    </div>
+  </div>
+  <p class="muted" style="margin-top:8mm">Eso —y no la TUI— es lo que lo convierte en portfolio.</p>
+  <div class="num">3</div>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <div class="kicker">Banco de evaluación</div>
+  <h2>Evaluar respuestas ≠ evaluar agentes</h2>
+  <table>
+    <tr><th style="width:22%"></th><th style="width:33%">Respuesta única</th><th>Trayectoria de agente</th></tr>
+    <tr><td class="k">Qué se mide</td><td>La salida</td><td>La secuencia: qué herramientas llamó, en qué orden, cuántos pasos</td></tr>
+    <tr><td class="k">Fallos típicos</td><td>Contenido incorrecto</td><td>Bucles, herramienta equivocada, se rinde pronto, sobre-llama</td></tr>
+    <tr><td class="k">Métricas</td><td>Acierto, calidad</td><td>Éxito de tarea, pasos hasta resolver, llamadas innecesarias, coste por tarea resuelta</td></tr>
+    <tr><td class="k">Herramientas</td><td>Muchas</td><td class="t"><strong>Casi ninguna decente</strong></td></tr>
+  </table>
+  <div class="card" style="margin-top:9mm">
+    <h3 class="t">Por qué importa ahora</h3>
+    <p>The Whiteam pide literalmente «evaluación de calidad de respuestas, métricas de calidad, evaluación continua». Sngular pide evaluación y mejora de modelos. La segunda columna es donde está el valor y donde apenas hay competencia.</p>
+  </div>
+  <div class="num">4</div>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <div class="kicker">Banco de evaluación</div>
+  <h2>Forma y alcance de la v1</h2>
+  <div class="cols">
+    <div>
+      <p class="kicker" style="color:var(--blue)">Arquitectura</p>
+      <ul>
+        <li><strong>Go + Bubbletea.</strong> No es nostalgia: diferencia de un mar de librerías Python y es stack que ya domina.</li>
+        <li>El sujeto bajo prueba se conecta por <strong>subproceso, HTTP o MCP</strong> → agnóstico del lenguaje del agente.</li>
+        <li>Misma arquitectura de puertos que <span class="mono">training-mcp</span>.</li>
+        <li>SQLite para persistencia y detección de regresiones entre ejecuciones.</li>
+      </ul>
+    </div>
+    <div>
+      <p class="kicker" style="color:var(--amber)">Puntuación, por orden de preferencia</p>
+      <ul>
+        <li><strong>Aserción programática</strong> — barata y fiable</li>
+        <li><strong>Exact / fuzzy match</strong></li>
+        <li><strong>LLM como juez</strong> — último recurso</li>
+      </ul>
+      <p class="kicker" style="color:var(--green);margin-top:7mm">Siempre presentes</p>
+      <ul>
+        <li><strong>n ejecuciones</strong> por caso: media, desviación, intervalo</li>
+        <li><strong>Coste y latencia</strong> junto a la calidad</li>
+        <li>Comparar dos configuraciones y decir si la diferencia es <strong>significativa</strong></li>
+      </ul>
+    </div>
+  </div>
+  <p class="muted" style="margin-top:7mm"><strong>Fuera de la v1:</strong> multi-agente, evaluación humana en el bucle, integración con CI.</p>
+  <div class="num">5</div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div class="kicker">Banco de evaluación</div>
+  <h2>Los dos riesgos, dichos antes de empezar</h2>
+  <div class="cols">
+    <div class="card r">
+      <h3 class="r">LLM como juez es una trampa cómoda</h3>
+      <p>Es el método fácil y el que más gente usa <strong>sin validarlo</strong>.</p>
+      <p style="margin-top:3mm">Si entra, hay que medir su concordancia con juicio humano sobre una muestra.</p>
+      <p style="margin-top:3mm;color:#fff">Un juez sin validar es un número inventado con más pasos.</p>
+    </div>
+    <div class="card a">
+      <h3 class="a">El coste se dispara</h3>
+      <p style="font-size:13pt;color:#fff" class="mono">30 rep × 50 casos × 2 configs<br>= 3.000 llamadas</p>
+      <p style="margin-top:3mm">Hay que diseñar el muestreo desde el principio: modelos baratos para iterar, caché de resultados idénticos, y que el número de repeticiones lo decida quien lo usa.</p>
+    </div>
+  </div>
+  <div class="card v" style="margin-top:9mm">
+    <h3 class="v">Primer paso</h3>
+    <p>Diseño del dominio —qué es un caso, una ejecución y un juicio— y esqueleto en Go con los puertos. <strong>Nada de TUI hasta que el modelo esté claro.</strong></p>
+  </div>
+  <div class="num">6</div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="kicker">Idea 2</div>
+  <h2>Surrogate neuronal de <span class="mono" style="font-size:22pt">snow-mcrt</span></h2>
+  <p class="big">El motor Monte Carlo tarda minutos por configuración.<br>
+  Entrenar una red que prediga el albedo directamente,<br>
+  <span class="t">usando el motor como oráculo</span> para generar el dataset.</p>
+  <div class="cols" style="margin-top:9mm">
+    <div class="card">
+      <h3 class="t">La ventaja injusta</h3>
+      <p>Es el patrón exacto de la publicación de 2023 —simulador como oráculo, red entrenada sobre etiquetas exactas— pero público y con un caso nuevo.</p>
+      <p style="margin-top:3mm">El generador de datos <strong>ya está escrito y validado</strong>.</p>
+    </div>
+    <div class="card b">
+      <h3 class="b">Qué demuestra</h3>
+      <p>Entrenamiento con datos propios y evaluación contra verdad conocida. El <em>surrogate modeling</em> es un nicho serio en física + ML.</p>
+      <p style="margin-top:3mm">Para COTESA o cualquier centro de investigación, es directamente su lenguaje.</p>
+    </div>
+    <div class="card a">
+      <h3 class="a">A comprobar antes</h3>
+      <p>Cuántas configuraciones se pueden generar en un tiempo razonable, y si el espacio de parámetros da para un dataset con sentido.</p>
+    </div>
+  </div>
+  <div class="num">7</div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="kicker">Idea 3</div>
+  <h2>Radar de convocatorias públicas</h2>
+  <p class="big">Nace de un dolor real: la 9ª convocatoria de la UCO abre el
+  <span class="a">18 de septiembre con una semana de plazo</span>, y su web afirmaba
+  que la 8ª seguía abierta cuando el calendario oficial la daba cerrada.</p>
+  <div class="cols" style="margin-top:9mm">
+    <div class="card">
+      <h3 class="t">Qué hace</h3>
+      <p>Ingesta de BOUCO, BOE y portales de OPIs → extracción estructurada con LLM (organismo, perfil, titulación exigida, plazo) → match contra perfil → aviso.</p>
+    </div>
+    <div class="card b">
+      <h3 class="b">Qué demuestra</h3>
+      <p>Extracción estructurada y RAG sobre documento jurídico-administrativo. Sector público es dominio propio.</p>
+    </div>
+    <div class="card a">
+      <h3 class="a">A comprobar antes</h3>
+      <p>Si BOUCO y BOE son accesibles de forma programática y estable. CIEMAT ya se sabe que sirve mal el certificado intermedio y esconde el listado tras un portlet de Liferay.</p>
+    </div>
+  </div>
+  <div class="num">8</div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <div class="kicker">Ideas 4 a 8</div>
+  <h2>El resto de la lista</h2>
+  <div class="cols">
+    <div>
+      <div class="idea">
+        <div class="h"><span class="v">4.</span> Enrutador de modelos por coste y calidad</div>
+        <div class="d">El modelo más barato que supere un listón de calidad, medido. Combina <span class="mono">claudeops-tui</span> (coste) con la evaluación que ya se hace en Hagalink. Ahorra dinero desde la primera semana.</div>
+      </div>
+      <div class="idea">
+        <div class="h"><span class="v">5.</span> Analítica de los datos de entrenamiento</div>
+        <div class="d">Meses de dataset propio en <span class="mono">training-mcp</span>. Su fuerza: <strong>ya hay línea base documentada</strong> (<span class="mono">RecommendSets</span>, una interpolación hecha a mano). Validar o superar una baseline explícita vale mucho más que un modelo sin nada contra lo que comparar.</div>
+      </div>
+      <div class="idea">
+        <div class="h"><span class="v">6.</span> Banco de evaluación de recuperación (RAG)</div>
+        <div class="d">Recall@k, MRR, nDCG y una ablación honesta de RRF frente a semántico puro. Medir es más raro que construir.</div>
+      </div>
+    </div>
+    <div>
+      <div class="idea">
+        <div class="h"><span class="v">7.</span> Detección de anomalías en despliegues</div>
+        <div class="d">Autoencoders sobre métricas de Docker, Traefik y Dokploy. <strong>Es el mismo método del doctorado</strong> con las curvas glow, en otro dominio y en versión pública.</div>
+      </div>
+      <div class="idea">
+        <div class="h"><span class="v">8.</span> Pipeline de contenido con predicción de alcance</div>
+        <div class="d"><span class="mono">feedpulse</span> ya resuelve el RSS. Lo interesante: <strong>los posts pasados son un dataset etiquetado</strong> — reacciones y comentarios son la variable objetivo. Riesgo serio: pocas muestras.</div>
+      </div>
+      <div class="card" style="margin-top:5mm">
+        <h3 class="t">Las ideas 1, 4 y 6 comparten motor</h3>
+        <p>Lo más probable es que el enrutador y la evaluación de recuperación acaben siendo <strong>tipos de caso dentro del banco</strong>, no repos separados. Conviene construir la 1 con eso en mente.</p>
+      </div>
+    </div>
+  </div>
+  <div class="num">9</div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="kicker">Comparativa</div>
+  <h2>Las ocho, en una tabla</h2>
+  <table>
+    <tr>
+      <th style="width:4%">#</th><th style="width:26%">Proyecto</th>
+      <th style="width:14%">Cierra el hueco</th><th style="width:12%">Uso diario</th>
+      <th style="width:13%">Diferencial</th><th>Riesgo principal</th>
+    </tr>
+    <tr><td class="k t">1</td><td class="k">Banco de evaluación (TUI)</td><td><span class="pill hi">Alto</span></td><td><span class="pill hi">Alto</span></td><td><span class="pill ok">Muy alto</span></td><td>Coste de llamadas</td></tr>
+    <tr><td class="k">2</td><td class="k">Surrogate de snow-mcrt</td><td><span class="pill ok">Muy alto</span></td><td><span class="pill">Medio</span></td><td><span class="pill ok">Muy alto</span></td><td class="g">Bajo</td></tr>
+    <tr><td class="k">3</td><td class="k">Radar de convocatorias</td><td><span class="pill">Medio</span></td><td><span class="pill ok">Muy alto</span></td><td><span class="pill hi">Alto</span></td><td>Acceso a las fuentes</td></tr>
+    <tr><td class="k">4</td><td class="k">Enrutador coste/calidad</td><td><span class="pill hi">Alto</span></td><td><span class="pill ok">Muy alto</span></td><td><span class="pill hi">Alto</span></td><td>Se solapa con la 1</td></tr>
+    <tr><td class="k">5</td><td class="k">Analítica de entrenamiento</td><td><span class="pill ok">Muy alto</span></td><td><span class="pill hi">Alto</span></td><td><span class="pill">Medio</span></td><td>Volumen de datos</td></tr>
+    <tr><td class="k">6</td><td class="k">Evaluación de recuperación</td><td><span class="pill hi">Alto</span></td><td><span class="pill">Medio</span></td><td><span class="pill">Medio</span></td><td>Se solapa con la 1</td></tr>
+    <tr><td class="k">7</td><td class="k">Anomalías en despliegues</td><td><span class="pill hi">Alto</span></td><td><span class="pill">Medio</span></td><td><span class="pill">Medio</span></td><td>Sin fallos que detectar</td></tr>
+    <tr><td class="k">8</td><td class="k">Pipeline de contenido</td><td><span class="pill">Medio</span></td><td><span class="pill hi">Alto</span></td><td><span class="pill">Bajo</span></td><td>Pocas muestras</td></tr>
+  </table>
+  <div class="num">10</div>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <div class="kicker">Antes de escribir código</div>
+  <h2>Dos reglas y un recordatorio</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 class="t">1. Verificar primero el supuesto que puede matar el proyecto</h3>
+      <p>En cada idea está anotado cuál es. La 5 y la 8 dependen de tener datos suficientes; la 3, de que las fuentes sean accesibles; la 7, de que la infraestructura falle alguna vez.</p>
+      <p style="margin-top:3mm;color:#fff">Media hora de comprobación ahorra una semana.</p>
+    </div>
+    <div class="card b">
+      <h3 class="b">2. El modelo de dominio antes que la interfaz</h3>
+      <p>Para el banco: qué es un caso, qué es una ejecución, qué es un juicio. Y los puertos.</p>
+      <p style="margin-top:3mm;color:#fff">La TUI es lo último, no lo primero. Es la parte divertida y la que menos decide.</p>
+    </div>
+  </div>
+  <div class="card a" style="margin-top:9mm">
+    <h3 class="a">Y el recordatorio incómodo</h3>
+    <p style="font-size:12pt">Ninguna de las ocho desbloquea ofertas tan rápido como <strong>un despliegue en cloud</strong>, que sigue siendo el único hueco técnico que aparece repetido en las ofertas a las que se está aplicando: Secture, Sngular y The Whiteam.</p>
+  </div>
+  <div class="foot">Documento completo: ~/fullfran/ideas-proyectos.md</div>
+  <div class="num">11</div>
+</section>
+
+</body>
+</html>
