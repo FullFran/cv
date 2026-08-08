@@ -32,6 +32,29 @@ Last verified: 8 August 2026.
 (en curso)" or "investigador colaborador". **Not "doctorando"** — enrolment is
 in the next admission call. He accepted this framing.
 
+## The continuity framing — use it
+
+BlakIA's products, clients and responsibilities **transferred into Hagalink**,
+and he still owns them. Stated that way, the timeline stops reading as "founded
+something for two years, then took a different job" and starts reading as
+**three continuous years owning the same products and clients** — including the
+Feria de Córdoba chatbot for the Ayuntamiento.
+
+It costs one bullet and it changes the shape of the whole CV. Use it whenever
+an offer values ownership, end-to-end responsibility, or seniority. Phrasing
+that works:
+
+> Continuidad de la propiedad técnica iniciada en BlakIA: Hagalink asumió sus
+> productos, clientes y responsabilidades, y sigo siendo el responsable de
+> ellos —incluido el chatbot oficial de la Feria de Córdoba, del Ayuntamiento
+> de Córdoba.
+
+Put it in the **Hagalink** block, not the BlakIA one: that is where it closes
+the loop. Keep the mirror sentence in BlakIA short ("Traspasé productos,
+clientes y responsabilidades a Hagalink") so it does not read twice.
+
+His own observation, and a good one.
+
 ## Education
 
 - **Máster** en Tecnología Física: Investigación y Aplicaciones — UCO, 2023–2025
