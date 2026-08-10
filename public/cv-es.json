@@ -55,7 +55,7 @@
     },
     {
       "name": "BlakIA",
-      "position": "Fundador & Arquitecto Técnico",
+      "position": "Fundador",
       "startDate": "2024-07-01",
       "endDate": "2026-04-17",
       "highlights": [
@@ -122,6 +122,20 @@
       "startDate": "2018-09-01",
       "endDate": "2023-06-30",
       "score": "Matrícula de Honor en el Trabajo Fin de Grado (TFG)"
+    },
+    {
+      "institution": "IUNIT Centro Universitario",
+      "area": "Inteligencia Artificial",
+      "studyType": "Especialista",
+      "startDate": "2024-10-01",
+      "endDate": "2025-10-31"
+    },
+    {
+      "institution": "EmprendeUCO – Diputación de Córdoba",
+      "area": "Emprendimiento, mentoría y validación de proyectos",
+      "studyType": "Programa",
+      "startDate": "2025-03-01",
+      "endDate": "2025-09-30"
     }
   ],
   "publications": [
@@ -135,9 +149,15 @@
   "projects": [
     {
       "name": "feedpulse",
-      "description": "Plataforma de monitorización RSS con arquitectura hexagonal/DDD — tres runtimes (api/scheduler/worker), observabilidad, colas, benchmarks y tests production-grade.",
+      "description": "Servicio de monitorización RSS construido para un proyecto de Hagalink que seguía más de 10.000 fuentes con alertas por palabra clave, integrado después en una plataforma más amplia. Tres runtimes (api/scheduler/worker), colas BullMQ, métricas Prometheus y Kubernetes con KEDA autoescalando el worker por profundidad de cola. El CI aplica los manifiestos a un clúster real en cada cambio.",
       "url": "https://github.com/FullFran/feedpulse",
-      "keywords": ["TypeScript", "Hexagonal", "DDD", "Observabilidad"]
+      "keywords": ["TypeScript", "NestJS", "Kubernetes", "KEDA", "BullMQ", "Hexagonal", "DDD", "Observabilidad"]
+    },
+    {
+      "name": "Agent-skills-POC",
+      "description": "Agent Skills agnósticos del framework, con Progressive Disclosure, MCP y un bucle de razonamiento sin estado. Construido para formar a mi equipo en IA agéntica. Clean Architecture.",
+      "url": "https://github.com/FullFran/Agent-skills-POC",
+      "keywords": ["Python", "Agent Skills", "MCP", "Progressive Disclosure"]
     },
     {
       "name": "Hybrid-RAG-example",
@@ -167,15 +187,15 @@
   "skills": [
     {
       "name": "Arquitectura & backend",
-      "keywords": ["Clean / Hexagonal / DDD", "Diseño de sistemas", "Python", "TypeScript (NestJS)", "FastAPI", "PostgreSQL", "Multi-tenant"]
+      "keywords": ["Clean / Hexagonal / DDD", "Diseño de sistemas", "Python", "TypeScript (NestJS)", "Go", "FastAPI", "PostgreSQL", "Multi-tenant"]
     },
     {
       "name": "IA en producción",
-      "keywords": ["RAG", "Agentes", "Orquestación de agentes (LangGraph, Mastra)", "MCP (Model Context Protocol)", "Embeddings", "Bases vectoriales", "Evaluación de LLM/SLM", "Anonimización de PII", "Human-in-the-loop", "Datos sintéticos"]
+      "keywords": ["RAG", "Agentes", "Orquestación de agentes (LangGraph, LangChain, Mastra)", "MCP (Model Context Protocol)", "Embeddings", "Bases vectoriales", "Evaluación de LLM/SLM", "Langfuse", "OpenTelemetry", "Anonimización de PII", "Human-in-the-loop", "Datos sintéticos", "n8n", "Make"]
     },
     {
       "name": "Infraestructura & despliegue",
-      "keywords": ["Docker", "Docker Compose", "Traefik", "CI/CD (GitHub Actions)", "Dokploy", "Linux / VPS"]
+      "keywords": ["Docker", "Docker Compose", "Kubernetes", "KEDA", "Traefik", "CI/CD (GitHub Actions)", "Dokploy", "Linux / VPS", "Prometheus"]
     },
     {
       "name": "Física computacional",
