@@ -16,14 +16,28 @@ Last verified: 8 August 2026.
 
 ## Roles
 
-| Role | Period | Notes |
-|---|---|---|
-| Lead AI Engineer · Socio, **Hagalink** | Ene 2026 – | Owns the AI/ML domain. Also does data science and LLM/SLM evaluation |
-| Investigador colaborador, **UCO / CIEMAT** | Ene 2026 – | Doctoral research line, part-time |
-| **Fundador** & Arquitecto Técnico, **BlakIA** | Jul 2024 – Abr 2026 | Emprende UCO award; accelerated at El Patio – Andalucía Open Future |
-| Ingeniero de Software Científico, **UCO** | Sep 2024 – Ene 2025 | Confidential project |
-| Ingeniero de Software I+D, **IDENER.AI** | Abr 2024 – Jul 2024 | Deep learning, time series |
-| Desarrollador científico, **UCO / CIEMAT** | Jul 2022 – Jun 2023 | Led to the publication |
+Verified against LinkedIn's `details/experience/` page on 10 August 2026. That
+page is the authority — the rendered profile hides and collapses entries, and
+reading it instead produced three wrong "gaps" in a row.
+
+| Role | Period | LinkedIn title | Notes |
+|---|---|---|---|
+| Lead AI Engineer · Socio, **Hagalink** | Ene 2026 – | Data Scientist & Lead AI Engineer | Owns the AI/ML domain. Also data science and LLM/SLM evaluation |
+| Investigador colaborador, **UCO / CIEMAT** | Ene 2026 – | ⚠️ **not on LinkedIn** | Doctoral research line, part-time |
+| Technical Contributor · AI & Platform, **Cordob.ai** | Jun 2025 – | same | ⚠️ Was missing from this file entirely until 10 Aug |
+| **Fundador**, **BlakIA** | Jul 2024 – Abr 2026 | Fundador | Emprende UCO award; El Patio – Andalucía Open Future |
+| Freelance AI & ML Developer | Jul 2024 – Jun 2025 | same | ⚠️ Was missing from this file |
+| Ingeniero de Software Científico, **UCO** | Sep 2024 – Ene 2025 | Investigador con Cargo a Proyecto | Confidential project |
+| Ingeniero de Software I+D, **IDENER.AI** | Abr 2024 – Jul 2024 | Researcher | Deep learning, time series. Sevilla, híbrido |
+| Freelance Data Analyst | Oct 2022 – Oct 2023 | same | ⚠️ Was missing from this file |
+| Desarrollador científico, **UCO** | Oct 2022 – Jun 2023 | Alumno Interno | Led to the publication. Also taught the Python course. ⚠️ **Oct**, not Jul — this file said Jul 2022 and the Tecnoempleo CV was built with the wrong date |
+| Prácticas, **CIEMAT** | — | Prácticas en CIEMAT | Separate LinkedIn entry; dates not yet read |
+
+⚠️ **"Fundador", plain.** On 10 Aug he rejected "Fundador y Arquitecto Técnico"
+— *"queda más senior de lo que soy"* — even though his own description says he
+was "principal punto de decisión técnica, definiendo arquitecturas". LinkedIn is
+now "Fundador"; the Tecnoempleo CV still says "Fundador y Arquitecto Técnico"
+and needs aligning.
 
 ⚠️ **"Fundador", never "Cofundador".** He chose this. LinkedIn still said
 "Cofundador" as of 8 Aug 2026 and is the side that needs changing.
@@ -57,8 +71,19 @@ His own observation, and a good one.
 
 ## Education
 
-- **Máster** en Tecnología Física: Investigación y Aplicaciones — UCO, 2023–2025
-- **Grado en Física** — UCO, 2018–2023, **Matrícula de Honor en el TFG**
+Read off LinkedIn's `details/education/` page, 10 August 2026.
+
+- **Máster** en Tecnología Física: Investigación y Aplicaciones — UCO,
+  **sept 2023 – ene 2025**. ⚠️ Ends in **January** 2025, not June. The
+  Tecnoempleo CV was built with jun 2025 and needs correcting
+- **Grado en Física** — UCO, sept 2018 – jun 2023, **Matrícula de Honor en el TFG**
+- **Especialista en Inteligencia Artificial** — **IUNIT centro universitario**,
+  **oct 2024 – oct 2025**. Heavy on n8n and low-code AI automation. ✅ **IUNIT
+  and "Racks Academy" are the same course** — he confirmed it on 10 Aug. Write
+  **IUNIT**, which is the name on the accreditation. The year question that sat
+  open in this file is now closed
+- **Programa EmprendeUCO – Diputación de Córdoba** — mar 2025 – sept 2025,
+  entrepreneurship, mentoring and venture validation
 
 ## Publication
 
@@ -84,13 +109,19 @@ Also: results accepted for the **Reunión Anual de la Sociedad Nuclear Española
 | **RAG** | Hybrid-RAG-example (RRF), GDR, multiple client backends |
 | **Agents** | BlakIA, Hagalink, Agent-skills-POC |
 | **LangGraph** | `blakia-agent-launchpad`; **LangGraph.js in GDR production**; used in HagaBox before migrating |
+| **LangChain** | `projects-ai/efectiveAgents` and `projects-ai/pruebaArchon` import `langchain.agents`, `langchain.memory`, `langchain.tools`, `langchain_core`, `langchain_openai`, `langchain_community`. Also implicit in any LangGraph.js work: it sits on `@langchain/core`. ⚠️ Was wrongly omitted from a CV once — LangGraph is the orchestration runtime, LangChain is the component library. They are layers, not alternatives |
 | **Mastra** | Migrated HagaBox orchestration to it, for TS-native alignment |
 | **MCP** | `training-mcp` (Go MCP server), `vertir`, `Agent-skills-POC`, `haga-pi`, `feria-2026-mcp` |
+| **n8n, Make** | Used at BlakIA and Hagalink for **client work and demos**, plus taught on the Racks Academy AI specialisation. ⚠️ Was nearly treated as a gap to "learn in a weekend" — he had to correct it. Low-code automation is a named must-have in agentic-automation offers; always tag it |
 | **Embeddings / vector DBs** | RAG work across clients |
 | **LLM/SLM evaluation** | Stated directly; does it at Hagalink |
+| **Langfuse** | His evaluation and tracing tool at Hagalink. Named as an acceptable must-have in agent-evaluation offers alongside LangSmith, Braintrust and DeepEval — tag it whenever any of those four appear |
+| **OpenTelemetry** | Own instrumentation at Hagalink, alongside Langfuse. Covers "trazas por span" / span-level agent tracing, which offers increasingly ask for by name |
 | **PII anonymisation** | `haganonimizer` — regex + spaCy NER + Tesseract OCR fallback, production. `llm-pii-redactor` is the public distillation |
 | **Human-in-the-loop, traceability, audit** | GDR: mandatory HIL, source-page-citation traceability |
 | **Docker, Docker Compose, Traefik, CI/CD, Dokploy, Linux/VPS** | Runs many production deployments. Stated directly |
+| **Kubernetes, KEDA** | `feedpulse` — Deployments for three runtimes, Service, Ingress, PDB, migration Job, KEDA `ScaledObject` scaling the worker on BullMQ queue depth, ServiceMonitor/PodMonitor. **Verified by CI**: `kubeconform` plus an end-to-end run that applies everything to a kind cluster (10 Aug 2026) |
+| **Event-driven autoscaling reasoning** | The worker blocks on network I/O, so CPU stays low while the backlog grows — a CPU-based HPA never fires. Interview-grade material, and it is now in a public repo |
 | **Clean / Hexagonal / DDD** | feedpulse, GDR, snow-mcrt, most of the estate |
 | **PyTorch** | `GPU-accelerated-Ising-Model` (Metropolis-Hastings on GPU) |
 | **Keras** | Stated. **TensorFlow: not used in years — leave it out** |
@@ -109,11 +140,20 @@ Also: results accepted for the **Reunión Anual de la Sociedad Nuclear Española
 - **Cloud (GCP, Azure, AWS)** — the recurring blocker. Appears in nearly every
   offer. He has no deployment to point at. ⚠️ His LinkedIn lists "Google Cloud"
   as a skill, which contradicts the "No" he gave Sngular. Unresolved.
+  ⚠️ **Partially narrowing as of 10 Aug 2026**: `feedpulse` now ships Kubernetes
+  manifests with KEDA autoscaling, and CI that applies them to a real kind
+  cluster on every change. That is *Kubernetes*, and it is real and public —
+  but it is **not** a managed cloud deployment. AWS, Bedrock, EKS, IAM and
+  Terraform are still genuinely absent. Claim Kubernetes; do not claim cloud.
 - **Java / Spring Boot / JPA / Hibernate** — none.
 - **Flask** — none. FastAPI is the honest adjacent answer.
 - **TensorFlow** — years since last use.
 - **Snowflake, Genesys, contact centres** — none.
-- **Kubernetes** — not verified.
+- ~~**Kubernetes** — not verified.~~ ✅ **No longer a gap as of 10 Aug 2026.**
+  `feedpulse` ships Deployments for three runtimes, Service, Ingress, PDB,
+  migration Job, a KEDA `ScaledObject` scaling the worker on BullMQ queue depth,
+  and ServiceMonitor/PodMonitor. CI schema-checks with `kubeconform` and applies
+  everything to a kind cluster on every change. Tag it.
 
 ## Explicitly excluded by his choice
 
@@ -131,7 +171,10 @@ Pinned order on GitHub, as he set it:
 1. **Hybrid-RAG-example** ⭐2 — semantic + keyword retrieval fused with RRF, Clean Architecture
 2. **llm-pii-redactor** — PII redaction at the AI-provider boundary: stable pseudonyms, canonicalisation, NER port, fail-closed residual check, rehydration
 3. **snow-mcrt** — Monte Carlo photon transport in snow, validated against closed-form radiative transfer and published albedo curves. Now also band integration for Sentinel-2/MODIS
-4. **feedpulse** — RSS platform, hexagonal/DDD, three runtimes, queues, observability
+4. **feedpulse** — **built for a Hagalink project monitoring 10.000+ RSS sources** with
+   keyword alerting, later folded into a wider platform. Hexagonal/DDD, three runtimes
+   (api/scheduler/worker), BullMQ queues, Prometheus metrics, Kubernetes with KEDA
+   autoscaling on queue depth, CI that applies the manifests to a real cluster
 5. **Agent-skills-POC** — framework-agnostic Agent Skills, Progressive Disclosure, MCP
 6. **claudeops-tui** ⭐2 — usage, cost and task tracking for **AI coding assistants (Claude Code and OpenCode)**, Go + Bubbletea + SQLite
 
