@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # Salida de tooling local
 .atl/
+
+# Engram memory export — career and salary data. Never in a public repo.
+# Synced to the private FullFran/plan-carrera instead.
+.engram/
