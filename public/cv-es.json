@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Francisco Manuel Olmedo Cortés",
-    "label": "Físico · construyo sistemas de IA que llegan a producción",
+    "label": "Físico · Lead AI Engineer · arquitectura, IA y despliegue",
     "image": "",
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
     "url": "https://www.fullfran.com",
-    "summary": "Físico que construye sistemas de IA para producción. Uso IA y simulaciones para resolver problemas reales —de pipelines RAG y agentes a backends multi-tenant— y los llevo hasta el despliegue. Socio y responsable del dominio de IA/ML en Hagalink: convierto problemas difusos de cliente en servicios fiables y observables.",
+    "summary": "Físico. Diseño la arquitectura y construyo la parte de IA de aplicaciones que acaban funcionando: RAG, agentes y backends multi-tenant, desplegados y mantenidos en servidores propios. Responsable del dominio de IA/ML en Hagalink, donde soy socio. Vengo de la física computacional, así que antes de meter un modelo pregunto qué se mide y con qué error.",
     "location": {
       "countryCode": "ES",
       "address": "Córdoba, Andalucía, España"
@@ -32,11 +32,15 @@
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Responsable técnico del dominio de IA/ML en múltiples proyectos de cliente: lidero las decisiones desde el descubrimiento hasta el diseño de producto, la arquitectura y la entrega.",
-        "Diseño y construyo sistemas de IA variados —backends RAG multi-tenant, microservicios de ingesta y análisis, agentes y automatizaciones— con NestJS, Python, PostgreSQL y bases vectoriales, reutilizando componentes propios como mi servicio open-source feedpulse.",
-        "Ingesta multi-canal (WhatsApp, Telegram, web) y despliegue en producción con observabilidad.",
-        "Entre los proyectos, el chatbot oficial de la Feria de Córdoba (Ayuntamiento de Córdoba), heredando los productos y responsabilidades de BlakIA.",
-        "Nexo técnico con cliente: explico los compromisos entre precisión, coste computacional y latencia."
+        "Responsable del dominio de IA/ML: diseño la arquitectura, construyo la parte de IA y buena parte del backend en cinco proyectos de cliente desde enero de 2026.",
+        "Asistente de subvencionabilidad para técnicos de grupos de desarrollo rural: recuperación de evidencia normativa con validación humana obligatoria, monolito modular en NestJS, un tenant por grupo y seudonimización de datos personales. La arquitectura es mía.",
+        "Chatbot oficial de la Feria de Córdoba (Ayuntamiento de Córdoba) y Cruz de GuIA para la Semana Santa: agentes sobre WhatsApp con RAG híbrido (recuperación densa y dispersa fusionadas con RRF sobre Qdrant), diez herramientas expuestas por MCP y evaluación con Ragas.",
+        "Alertas tempranas y analítica geoespacial a partir de fuentes abiertas, para equipos de dirección de seguridad en el sector inmobiliario. Reutilicé feedpulse (mi servicio open source) como pipeline de ingesta, con NestJS, PostgreSQL y RabbitMQ.",
+        "HagaBox, la plataforma de inbox conversacional con agentes: diseñé la arquitectura completa (DDD, multi-tenant con RLS en PostgreSQL, siete proveedores de IA), hice toda la parte de IA y buena parte del backend.",
+        "HagaTime, registro de jornada laboral (RDL 8/2019) con ledger inmutable y exportación firmada para inspección: el diseño es mío y desarrollé gran parte del backend en FastAPI.",
+        "Herramientas internas para el equipo: captación de leads con IA, un proxy propio compatible con OpenAI sobre Groq y medición del esfuerzo de desarrollo.",
+        "Despliegue y operación en producción sobre servidores propios (VPS) con Docker, Traefik, CI/CD y Dokploy.",
+        "Formación en IA a los equipos de una empresa de desarrollo de software: asistentes de código, configuración de agentes (harness), RAG y evaluación."
       ],
       "url": "https://hagalink.es",
       "location": "Córdoba, Andalucía, España"
@@ -47,11 +51,23 @@
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Investigación en curso en dosimetría termoluminiscente (TLD-100) con métodos de ML, continuando la línea de mi publicación de 2023, en colaboración con Hagalink para desarrollo.",
+        "Investigación en curso en dosimetría termoluminiscente (TLD-100) con métodos de aprendizaje automático, continuando la línea de mi publicación de 2023, en colaboración con Hagalink para desarrollo.",
         "Resultados aceptados para presentación en la Reunión Anual de la Sociedad Nuclear Española (SNE), octubre de 2026; matriculación en el programa de doctorado en la próxima convocatoria."
       ],
       "url": "https://www.ciemat.es",
       "location": "Córdoba / Madrid, España"
+    },
+    {
+      "name": "Cordob.ai",
+      "position": "Technical Contributor · IA y plataforma",
+      "startDate": "2025-06-01",
+      "endDate": "",
+      "highlights": [
+        "Asistente conversacional de información de la ciudad para todo el año, con la misma base de RAG y agentes que los chatbots de las fiestas. En desarrollo, aún sin publicar.",
+        "Maqueta inicial del producto y dashboard interno en Python."
+      ],
+      "url": "https://github.com/codob-ai",
+      "location": "Córdoba, Andalucía, España"
     },
     {
       "name": "BlakIA",
@@ -59,11 +75,12 @@
       "startDate": "2024-07-01",
       "endDate": "2026-04-17",
       "highlights": [
-        "Fundé la empresa. Diseño e implementación desde cero de sistemas B2B de IA generativa: pipelines RAG y agentes autónomos para la automatización de flujos de trabajo empresariales.",
-        "Decisiones core de arquitectura, aplicando metodologías Lean y estandarizando componentes reutilizables y estructura de proyecto entre despliegues de cliente.",
-        "Chatbot oficial de la Feria de Córdoba (Ayuntamiento de Córdoba) y chatbot Cruz de Guía de Semana Santa (Asociación de Cofradías Cordobesas): asistentes de cara al público funcionando durante los picos de las fiestas.",
-        "Reconocido con el premio Emprende UCO; startup acelerada en El Patio – Andalucía Open Future.",
-        "Traspasé productos, clientes y responsabilidades a Hagalink."
+        "Fundé la empresa y llevé la parte técnica: agentes y RAG para clientes públicos y privados.",
+        "Chatbot oficial de la Feria de Córdoba (Ayuntamiento de Córdoba) y chatbot Cruz de GuIA para la Semana Santa (Asociación de Cofradías Cordobesas), funcionando durante los días de más gente.",
+        "Sistemas de reserva por WhatsApp con agentes y RAG, en colaboración con Visionarius Agency, entre ellos el de un spa en Panamá.",
+        "Planificación de turnos rotativos para un local de comida con un algoritmo genético: codifiqué las restricciones y la función objetivo partiendo del problema clásico de la enfermera.",
+        "Aquí nacieron HagaTime (registro de jornada) y BlakBill (extracción y organización de datos de facturas para gestorías, con validación del RD 1619), que continúan en Hagalink.",
+        "Premio Emprende UCO y aceleración en El Patio (Andalucía Open Future). Traspasé productos, clientes y responsabilidades a Hagalink."
       ],
       "url": "https://www.linkedin.com/company/blakiatech/",
       "location": "Córdoba, Andalucía, España"
@@ -99,8 +116,8 @@
       "endDate": "2023-06-30",
       "highlights": [
         "Desarrollo de un simulador físico basado en la resolución numérica de ecuaciones diferenciales (Runge-Kutta) en Python, desplegado como herramienta web mediante Streamlit.",
-        "Generación de datos sintéticos: uso del simulador como 'oráculo' para generar datasets de alta precisión orientados a Deep Learning.",
-        "Diseño y entrenamiento de redes neuronales densas para la evaluación de parámetros cinéticos, resultando en una publicación científica (peer-reviewed).",
+        "Generación de datos sintéticos: uso del simulador como oráculo para generar datasets de alta precisión orientados a Deep Learning.",
+        "Diseño y entrenamiento de redes neuronales densas para la evaluación de parámetros cinéticos, que acabó en una publicación revisada por pares.",
         "Impartición de un curso introductorio de Python para scientific computing, IA y ciencia de datos."
       ],
       "url": "https://www.ciemat.es",
@@ -149,21 +166,15 @@
   "projects": [
     {
       "name": "feedpulse",
-      "description": "Servicio de monitorización RSS construido para un proyecto de Hagalink que seguía más de 10.000 fuentes con alertas por palabra clave, integrado después en una plataforma más amplia. Tres runtimes (api/scheduler/worker), colas BullMQ, métricas Prometheus y Kubernetes con KEDA autoescalando el worker por profundidad de cola. El CI aplica los manifiestos a un clúster real en cada cambio.",
+      "description": "Servicio de monitorización RSS que construí para un proyecto de Hagalink, siguiendo más de 10.000 fuentes con alertas por palabra clave, y que hoy va dentro de una plataforma más amplia. Arquitectura hexagonal con DDD, tres runtimes (api, scheduler y worker), colas BullMQ, métricas Prometheus y manifiestos de Kubernetes con KEDA que el CI aplica a un clúster real en cada cambio.",
       "url": "https://github.com/FullFran/feedpulse",
-      "keywords": ["TypeScript", "NestJS", "Kubernetes", "KEDA", "BullMQ", "Hexagonal", "DDD", "Observabilidad"]
-    },
-    {
-      "name": "Agent-skills-POC",
-      "description": "Agent Skills agnósticos del framework, con Progressive Disclosure, MCP y un bucle de razonamiento sin estado. Construido para formar a mi equipo en IA agéntica. Clean Architecture.",
-      "url": "https://github.com/FullFran/Agent-skills-POC",
-      "keywords": ["Python", "Agent Skills", "MCP", "Progressive Disclosure"]
+      "keywords": ["TypeScript", "NestJS", "Hexagonal", "DDD", "BullMQ", "Kubernetes", "KEDA", "Observabilidad"]
     },
     {
       "name": "Hybrid-RAG-example",
-      "description": "Recurso didáctico que construí para formar a mis alumnos en Hybrid RAG de nivel producción — recuperación semántica + keywords fusionadas con RRF, Clean Architecture.",
+      "description": "Recurso que hice para enseñar RAG híbrido a mis alumnos: recuperación semántica y por palabras clave fusionadas con RRF, con Clean Architecture.",
       "url": "https://github.com/FullFran/Hybrid-RAG-example",
-      "keywords": ["Python", "RAG", "Clean Architecture", "RRF"]
+      "keywords": ["Python", "RAG", "RRF", "Clean Architecture"]
     },
     {
       "name": "llm-pii-redactor",
@@ -172,34 +183,46 @@
       "keywords": ["TypeScript", "PII", "RGPD", "Frontera con el LLM"]
     },
     {
-      "name": "claudeops-tui",
-      "description": "TUI local para monitorizar uso, coste y tareas de Claude Code (Go + Bubbletea + SQLite).",
-      "url": "https://github.com/FullFran/claudeops-tui",
-      "keywords": ["Go", "Bubbletea", "SQLite", "DX"]
-    },
-    {
       "name": "snow-mcrt",
       "description": "Transporte Monte Carlo de fotones en nieve, escrito desde primeros principios y validado contra transferencia radiativa en forma cerrada y curvas de albedo publicadas. Motor 3-D con superficie de Fresnel y detección medida de objetos enterrados.",
       "url": "https://github.com/FullFran/snow-mcrt",
       "keywords": ["Python", "Monte Carlo", "Transferencia radiativa", "Validación"]
+    },
+    {
+      "name": "AI-image-Detector",
+      "description": "Detección de imágenes generadas por IA a partir de la firma óptica del sensor (PRNU y demosaicing): gradientes Gx y Gy, PCA sobre los autovalores de su matriz de covarianza, analizadores DCT y de color, y Random Forest. API en FastAPI y front en GitHub Pages.",
+      "url": "https://github.com/FullFran/AI-image-Detector",
+      "keywords": ["Python", "Visión por computador", "Análisis forense de imagen", "PCA", "scikit-learn"]
+    },
+    {
+      "name": "Agent-skills-POC",
+      "description": "Agent Skills agnósticos del framework, con Progressive Disclosure, MCP y un bucle de razonamiento sin estado. Construido para formar a mi equipo en IA agéntica. Clean Architecture.",
+      "url": "https://github.com/FullFran/Agent-skills-POC",
+      "keywords": ["Python", "Agent Skills", "MCP", "Progressive Disclosure"]
+    },
+    {
+      "name": "claudeops-tui",
+      "description": "TUI local para monitorizar uso, coste y tareas de mis asistentes de código (Go + Bubbletea + SQLite).",
+      "url": "https://github.com/FullFran/claudeops-tui",
+      "keywords": ["Go", "Bubbletea", "SQLite", "DX"]
     }
   ],
   "skills": [
     {
       "name": "Arquitectura & backend",
-      "keywords": ["Clean / Hexagonal / DDD", "Diseño de sistemas", "Python", "TypeScript (NestJS)", "Go", "FastAPI", "PostgreSQL", "Multi-tenant"]
+      "keywords": ["Clean / Hexagonal / DDD", "Python", "TypeScript (NestJS)", "Go", "FastAPI", "PostgreSQL", "Multi-tenant"]
     },
     {
       "name": "IA en producción",
-      "keywords": ["RAG", "Agentes", "Orquestación de agentes (LangGraph, LangChain, Mastra)", "MCP (Model Context Protocol)", "Embeddings", "Bases vectoriales", "Evaluación de LLM/SLM", "Langfuse", "OpenTelemetry", "Anonimización de PII", "Human-in-the-loop", "Datos sintéticos", "n8n", "Make"]
+      "keywords": ["RAG (híbrido, RRF)", "Agentes", "Orquestación de agentes (LangGraph, LangChain, Mastra)", "MCP (Model Context Protocol)", "Embeddings", "Bases vectoriales (Qdrant, pgvector)", "Evaluación de RAG y LLM (Ragas, Langfuse)", "Anonimización de PII", "Human-in-the-loop", "Datos sintéticos", "n8n", "Make"]
     },
     {
       "name": "Infraestructura & despliegue",
-      "keywords": ["Docker", "Docker Compose", "Kubernetes", "KEDA", "Traefik", "CI/CD (GitHub Actions)", "Dokploy", "Linux / VPS", "Prometheus"]
+      "keywords": ["Docker", "Docker Compose", "Traefik", "CI/CD (GitHub Actions)", "Dokploy", "Linux / VPS", "Prometheus", "OpenTelemetry"]
     },
     {
-      "name": "Física computacional",
-      "keywords": ["Métodos de Montecarlo (implementados desde cero)", "Algoritmos genéticos", "Métodos numéricos", "Redes neuronales"]
+      "name": "Física computacional & modelos",
+      "keywords": ["Métodos de Montecarlo (implementados desde cero)", "Algoritmos genéticos", "Métodos numéricos", "Redes neuronales", "Autoencoders", "Visión por computador", "PyTorch", "scikit-learn"]
     }
   ],
   "languages": [
