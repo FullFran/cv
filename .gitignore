@@ -29,3 +29,6 @@ pnpm-debug.log*
 # Engram memory export — career and salary data. Never in a public repo.
 # Synced to the private FullFran/plan-carrera instead.
 .engram/
+
+# skill privado del CV: vive en FullFran/cv-tailoring (repo privado)
+.claude/
