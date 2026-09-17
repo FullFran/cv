@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-const { title = "Francisco Olmedo — CV" } = Astro.props;
+const { title = "Francisco Olmedo · CV" } = Astro.props;
 ---
 
 <!doctype html>
@@ -133,6 +133,14 @@ const { title = "Francisco Olmedo — CV" } = Astro.props;
 		}
 		section {
 			break-inside: avoid;
+		}
+		/* Collapsed blocks must print in full: the toggle disappears and its
+		   content is forced open, so a printed CV never loses a line. */
+		details[data-cv-more] > summary {
+			display: none !important;
+		}
+		details[data-cv-more] > *:not(summary) {
+			display: block !important;
 		}
 	}
 </style>

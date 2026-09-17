@@ -1,5 +1,5 @@
 /* ======================================================================
- * MODES — data-mode lives on <html>, data-lang on <html>, persisted in
+ * MODES · data-mode lives on <html>, data-lang on <html>, persisted in
  * localStorage by KeyboardManager.astro. Each block overrides the base CV
  * look without touching component markup.
  * ====================================================================== */

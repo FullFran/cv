@@ -1,0 +1,29 @@
+---
+interface Props {
+  name: string;
+  description?: string;
+  url?: string;
+  keywords?: string[];
+}
+
+const { name, description, url, keywords } = Astro.props;
+---
+
+<li class="flex flex-col gap-0.5">
+  <div class="flex flex-wrap items-baseline gap-x-2">
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[13px] font-semibold text-gray-900 hover:underline"
+    >
+      {name}
+    </a>
+    {
+      keywords && keywords.length > 0 && (
+        <span class="text-[11px] text-gray-500">· {keywords.join(" · ")}</span>
+      )
+    }
+  </div>
+  <p class="text-xs leading-snug text-gray-700">{description}</p>
+</li>

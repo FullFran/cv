@@ -20,6 +20,8 @@ export const labels: Record<Locale, Record<string, string>> = {
     present: "Present",
     web: "Web",
     email: "Email",
+    showMore: "Show more",
+    showLess: "Show less",
   },
   es: {
     about: "Sobre mí",
@@ -32,6 +34,8 @@ export const labels: Record<Locale, Record<string, string>> = {
     present: "Actualidad",
     web: "Web",
     email: "Email",
+    showMore: "Ver más",
+    showLess: "Ver menos",
   },
 };
 

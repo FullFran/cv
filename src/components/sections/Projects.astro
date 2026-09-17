@@ -1,43 +1,57 @@
 ---
 import Section from "../Section.astro";
+import ProjectItem from "../ProjectItem.astro";
 import type { CVData, Locale } from "@lib/cv";
 import { labels } from "@lib/cv";
 
 interface Props {
   data: CVData;
   lang: Locale;
+  /** How many projects stay visible; the rest go inside a "show more" toggle. */
+  visibleProjects?: number;
 }
 
-const { data, lang } = Astro.props;
+const { data, lang, visibleProjects = 4 } = Astro.props;
 const t = labels[lang];
 const projects = data.projects ?? [];
+const shown = projects.slice(0, visibleProjects);
+const hidden = projects.slice(visibleProjects);
 ---
 
 {
   projects.length > 0 && (
     <Section title={t.projects}>
       <ul class="flex flex-col gap-3">
-        {projects.map((proj) => (
-          <li class="flex flex-col gap-0.5">
-            <div class="flex flex-wrap items-baseline gap-x-2">
-              <a
-                href={proj.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[13px] font-semibold text-gray-900 hover:underline"
-              >
-                {proj.name}
-              </a>
-              {proj.keywords && proj.keywords.length > 0 && (
-                <span class="text-[11px] text-gray-500">
-                  · {proj.keywords.join(" · ")}
-                </span>
-              )}
-            </div>
-            <p class="text-xs text-gray-700 leading-snug">{proj.description}</p>
-          </li>
+        {shown.map((proj) => (
+          <ProjectItem
+            name={proj.name}
+            description={proj.description}
+            url={proj.url}
+            keywords={proj.keywords}
+          />
         ))}
       </ul>
+
+      {hidden.length > 0 && (
+        <details class="group mt-2" data-cv-more>
+          <summary class="cursor-pointer list-none text-[11.5px] font-medium text-blue-800 hover:underline">
+            <span class="group-open:hidden">
+              + {t.showMore} ({hidden.length})
+            </span>
+            <span class="hidden group-open:inline">- {t.showLess}</span>
+          </summary>
+          <ul class="mt-3 flex flex-col gap-3">
+            {hidden.map((proj) => (
+              <ProjectItem
+                name={proj.name}
+                description={proj.description}
+                url={proj.url}
+                keywords={proj.keywords}
+              />
+            ))}
+          </ul>
+        </details>
+      )}
     </Section>
   )
 }

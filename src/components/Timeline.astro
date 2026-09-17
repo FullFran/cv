@@ -15,9 +15,11 @@ interface TimelineItem {
 interface Props {
   items: TimelineItem[];
   lang: Locale;
+  /** How many highlights stay visible; the rest go inside a "show more" toggle. */
+  visibleHighlights?: number;
 }
 
-const { items, lang } = Astro.props;
+const { items, lang, visibleHighlights = 3 } = Astro.props;
 const t = labels[lang];
 const loc = dateLocale[lang];
 
@@ -31,8 +33,16 @@ const formatDate = (raw?: string) => {
 const formatRange = (start?: string, end?: string) => {
   const s = formatDate(start);
   const e = end ? formatDate(end) : t.present;
-  return `${s} — ${e}`;
+  return `${s} - ${e}`;
 };
+
+const splitHighlights = (highlights?: string[]) => ({
+  shown: highlights?.slice(0, visibleHighlights) ?? [],
+  hidden: highlights?.slice(visibleHighlights) ?? [],
+});
+
+const bulletClass =
+  "list-disc space-y-1 pl-4 text-[12.5px] leading-snug text-gray-700 marker:text-gray-300";
 ---
 
 {
@@ -74,11 +84,29 @@ const formatRange = (start?: string, end?: string) => {
           )}
 
           {item.highlights && (
-            <ul class="mt-1.5 list-disc space-y-1 pl-4 text-[12.5px] leading-snug text-gray-700 marker:text-gray-300">
-              {item.highlights.map((point) => (
-                <li>{point}</li>
-              ))}
-            </ul>
+            <Fragment>
+              <ul class={`mt-1.5 ${bulletClass}`}>
+                {splitHighlights(item.highlights).shown.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+
+              {splitHighlights(item.highlights).hidden.length > 0 && (
+                <details class="group mt-1" data-cv-more>
+                  <summary class="cursor-pointer list-none text-[11.5px] font-medium text-blue-800 hover:underline">
+                    <span class="group-open:hidden">
+                      + {t.showMore} ({splitHighlights(item.highlights).hidden.length})
+                    </span>
+                    <span class="hidden group-open:inline">- {t.showLess}</span>
+                  </summary>
+                  <ul class={`mt-1.5 ${bulletClass}`}>
+                    {splitHighlights(item.highlights).hidden.map((point) => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+            </Fragment>
           )}
         </li>
       ))}
