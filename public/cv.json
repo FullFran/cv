@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Francisco Manuel Olmedo Cortés",
-    "label": "Physicist · Lead AI Engineer · architecture, AI and deployment",
+    "label": "Physicist · AI Engineer · architecture, AI and deployment",
     "image": "",
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
     "url": "https://www.fullfran.com",
-    "summary": "Physicist. I design the architecture and build the AI side of applications that actually work: RAG, agents and multi-tenant backends, deployed and maintained on servers we run ourselves. I own the AI/ML domain at Hagalink. I come from computational physics, so before putting a model into production I ask what is being measured and with what error.",
+    "summary": "Physicist. I design the architecture and build the AI side of applications that actually work: RAG, agents and multi-tenant backends, deployed and maintained on servers we run ourselves. I run the AI side at Hagalink. I come from computational physics, so before putting a model into production I ask what is being measured and with what error.",
     "location": {
       "countryCode": "ES",
       "address": "Córdoba, Andalucía, España"
@@ -28,11 +28,11 @@
   "work": [
     {
       "name": "Hagalink",
-      "position": "Lead AI Engineer",
+      "position": "AI Engineer",
       "startDate": "2026-01-01",
       "endDate": "",
       "highlights": [
-        "Own the AI/ML domain: design the architecture, build the AI side and a good part of the backend across five client projects since January 2026.",
+        "Design the architecture, build the AI side and a good part of the backend across five client projects since January 2026.",
         "Grant-eligibility assistant for rural development group technicians: regulatory evidence retrieval with mandatory human validation, a modular monolith in NestJS, one tenant per group, and pseudonymization of personal data. The architecture is mine.",
         "Official chatbot for the Feria de Córdoba (Córdoba City Council) and Cruz de GuIA for Holy Week: WhatsApp agents with hybrid RAG (dense and sparse retrieval fused with RRF over Qdrant), ten tools exposed through MCP, and evaluation with Ragas.",
         "Early-warning alerts and geospatial analytics from open sources, for security management teams in the real-estate sector. Reused feedpulse (my open-source service) as the ingestion pipeline, with NestJS, PostgreSQL and RabbitMQ.",

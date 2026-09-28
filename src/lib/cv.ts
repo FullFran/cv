@@ -2,7 +2,7 @@ import en from "@cv";
 import es from "@cv-es";
 
 export type Locale = "en" | "es";
-export type Mode = "cv" | "tui" | "slides";
+export type Mode = "dark" | "cv" | "tui" | "slides";
 
 export const data = { en, es } as const;
 
