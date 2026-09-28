@@ -7,7 +7,7 @@
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
     "url": "https://www.fullfran.com",
-    "summary": "Físico. Diseño la arquitectura y construyo la parte de IA de aplicaciones que acaban funcionando: RAG, agentes y backends multi-tenant, desplegados y mantenidos en servidores propios. Responsable del dominio de IA/ML en Hagalink, donde soy socio. Vengo de la física computacional, así que antes de meter un modelo pregunto qué se mide y con qué error.",
+    "summary": "Físico. Diseño la arquitectura y construyo la parte de IA de aplicaciones que acaban funcionando: RAG, agentes y backends multi-tenant, desplegados y mantenidos en servidores propios. Responsable del dominio de IA/ML en Hagalink. Vengo de la física computacional, así que antes de meter un modelo pregunto qué se mide y con qué error.",
     "location": {
       "countryCode": "ES",
       "address": "Córdoba, Andalucía, España"
@@ -71,11 +71,11 @@
     },
     {
       "name": "BlakIA",
-      "position": "Fundador",
+      "position": "Ingeniero de IA",
       "startDate": "2024-07-01",
       "endDate": "2026-04-17",
       "highlights": [
-        "Fundé la empresa y llevé la parte técnica: agentes y RAG para clientes públicos y privados.",
+        "Llevé la parte técnica: agentes y RAG para clientes públicos y privados.",
         "Chatbot oficial de la Feria de Córdoba (Ayuntamiento de Córdoba) y chatbot Cruz de GuIA para la Semana Santa (Asociación de Cofradías Cordobesas), funcionando durante los días de más gente.",
         "Sistemas de reserva por WhatsApp con agentes y RAG, en colaboración con Visionarius Agency, entre ellos el de un spa en Panamá.",
         "Planificación de turnos rotativos para un local de comida con un algoritmo genético: codifiqué las restricciones y la función objetivo partiendo del problema clásico de la enfermera.",

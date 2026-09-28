@@ -7,7 +7,7 @@
     "email": "franciscomanuelolmedocortes@gmail.com",
     "phone": "",
     "url": "https://www.fullfran.com",
-    "summary": "Physicist. I design the architecture and build the AI side of applications that actually work: RAG, agents and multi-tenant backends, deployed and maintained on servers we run ourselves. I own the AI/ML domain at Hagalink, where I am a partner. I come from computational physics, so before putting a model into production I ask what is being measured and with what error.",
+    "summary": "Physicist. I design the architecture and build the AI side of applications that actually work: RAG, agents and multi-tenant backends, deployed and maintained on servers we run ourselves. I own the AI/ML domain at Hagalink. I come from computational physics, so before putting a model into production I ask what is being measured and with what error.",
     "location": {
       "countryCode": "ES",
       "address": "Córdoba, Andalucía, España"
@@ -71,11 +71,11 @@
     },
     {
       "name": "BlakIA",
-      "position": "Founder",
+      "position": "AI Engineer",
       "startDate": "2024-07-01",
       "endDate": "2026-04-17",
       "highlights": [
-        "Founded the company and led the technical side: agents and RAG for public and private clients.",
+        "Led the technical side: agents and RAG for public and private clients.",
         "Official chatbot for the Feria de Córdoba (Córdoba City Council) and the Cruz de GuIA chatbot for Holy Week (Asociación de Cofradías Cordobesas), running through the busiest days of the festivities.",
         "WhatsApp booking systems with agents and RAG, in collaboration with Visionarius Agency, including one for a spa in Panama.",
         "Rotating shift scheduling for a food venue using a genetic algorithm: encoded the constraints and objective function starting from the classic nurse scheduling problem.",
