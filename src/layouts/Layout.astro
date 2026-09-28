@@ -4,7 +4,7 @@ const { title = "Francisco Olmedo · CV" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-mode="dark" data-lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -16,6 +16,22 @@ const { title = "Francisco Olmedo · CV" } = Astro.props;
 			rel="stylesheet"
 		/>
 		<title>{title}</title>
+		<script is:inline>
+			// Seed mode and language before first paint to avoid a light flash.
+			// Keys match KeyboardManager.astro. Storage may throw: fall back to defaults.
+			(function () {
+				var root = document.documentElement;
+				try {
+					var mode = localStorage.getItem("cv:mode");
+					var lang = localStorage.getItem("cv:lang");
+					if (["dark", "cv", "tui", "slides"].indexOf(mode) > -1) root.setAttribute("data-mode", mode);
+					if (lang === "en" || lang === "es") {
+						root.setAttribute("data-lang", lang);
+						root.setAttribute("lang", lang);
+					}
+				} catch (e) {}
+			})();
+		</script>
 	</head>
 	<body>
 		<a class="skip-link" href="#main-content">Skip to content</a>
@@ -55,6 +71,10 @@ const { title = "Francisco Olmedo · CV" } = Astro.props;
 	select,
 	textarea {
 		font: inherit;
+	}
+
+	html[data-mode="dark"] {
+		color-scheme: dark;
 	}
 
 	:focus-visible {
@@ -116,7 +136,7 @@ const { title = "Francisco Olmedo · CV" } = Astro.props;
 	@media print {
 		html,
 		body {
-			background: #fff;
+			background: #fff !important;
 			color: #000;
 		}
 		a {
@@ -131,8 +151,18 @@ const { title = "Francisco Olmedo · CV" } = Astro.props;
 			max-width: 100% !important;
 			padding: 1rem 1.25rem !important;
 		}
-		section {
+		/* Keep single entries whole, not whole sections: a long section that
+		   cannot break gets pushed to the next page and leaves a blank one. */
+		section li,
+		section article {
 			break-inside: avoid;
+		}
+		h2,
+		h3 {
+			break-after: avoid;
+		}
+		.skip-link {
+			display: none !important;
 		}
 		/* Collapsed blocks must print in full: the toggle disappears and its
 		   content is forced open, so a printed CV never loses a line. */

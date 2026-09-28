@@ -36,6 +36,137 @@ html[data-lang="es"] [data-lang-wrap="en"] {
   font-size: 13px;
 }
 
+/* ------------------------------------------ Control bar -------------- */
+:root {
+  --cbar-h: 3.5rem;
+  --cb-bg: rgba(255, 255, 255, 0.92);
+  --cb-fg: #374151;
+  --cb-border: #e5e7eb;
+  --cb-hover: #f1f5f9;
+  --cb-active-bg: #1e3a8a;
+  --cb-active-fg: #ffffff;
+}
+html[data-mode="dark"] {
+  --cb-bg: rgba(10, 10, 15, 0.92);
+  --cb-fg: #a9b1d6;
+  --cb-border: #292e42;
+  --cb-hover: #1c1f2e;
+  --cb-active-bg: #7aa2f7;
+  --cb-active-fg: #0a0a0f;
+}
+html[data-mode="tui"] {
+  --cb-bg: #0b0f14;
+  --cb-fg: #9aa6b2;
+  --cb-border: #2b3440;
+  --cb-hover: #11161d;
+  --cb-active-bg: #7ee787;
+  --cb-active-fg: #0b0f14;
+}
+html[data-mode="slides"] {
+  --cb-bg: rgba(15, 23, 42, 0.92);
+  --cb-fg: #cbd5e1;
+  --cb-border: rgba(255, 255, 255, 0.12);
+  --cb-hover: rgba(255, 255, 255, 0.08);
+  --cb-active-bg: #60a5fa;
+  --cb-active-fg: #0f172a;
+}
+body {
+  padding-top: var(--cbar-h);
+}
+.control-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 56;
+  box-sizing: border-box;
+  height: var(--cbar-h);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
+  background: var(--cb-bg);
+  color: var(--cb-fg);
+  border-bottom: 1px solid var(--cb-border);
+  backdrop-filter: saturate(140%) blur(8px);
+  font-size: 13px;
+}
+html[data-mode="tui"] .control-bar {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+.control-bar .cb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 40px;
+  min-width: 40px;
+  padding: 0 0.8rem;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0.6rem;
+  background: transparent;
+  color: inherit;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.control-bar .cb-btn:hover {
+  background: var(--cb-hover);
+}
+.control-bar .cb-btn[aria-pressed="true"] {
+  background: var(--cb-active-bg);
+  color: var(--cb-active-fg);
+}
+.control-bar .cb-btn:focus-visible {
+  outline-offset: 1px;
+}
+.control-bar .cb-group {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--cb-border);
+  border-radius: 0.8rem;
+}
+.control-bar .cb-back {
+  margin-right: auto;
+  padding-left: 0.4rem;
+  text-decoration: none;
+}
+.control-bar .cb-pdf {
+  border: 1px solid var(--cb-border);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+}
+.control-bar .cb-langs .cb-btn {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+}
+html[data-lang="en"] .control-bar [data-cb-l="es"],
+html[data-lang="es"] .control-bar [data-cb-l="en"] {
+  display: none;
+}
+/* Narrow screens: two rows, back link + language + PDF on top, modes below. */
+@media (max-width: 640px) {
+  :root {
+    --cbar-h: 6.25rem;
+  }
+  .control-bar {
+    flex-wrap: wrap;
+    align-content: center;
+    row-gap: 6px;
+  }
+  .control-bar .cb-modes {
+    order: 3;
+    flex: 1 1 100%;
+  }
+  .control-bar .cb-modes .cb-btn {
+    flex: 1 1 0;
+    padding: 0 0.25rem;
+  }
+}
+
 /* ------------------------------------------ Status bar --------------- */
 .status-bar {
   position: fixed;
@@ -100,6 +231,8 @@ html[data-lang="es"] [data-lang-wrap="en"] {
   color: #0f172a;
 }
 
+/* Mode looks are screen-only: print always falls back to the light cv look. */
+@media screen {
 /* ------------------------------------------ TUI MODE ----------------- */
 html[data-mode="tui"] {
   --tui-bg: #0b0f14;
@@ -302,6 +435,8 @@ html[data-mode="tui"] .status-bar .sb-button {
   color: inherit;
 }
 
+}
+
 /* Command prompt (TUI only) */
 .cmd-prompt {
   display: none;
@@ -383,6 +518,7 @@ main {
   scroll-margin-top: 2rem;
 }
 
+@media screen {
 /* ------------------------------------------ SLIDES MODE -------------- */
 html[data-mode="slides"] body {
   background:
@@ -396,7 +532,7 @@ html[data-mode="slides"] main {
   inset: 0 !important;
   max-width: none !important;
   margin: 0 !important;
-  padding: clamp(1.25rem, 3vw, 4rem) clamp(1rem, 4vw, 4rem) 4.25rem !important;
+  padding: calc(var(--cbar-h) + 0.75rem) clamp(1rem, 4vw, 4rem) 4.25rem !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   --tw-ring-shadow: none !important;
@@ -419,7 +555,7 @@ html[data-mode="slides"] [data-lang-wrap] > *:not(.slide-active) {
 html[data-mode="slides"] .slide-active {
   animation: slideFade 0.25s ease-out;
   max-width: min(980px, 100%);
-  max-height: calc(100svh - 7.5rem);
+  max-height: calc(100svh - var(--cbar-h) - 5.5rem);
   margin: 0 auto;
   padding: clamp(1.25rem, 3vw, 3rem);
   width: 100%;
@@ -443,7 +579,7 @@ html[data-mode="slides"] .slide-active {
 }
 html[data-mode="slides"] .slide-progress {
   position: fixed;
-  top: 0;
+  top: var(--cbar-h);
   left: 0;
   right: 0;
   height: 3px;
@@ -516,7 +652,9 @@ html[data-mode="slides"] .cv-only {
   display: none !important;
 }
 
-@media (max-width: 768px) {
+}
+
+@media screen and (max-width: 768px) {
   .status-bar {
     gap: 0.6rem;
     padding: 8px 12px;
@@ -538,11 +676,11 @@ html[data-mode="slides"] .cv-only {
   }
 
   html[data-mode="slides"] main {
-    padding: 0.75rem 0.75rem 5.75rem !important;
+    padding: calc(var(--cbar-h) + 0.5rem) 0.75rem 5.75rem !important;
   }
 
   html[data-mode="slides"] .slide-active {
-    max-height: calc(100svh - 7rem);
+    max-height: calc(100svh - var(--cbar-h) - 6rem);
     border-radius: 1rem;
   }
 
@@ -552,7 +690,7 @@ html[data-mode="slides"] .cv-only {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media screen and (prefers-reduced-motion: reduce) {
   html[data-mode="tui"] body::before {
     opacity: 0.08;
   }
@@ -565,8 +703,239 @@ html[data-mode="slides"] .cv-only {
   }
 }
 
+/* ------------------------------------------ DARK MODE ---------------- */
+/* Tokyo Night, matching fullfran.com. Screen-only: print stays on the cv look. */
+@media screen {
+  html[data-mode="dark"] {
+    --d-bg: #0a0a0f;
+    --d-panel: #12131c;
+    --d-card: #16161e;
+    --d-card-hi: #1a1b26;
+    --d-text: #c0caf5;
+    --d-body: #a9b1d6;
+    --d-muted: #828bb8;
+    --d-accent: #7aa2f7;
+    --d-cyan: #7dcfff;
+    --d-green: #9ece6a;
+    --d-purple: #bb9af7;
+    --d-line: #1c1f2e;
+    --d-border: #292e42;
+  }
+  html[data-mode="dark"] body {
+    background:
+      radial-gradient(60rem 28rem at 12% -8%, rgba(122, 162, 247, 0.09), transparent 70%),
+      radial-gradient(44rem 26rem at 100% 0%, rgba(187, 154, 247, 0.06), transparent 70%),
+      var(--d-bg);
+    background-attachment: fixed;
+    color: var(--d-body);
+  }
+  html[data-mode="dark"] ::selection {
+    background: rgba(122, 162, 247, 0.32);
+    color: #fff;
+  }
+  html[data-mode="dark"] :focus-visible {
+    outline-color: var(--d-accent);
+  }
+  html[data-mode="dark"] main {
+    background: var(--d-panel) !important;
+    color: var(--d-body) !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    box-shadow: 0 0 0 1px var(--d-border), 0 24px 60px -20px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  /* Text roles (override the light Tailwind utilities from markup) */
+  html[data-mode="dark"] main .text-gray-900,
+  html[data-mode="dark"] main h1 {
+    color: var(--d-text);
+  }
+  html[data-mode="dark"] main .text-gray-800,
+  html[data-mode="dark"] main .text-gray-700 {
+    color: var(--d-body);
+  }
+  html[data-mode="dark"] main .text-gray-600,
+  html[data-mode="dark"] main .text-gray-500 {
+    color: var(--d-muted);
+  }
+  html[data-mode="dark"] main .text-gray-300 {
+    color: #3b4261;
+  }
+  html[data-mode="dark"] main .text-blue-900,
+  html[data-mode="dark"] main .text-blue-700 {
+    color: var(--d-accent);
+  }
+  html[data-mode="dark"] main .text-blue-800 {
+    color: var(--d-cyan);
+  }
+  html[data-mode="dark"] main a:hover {
+    color: var(--d-cyan);
+  }
+
+  /* Header */
+  html[data-mode="dark"] main header {
+    border-color: var(--d-border);
+  }
+  html[data-mode="dark"] main header h1 {
+    letter-spacing: -0.02em;
+  }
+  html[data-mode="dark"] main header p.text-blue-900 {
+    color: var(--d-accent);
+    font-weight: 600;
+  }
+
+  /* Section headings: mono label with an accent rule */
+  html[data-mode="dark"] main section h2 {
+    color: var(--d-accent);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-weight: 500;
+  }
+  html[data-mode="dark"] main section h2 > span:first-child {
+    background: linear-gradient(90deg, var(--d-accent), var(--d-purple));
+  }
+  html[data-mode="dark"] main section h3.uppercase,
+  html[data-mode="dark"] main time {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+  html[data-mode="dark"] main time {
+    color: var(--d-muted);
+  }
+
+  /* Timeline: entries become cards on the rail */
+  html[data-mode="dark"] main ol {
+    border-left-color: var(--d-border);
+  }
+  html[data-mode="dark"] main ol > li {
+    padding: 0.85rem 1rem;
+    background: var(--d-card);
+    border: 1px solid var(--d-line);
+    border-radius: 0.75rem;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  html[data-mode="dark"] main ol > li:hover {
+    background: var(--d-card-hi);
+    border-color: var(--d-border);
+  }
+  html[data-mode="dark"] main ol > li > span:first-child {
+    background: var(--d-accent);
+    --tw-ring-color: var(--d-panel);
+    box-shadow: 0 0 0 4px var(--d-panel), 0 0 12px rgba(122, 162, 247, 0.55);
+  }
+
+  /* Projects and publications: cards */
+  html[data-mode="dark"] main section ul.flex-col > li {
+    padding: 0.7rem 0.9rem;
+    background: var(--d-card);
+    border: 1px solid var(--d-line);
+    border-radius: 0.75rem;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  html[data-mode="dark"] main section ul.flex-col > li:hover {
+    background: var(--d-card-hi);
+    border-color: var(--d-border);
+  }
+  html[data-mode="dark"] main section ul.flex-col > li > div > a:first-child,
+  html[data-mode="dark"] main section ul.flex-col > li > a {
+    color: var(--d-text);
+  }
+
+  /* Bullets */
+  html[data-mode="dark"] main ul.list-disc li::marker {
+    color: var(--d-accent);
+  }
+
+  /* Skill badges */
+  html[data-mode="dark"] main .skill-badge {
+    background: rgba(122, 162, 247, 0.1);
+    color: var(--d-accent);
+    --tw-ring-color: rgba(122, 162, 247, 0.28);
+  }
+
+  /* Show more / less toggle */
+  html[data-mode="dark"] main details[data-cv-more] > summary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.7rem;
+    min-height: 1.75rem;
+    box-sizing: border-box;
+    color: var(--d-cyan);
+    border: 1px dashed var(--d-border);
+    border-radius: 999px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+  html[data-mode="dark"] main details[data-cv-more] > summary:hover {
+    background: rgba(125, 207, 255, 0.08);
+    border-color: var(--d-cyan);
+    text-decoration: none;
+  }
+  html[data-mode="dark"] main details[data-cv-more][open] > summary {
+    color: var(--d-muted);
+  }
+  html[data-mode="dark"] main details[data-cv-more] > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Status bar, help, search */
+  html[data-mode="dark"] .status-bar {
+    background: rgba(10, 10, 15, 0.92);
+    border-top-color: var(--d-border);
+    color: var(--d-muted);
+  }
+  html[data-mode="dark"] .status-bar .sb-dot {
+    background: var(--d-green);
+    box-shadow: 0 0 8px rgba(158, 206, 106, 0.6);
+  }
+  html[data-mode="dark"] .status-bar .sb-mode {
+    color: var(--d-purple);
+  }
+  html[data-mode="dark"] .status-bar .sb-lang {
+    color: var(--d-cyan);
+  }
+  html[data-mode="dark"] .status-bar .sb-current {
+    color: var(--d-text);
+  }
+  html[data-mode="dark"] .status-bar kbd {
+    background: var(--d-card);
+    border-color: var(--d-border);
+    color: var(--d-body);
+  }
+  html[data-mode="dark"] .cv-overlay {
+    background: rgba(5, 5, 10, 0.7);
+  }
+  html[data-mode="dark"] .cv-overlay-card {
+    background: var(--d-card);
+    border: 1px solid var(--d-border);
+    color: var(--d-body);
+  }
+  html[data-mode="dark"] .cv-overlay-card .text-gray-900 {
+    color: var(--d-text);
+  }
+  html[data-mode="dark"] .cv-overlay-card .text-gray-700 {
+    color: var(--d-body);
+  }
+  html[data-mode="dark"] .cv-overlay-card .text-gray-500 {
+    color: var(--d-muted);
+  }
+  html[data-mode="dark"] .cv-overlay-card .border-gray-100 {
+    border-color: var(--d-line);
+  }
+  html[data-mode="dark"] .cv-overlay-card .help-kbd {
+    background: var(--d-panel);
+    border-color: var(--d-border);
+    color: var(--d-cyan);
+  }
+  html[data-mode="dark"] .search-prompt {
+    background: rgba(18, 19, 28, 0.97);
+    border-top-color: var(--d-border);
+    color: var(--d-text);
+  }
+}
+
 /* ------------------------------------------ Print suppresses UI ----- */
 @media print {
+  body {
+    padding-top: 0 !important;
+  }
+  .control-bar,
   .status-bar,
   .cmd-prompt,
   .search-prompt,
@@ -585,5 +954,12 @@ html[data-mode="slides"] .cv-only {
   }
   html[data-mode="slides"] [data-lang-wrap] > *:not(.slide-active) {
     display: block !important;
+  }
+}
+
+/* Touch screens get the control bar instead: keyboard hints only take room. */
+@media screen and (max-width: 640px), screen and (pointer: coarse) {
+  .status-bar .sb-actions {
+    display: none !important;
   }
 }

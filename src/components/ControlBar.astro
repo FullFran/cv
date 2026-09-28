@@ -1,0 +1,69 @@
+---
+/*
+  ControlBar.astro
+  Always-visible top bar (all modes, all widths): back link, mode switch,
+  language switch and PDF button. It holds no state of its own: buttons dispatch
+  cv:set-mode / cv:set-lang / cv:print, which KeyboardManager.astro handles, and
+  aria-pressed mirrors data-mode / data-lang on <html>. Styling lives in modes.css.
+*/
+const modes = [
+	{ id: "dark", en: "Dark", es: "Oscuro" },
+	{ id: "cv", en: "CV", es: "CV" },
+	{ id: "tui", en: "TUI", es: "TUI" },
+	{ id: "slides", en: "Slides", es: "Slides" },
+];
+---
+
+<nav class="control-bar no-print" aria-label="CV view controls">
+	<a class="cb-back cb-btn" href="https://www.fullfran.com/">
+		<span aria-hidden="true">←</span>
+		<span>fullfran.com</span>
+	</a>
+	<div class="cb-group cb-modes" role="group" aria-label="View mode">
+		{
+			modes.map((m) => (
+				<button type="button" class="cb-btn" data-cb-mode={m.id} aria-pressed="false">
+					<span data-cb-l="en">{m.en}</span>
+					<span data-cb-l="es">{m.es}</span>
+				</button>
+			))
+		}
+	</div>
+	<div class="cb-group cb-langs" role="group" aria-label="Language">
+		<button type="button" class="cb-btn" data-cb-lang="en" aria-pressed="false" lang="en">EN</button>
+		<button type="button" class="cb-btn" data-cb-lang="es" aria-pressed="false" lang="es">ES</button>
+	</div>
+	<button type="button" class="cb-btn cb-pdf" id="cb-print">PDF</button>
+</nav>
+
+<script>
+	const root = document.documentElement;
+	const bar = document.querySelector(".control-bar")!;
+	const emit = (name: string, detail?: string) =>
+		document.dispatchEvent(new CustomEvent(name, { detail }));
+
+	bar.querySelectorAll<HTMLElement>("[data-cb-mode]").forEach((el) =>
+		el.addEventListener("click", () => emit("cv:set-mode", el.dataset.cbMode)),
+	);
+	bar.querySelectorAll<HTMLElement>("[data-cb-lang]").forEach((el) =>
+		el.addEventListener("click", () => emit("cv:set-lang", el.dataset.cbLang)),
+	);
+	document.getElementById("cb-print")!.addEventListener("click", () => emit("cv:print"));
+
+	function sync() {
+		const mode = root.getAttribute("data-mode");
+		const lang = root.getAttribute("data-lang");
+		bar.querySelectorAll<HTMLElement>("[data-cb-mode]").forEach((el) =>
+			el.setAttribute("aria-pressed", String(el.dataset.cbMode === mode)),
+		);
+		bar.querySelectorAll<HTMLElement>("[data-cb-lang]").forEach((el) =>
+			el.setAttribute("aria-pressed", String(el.dataset.cbLang === lang)),
+		);
+	}
+
+	new MutationObserver(sync).observe(root, {
+		attributes: true,
+		attributeFilter: ["data-mode", "data-lang"],
+	});
+	sync();
+</script>
