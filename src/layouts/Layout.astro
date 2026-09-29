@@ -18,11 +18,13 @@ const { title = "Francisco Olmedo · CV" } = Astro.props;
 		<title>{title}</title>
 		<script is:inline>
 			// Seed mode and language before first paint to avoid a light flash.
-			// Keys match KeyboardManager.astro. Storage may throw: fall back to defaults.
+			// Keys match KeyboardManager.astro (KEY_MODE / KEY_LANG): keep them in sync.
+			// "cv:mode:v2" replaces the old "cv:mode", which was written on every load.
+			// Storage may throw: fall back to defaults.
 			(function () {
 				var root = document.documentElement;
 				try {
-					var mode = localStorage.getItem("cv:mode");
+					var mode = localStorage.getItem("cv:mode:v2");
 					var lang = localStorage.getItem("cv:lang");
 					if (["dark", "cv", "tui", "slides"].indexOf(mode) > -1) root.setAttribute("data-mode", mode);
 					if (lang === "en" || lang === "es") {

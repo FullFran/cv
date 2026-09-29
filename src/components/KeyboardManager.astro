@@ -184,7 +184,10 @@
   ];
 
   const root = document.documentElement;
-  const KEY_MODE = "cv:mode";
+  // Keep in sync with the inline head script in Layout.astro. The mode key is
+  // versioned: the old "cv:mode" was written on every load, so it holds no real
+  // user choice. Bump the suffix again if the default ever changes.
+  const KEY_MODE = "cv:mode:v2";
   const KEY_LANG = "cv:lang";
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -326,9 +329,10 @@
     goToSlide(currentSlide - 1);
   }
 
-  function applyMode(mode: Mode) {
+  // persist=false on initial load: only an explicit user change is stored.
+  function applyMode(mode: Mode, persist = true) {
     root.setAttribute("data-mode", mode);
-    writeStored(KEY_MODE, mode);
+    if (persist) writeStored(KEY_MODE, mode);
     modeEl.textContent = labelForMode[mode];
     if (mode === "slides") {
       collectSlides();
@@ -346,10 +350,10 @@
     setAnnouncement(`Mode set to ${labelForMode[mode]}`);
   }
 
-  function applyLang(lang: Lang) {
+  function applyLang(lang: Lang, persist = true) {
     root.setAttribute("data-lang", lang);
     root.setAttribute("lang", lang);
-    writeStored(KEY_LANG, lang);
+    if (persist) writeStored(KEY_LANG, lang);
     langEl.textContent = lang.toUpperCase();
     updateCurrentSection("Intro", "intro");
     if (getMode() === "slides") {
@@ -847,7 +851,7 @@
     modeBeforePrint = null;
   });
 
-  applyLang(getLang());
-  applyMode(getMode());
+  applyLang(getLang(), false);
+  applyMode(getMode(), false);
   observeSections();
 </script>
